@@ -1,0 +1,72 @@
+{% extends "commonbase.html" %}
+{% block content %}
+
+{% if messages %}
+   {% for msg in messages %}
+       <script>
+        alert('{{msg}}')
+       </script>
+    {% endfor %}
+{% endif %}
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<h2 class="inner-w3-title">
+						Public Registration </h2>
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><span class="fas fa-angle-double-right mx-2"></span> Public Registration</li>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+			<div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+				<div class="input-grids">
+                   
+					<input type="text" name="name" placeholder="Enter your name" pattern="[a-zA-Z]+" class="contact-input" required="" style="width: 800px; margin-left: 150px;" />
+                    <textarea class="contact-textarea contact-input" name="address" placeholder="Enter your address" required="" style="width: 800px; margin-left: 150px;"></textarea>
+					<input type="text" name="aanum" placeholder="Enter your Aadharnumber" maxlength="15" pattern="[0-9]{15}" class="contact-input" required="" style="width: 800px; margin-left: 150px;"/>
+
+					<input type="text" name="phone" placeholder="Enter your phonenumber" maxlength="10" pattern="[06789][0123456789]{9}" class="contact-input" required="" style="width: 800px; margin-left: 150px;"/>
+                    <input type="email" name="email" placeholder="Enter your mail" class="contact-input" required="" style="width: 800px; margin-left: 150px;" />
+                    <input type="password" name="password" placeholder="Enter your password" class="contact-input" required="" style="width: 800px; margin-left: 150px;"/>
+					<!-- <input type="file" name="image" title="Upload your profile picture" class="contact-input" required="" style="width: 800px; margin-left: 150px;"> -->
+                    
+				</div>
+				<div style="margin-left: 820px;">
+					<button class="btn btn-style btn-primary">Signup</button>
+				</div>
+			</form>
+		</div>
+		</div>
+	</section>
+</div>
+
+
+			
+	</div>
+</div>
+</section>
+		</div>
+	</div>
+	
+</section>
+
+{% endblock %}
+
+
+
+
+

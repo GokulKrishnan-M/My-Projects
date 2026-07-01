@@ -1,0 +1,409 @@
+{% extends "commonbasepublic.html" %}
+{% block content2 %}
+<style>
+	/* th {
+        background-color:rgb(173, 78, 114);
+        color:wheat;
+        padding: 10px;
+    }
+	table {
+		margin-left: 50px;
+		width: 65%; 
+		text-align: center;
+	}
+	h2{
+		margin-left: 350px;
+
+	} */
+	table,
+	th,
+	td {
+		border: 1px solid rgb(224, 211, 219);
+	}
+	th,
+	td {
+		padding: 10px;
+	}
+	table {
+		margin-top: 20px;
+		width: 100%;
+		text-align: center;
+		color: antiquewhite;
+	}
+   
+   
+</style>
+
+
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<h2 class="inner-w3-title">
+						Add Complaints</h2>
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><span class="fas fa-angle-double-right mx-2"></span>Add Complaints</li>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+			<div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+				<div class="input-grids">
+
+
+					<label style="margin-left: 10px;color: rgb(236, 228, 228);">Select Authority :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+					<select name="att" style="width: 800px; margin-left: 150px; height: 60px;" class="contact-input">
+						<option>--select--</option>
+                        <option>Pwd</option>
+                        
+
+</select>
+<br><br>
+
+					
+					<input type="text" name="complaint" placeholder="Subject" class="contact-input" required="" style="width: 800px; margin-left: 150px;" />
+                    <textarea class="contact-textarea contact-input" name="desc" placeholder="Write your complaints" required="" style="width: 800px; margin-left: 150px;" ></textarea>
+					<input type="file" name="image" title="Upload Complaints" class="contact-input" required style="width: 800px; margin-left: 150px;" >
+					<tr>
+						<td rowspan="11">
+							<label style="color: aliceblue;"> Select location from map</label>
+							<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+						
+							 <div id="map" style="margin-left: 150px;"></div>
+							 <input onclick="deleteMarkers();" type=button value="Refresh location" style="width: 500px;margin-left: 150px;">
+						</td>
+					</tr>
+					<input type="text" id="l1" style="visibility: hidden;" required name="l1">
+					<input type="text" id="l2" style="visibility: hidden;" required name="l2">
+                    
+                    
+				</div>
+				<div style="margin-left: 820px;">
+					<button class="btn btn-style btn-primary">POST</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br><br><br>
+	
+	{% if data %}
+	<h2 style="color: antiquewhite;"><b>VIEW COMPLAINTS</b></h2><br>
+
+<table>
+    <tr>
+        <!-- <th>ID</th> -->
+        <th>SUBJECT</th>
+        <th>COMPLAINTS</th>
+        <th>STATUS</th>
+        <th>REPLY</th>
+		<th></th>
+
+
+
+      <!-- <th colspan="2"></th> -->
+    </tr>
+    {% for s in data %}
+    <tr>
+        <!-- <td style="padding: 30px;">{{s.id}}</td> -->
+        <td style="padding: 30px;">{{s.complaint}}</td>
+        <td style="padding: 30px;">{{s.desc}}</td>
+        <td style="padding: 30px;">{{s.status}}</td>
+        <td style="padding: 30px;">{{s.rply}}</td>
+		{% if s.status == 'Submitted' %}
+
+		<td><a href="/satisfied?id={{s.id}}">satisfied??</a>
+        <a href="/unsatisfied?id={{s.id}}">Not Satisfied??</a></td>
+		{% endif %}
+
+		{% if s.status == 'Completed' %}
+        <td><a href="/addrating?id={{s.aid.id}}">Add Rating</a></td>
+		{% endif %}
+
+
+      
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+	<!-- <div class="contant11-top-bg py-5">
+		<div class="container py-lg-3">
+			<div class="d-grid contact section-gap">
+				<div class="contact-info-left d-grid">
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-location-arrow" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Address:</h4>
+							<p>Lorem dolor sit, New York, USA</p>
+						</div>
+					</div>
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-phone" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Phone:</h4>
+							<p><a href="tel:+598-658-456">+598-658-456</a></p>
+							<p><a href="tel:+598-658-457">+598-658-457</a></p>
+						</div>
+					</div>
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-envelope-open-o" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Mail:</h4>
+							<p><a href="mailto:mail@example.com" class="email">info@publication.com</a></p>
+							<p><a href="mailto:mail@example.com" class="email">publication@support.com</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</form>
+</div>
+</div>
+</section>
+</div>
+
+
+	
+</div>
+</div>
+</section>
+</div>
+</div>
+
+</section>
+	<script>
+		var msg="{{msg}}";
+		if(msg!="")
+			alert(msg);
+		
+				   
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	   
+		// This example adds a search box to a map, using the Google Place Autocomplete
+						 // feature. People can enter geographical searches. The search box will return a
+						 // pick list containing a mix of places and predicted search terms.
+				
+						 // This example requires the Places library. Include the libraries=places
+						 // parameter when you first load the API. For example:
+						 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+				
+							function initAutocomplete() {
+							 var map = new google.maps.Map(document.getElementById('map'), {
+								 center: { lat: 10.1076, lng: 76.3457 },
+								 zoom: 13,
+								 mapTypeId: 'roadmap'
+							 });
+				
+							 google.maps.event.addListener(map, "click", function (event) {
+								 // get lat/lon of click
+								 var clickLat = event.latLng.lat();
+								 var clickLon = event.latLng.lng();
+				
+								 // show in input box
+								 document.getElementById('l1').value = clickLat.toFixed(5);
+								 document.getElementById('l2').value = clickLon.toFixed(5);
+								
+						var somefunction = function () {
+							var hdnfldVariable = document.getElementById('hdnfldVariable');
+							hdnfldVariable.value = clickLat.toFixed(5);
+						}
+				   
+				
+				
+								 var marker = new google.maps.Marker({
+									 position: new google.maps.LatLng(clickLat, clickLon),
+									 map: map,
+									 draggable:true
+								 });
+							 });
+				
+				
+							 // Create the search box and link it to the UI element.
+							 var input = document.getElementById('pac-input');
+							 var searchBox = new google.maps.places.SearchBox(input);
+							 map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+				
+							 // Bias the SearchBox results towards current map's viewport.
+							 map.addListener('bounds_changed', function () {
+								 searchBox.setBounds(map.getBounds());
+							 });
+				
+							 var markers = [];
+							 // Listen for the event fired when the user selects a prediction and retrieve
+							 // more details for that place.
+							 searchBox.addListener('places_changed', function () {
+								 var places = searchBox.getPlaces();
+				
+								 if (places.length == 0) {
+									 return;
+								 }
+				
+								 // Clear out the old markers.
+								
+								 markers.forEach(function (marker) {
+									debugger;
+									 marker.setMap(null);
+									 
+									
+								 });
+								 markers = [];
+				 
+	
+								 // For each place, get the icon, name and location.
+								 var bounds = new google.maps.LatLngBounds();
+								 places.forEach(function (place) {
+									 if (!place.geometry) {
+										 console.log("Returned place contains no geometry");
+										 return;
+									 }
+									 var icon = {
+										 url: place.icon,
+										 size: new google.maps.Size(71, 71),
+										 origin: new google.maps.Point(0, 0),
+										 anchor: new google.maps.Point(17, 34),
+										 scaledSize: new google.maps.Size(25, 25)
+									 };
+				
+									 // Create a marker for each place.
+									 markers.push(new google.maps.Marker({
+										 map: map,
+										 icon: icon,
+										 title: place.name,
+										 position: place.geometry.location
+									 }));
+				
+									 if (place.geometry.viewport) {
+										 // Only geocodes have viewport.
+										 bounds.union(place.geometry.viewport);
+									 } else {
+										 bounds.extend(place.geometry.location);
+									 }
+								 });
+								 map.fitBounds(bounds);
+							 });
+						 }
+				
+					</script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRhhnbNUXPX9_JYKnroSAex2-1KFaSmwQ&libraries=places&callback=initAutocomplete"></script>
+					<style>
+						td,th{
+							padding: 5px;
+						}
+						/* Always set the map height explicitly to define the size of the div
+							 * element that contains the map. */
+							 #map {
+							  height: 400px;
+							  width:500px;
+							  border-style:groove;
+							  border-width:thick;
+							  /*margin-left:300px;
+							  margin-top:30px;
+							  margin-bottom:30px;*/
+							}
+							/* Optional: Makes the sample page fill the window. */
+							html, body {
+							  height: 100%;
+							  margin: 0;
+							  padding: 0;
+							}
+							#description {
+							  font-family: Roboto;
+							  font-size: 15px;
+							  font-weight: 300;
+							}
+					  
+							#infowindow-content .title {
+							  font-weight: bold;
+							}
+					  
+							#infowindow-content {
+							  display: none;
+							}
+					  
+							#map #infowindow-content {
+							  display: inline;
+							}
+					  
+							.pac-card {
+							  margin: 10px 10px 0 0;
+							  border-radius: 2px 0 0 2px;
+							  box-sizing: border-box;
+							  -moz-box-sizing: border-box;
+							  outline: none;
+							  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+							  background-color: #fff;
+							  font-family: Roboto;
+							}
+					  
+							#pac-container {
+							  padding-bottom: 12px;
+							  margin-right: 12px;
+							}
+					  
+							.pac-controls {
+							  display: inline-block;
+							  padding: 5px 11px;
+							}
+					  
+							.pac-controls label {
+							  font-family: Roboto;
+							  font-size: 13px;
+							  font-weight: 300;
+							}
+					  
+							#pac-input {
+							  background-color: #fff;
+							  font-family: Roboto;
+							  font-size: 15px;
+							  font-weight: 300;
+							  margin-left: 12px;
+							  padding: 0 11px 0 13px;
+							  text-overflow: ellipsis;
+							  width: 400px;
+							}
+					  
+							#pac-input:focus {
+							  border-color: #4d90fe;
+							}
+					  
+							#title {
+							  color: #fff;
+							  background-color: #4d90fe;
+							  font-size: 25px;
+							  font-weight: 500;
+							  padding: 6px 12px;
+							}
+							#target {
+							  width: 345px;
+							}
+					</style>
+{% if messages %}
+    {% for msg in messages %}
+       <script>
+           alert('{{msg}}')
+       </script>
+    {% endfor %}
+{% endif %}
+{% endblock %}

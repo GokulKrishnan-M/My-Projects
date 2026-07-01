@@ -1,0 +1,129 @@
+{% extends "commonbaseauthority.html" %}
+{% block content3 %}
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<h2 class="inner-w3-title">
+						Complaints</h2>
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><span class="fas fa-angle-double-right mx-2"></span>Complaints</li>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+			<div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+<style  type="text/css">
+   table,
+	th,
+	td {
+		border: 1px solid rgb(243, 235, 240);
+	}
+	th,
+	td {
+		padding: 10px;
+	}
+	table {
+		margin-top: 20px;
+		width: 70%;
+		text-align: center;
+        color: antiquewhite;
+	}
+</style>
+<center>
+    <div class="center">
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {% if data %}
+        <h3 style="margin: 20px;color: antiquewhite;">COMPLAINTS</h3>
+
+		    <table>
+                <tr>
+                    <th>USER</th>
+                    <th>SUBJECT</th>
+                    <th>COMPLAINTS</th>
+                    <th>ALLOTED DATE</th>
+                    <th>DUE DATE</th>
+                    <th>LOCATION</th>
+                    <th>REPLY</th>
+                    <th>ADDITIONAL REQUIREMENTS</th>
+
+                    <th>ACTION</th>
+
+                    
+                    
+                </tr>
+                {% for d in data %}
+                    <tr>
+                        <td style="padding: 30px;">{{d.pid.name}}</td>
+                        <td style="padding: 30px;">{{d.complaint}}</td>
+                        <td style="padding: 30px;">{{d.desc}}</td>
+                        <td style="padding: 30px;">{{d.date}}</td>
+                        <td style="padding: 30px;">{{d.duedt}}</td>
+                        <td><a href="/viewlocation1?id={{d.id}}">View Location</a></td>
+                       
+
+                        {% if d.rply is none %}
+                        <td><a href="/authorityaddresponse?id={{d.id}}">Reply</a></td>
+                        {% else %}
+
+                        <td>{{d.rply}}</td>
+
+                        {% endif %}
+                        <td style="padding: 30px;">{{d.addinfo}}</td>
+
+
+                        {% if d.status == 'Not Satisfied' %}
+                        <td><a href="/authorityaddresponse?id={{d.id}}">Reply</a></td>
+                        {% endif %}
+
+                        <!-- <td>{{d.email}}</td> -->
+                        <!-- <td colspan="4">{{d.regdate}}</td> -->
+                        <!-- <td><a href="/approveuser?id={{d.user.id}}">Approve</a></td> -->
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}    
+     
+        </form>
+    
+    </div>
+</center>
+</form>
+</div>
+</div>
+</section>
+</div>
+
+
+    
+</div>
+</div>
+</section>
+</div>
+</div>
+
+</section>
+
+{% if messages %}
+{% for msg in messages %}
+   <script>
+    alert('{{msg}}')
+   </script>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

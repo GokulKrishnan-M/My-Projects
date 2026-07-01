@@ -1,0 +1,130 @@
+{% extends "commonbase.html" %}
+{% block content %}
+
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<h2 class="inner-w3-title">
+						Authority Registration</h2>
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><span class="fas fa-angle-double-right mx-2"></span> Authority Registration</li>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+						<!-- <div class="contact-left">
+							<div class="cont-details">
+								<div class="cont-top margin-up">
+									<div class="cont-left text-center">
+										<span class="fas fa-map-marker-alt"></span>
+									</div>
+									
+								</div>
+								<div class="cont-top margin-up">
+									<div class="cont-left text-center">
+										<span class="fas fa-phone-alt"></span>
+									</div>
+									
+								</div>
+								<div class="cont-top margin-up">
+									<div class="cont-left text-center">
+										<span class="far fa-envelope"></span>
+									</div>
+									
+								</div>
+							</div>
+						</div> -->
+						<div>
+							<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="signin-form">
+								<div class="input-grids">
+									<input type="text" name="name"  placeholder="Authority Name" pattern="[a-zA-Z]+" class="contact-input" required="" style="width: 800px; margin-left: 150px;" />
+									<input type="text" name="official" placeholder="Staff in Charge" class="contact-input" required="" style="width: 800px; margin-left: 150px;"/>
+									<input type="text" name="offdesig" placeholder="Designation of the officer" class="contact-input" required="" style="width: 800px; margin-left: 150px;"/>
+									<label style="margin-left: 10px;color: rgb(236, 228, 228);">Select District :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+									<select name="att" style="width: 800px; margin-left: 150px; height: 60px;" class="contact-input">
+										<option>--select--</option>
+										<option>Kasaragod</option>
+										<option>Kannur</option>
+										<option>Wayanad</option>
+										<option>Kozhikode</option>
+										<option>Malappuram</option>
+										<option>Palakkad</option>
+										<option>Thrissur</option>
+										<option>Ernakulam</option>
+										<option>Idukki</option>
+										<option>Kottayam</option>
+										<option>Alappuzha</option>
+										<option>Pathanamthitta</option>
+										<option>Kollam</option>
+										<option>Thrivananthapuram</option>
+
+
+
+
+
+
+
+
+				
+				</select>
+									<textarea  name="address" placeholder="Address" required="" style="width: 800px; margin-left: 150px;"></textarea>
+									<input type="text" name="phone" placeholder="Enter your phonenumber" maxlength="10" pattern="[06789][0-9]{9}" class="contact-input"  required="" style="width: 800px; margin-left: 150px;" />
+									<input type="email" name="email" placeholder="Enter your mail" class="contact-input" required="" style="width: 800px; margin-left: 150px;"/>
+									<input type="password" name="password" placeholder="Enter your password" class="contact-input" required="" style="width: 800px; margin-left: 150px;"/>
+									<input type="file" name="image" title="Upload any ID proof"  required style="width: 800px; margin-left: 150px;">
+									
+								</div>
+								
+								<div style="margin-left: 820px;">
+									<button class="btn btn-style btn-primary">Signup</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+							   
+			
+							   
+								
+							</div>
+							<!-- <div class="text-right">
+								<button class="btn-primary btn theme-button">Signup</button>
+							</div> -->
+						</form>
+					</div>
+				</div>
+
+
+
+
+
+		</div>
+	</section>
+</div>
+
+
+	
+	{% if messages %}
+	{% for msg in messages %}
+		<script>
+		 alert('{{msg}}')
+		</script>
+	 {% endfor %}
+ {% endif %}
+
+{% endblock %}

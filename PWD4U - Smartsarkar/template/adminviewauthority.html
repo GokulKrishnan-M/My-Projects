@@ -1,0 +1,83 @@
+{% extends "commonbaseadmin.html" %}
+{% block content1 %}
+<style>
+	/* th {
+        background-color:palevioletred;
+        color:wheat;
+        padding: 10px;
+    }
+	table {
+		margin-left: 50px;
+		width: 100%; 
+		text-align: center;
+        border: 1px solid brown;
+	} */
+	/* h2{
+        margin-top: 70px;
+		margin-left: 350px;
+
+	} */
+    table,
+	th,
+	td {
+		border: 1px solid rgb(224, 88, 163);
+	}
+	th,
+	td {
+		padding: 10px;
+	}
+	table {
+		margin-top: 20px;
+		width: 100%;
+		text-align: center;
+	}
+   
+</style>
+<center>
+    <br><br><br>
+    <h2><b>VIEW AUTHORITY</b></h2><br>
+    <br><br>
+        {% if data %}
+    <table>
+        <tr>
+            <!-- <th>ID</th> -->
+            <th>Authority</th>
+            <th>StaffIncharge</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Proof</th>
+
+                
+          <th colspan="2"></th>
+        </tr>
+        {% for s in data %}
+        <tr>
+            <!-- <td style="padding: 30px;">{{s.id}}</td> -->
+            <td style="padding: 30px;">{{s.authorityname}}</td>
+            <td style="padding: 30px;">{{s.official}}</td>
+            <td style="padding: 30px;">{{s.address}}</td>
+            <td style="padding: 30px;">{{s.phone}}</td>
+            <td style="padding: 30px;">{{s.email}}</td>
+            <td style="padding: 30px;">{{s.proof}}</td>
+            <td><a href="/addrenumeration?id={{s.id}}" style="color:rgb(76, 186, 201)">Make as best authority</a></td>
+
+
+            
+    
+    
+          
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</center>
+
+{% if messages %}
+    {% for msg in messages %}
+       <script>
+           alert('{{msg}}')
+       </script>
+    {% endfor %}
+{% endif %}
+{% endblock %}

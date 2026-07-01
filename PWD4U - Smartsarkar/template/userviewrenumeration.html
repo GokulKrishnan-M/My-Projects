@@ -1,0 +1,76 @@
+{% extends "commonbasepublic.html" %}
+{% block content2 %}
+<style  type="text/css">
+   
+    table {
+		border-collapse:separate;
+		border:none;
+        
+        
+	} 
+    td{
+        padding: 90px;
+    }
+
+	th {
+		background-color:lightcoral;
+		color:wheat;
+        padding: 10px;
+
+	}
+</style>
+<section class="w3l-contact" id="contact">
+	<div class="container py-5">
+		<div class="contacts12-main py-md-3">
+			<div class="header-section text-center">
+				<h3 class="mb-md-5 mb-4">Renumerations 
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+			</div>
+            <form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+				<div class="main-input">
+                    <br>
+                    
+                <center>
+                    
+        
+                    {% if data %}
+		            <table border="0" style="margin: 50px">
+                    <tr>
+                        <th>Authority Name</th>
+                        <th>Reason</th>
+                        <th>Period</th>
+                    </tr>
+                    {% for d in data %}
+                    <tr>
+                        <!-- <td>{{d.pid.name}}</td> -->
+                        <td>{{d.aid.authorityname}}</td>
+                        <td>{{d.desc}}</td>
+                        <td>{{d.period}}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}    
+     
+        </form>
+    
+    </div>
+</center>
+</div>
+<div class="text-right">
+</div>
+</form>
+</div>
+</div>
+</section>
+
+{% if messages %}
+{% for msg in messages %}
+   <script>
+    alert('{{msg}}')
+   </script>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "commonbaseadmin.html" %}
+{% block content1 %}
+
+{% if messages %}
+   {% for msg in messages %}
+       <script>
+        alert('{{msg}}')
+       </script>
+    {% endfor %}
+{% endif %}
+
+
+
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<h2 class="inner-w3-title">
+						Allocation</h2>
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><span class="fas fa-angle-double-right mx-2"></span>Allocation</li>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+			<div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+				<div class="input-grids">
+                    <label style="color: antiquewhite;">Subject</label>
+                            <input type="text" name="complaint" value="{{data.complaint}}" required class="contact-input" width="100px">
+                            <label style="color: antiquewhite;">Complaint</label>
+                            <textarea name="desc" required class="contact-input" >{{data.desc}}</textarea>
+                            <br>
+                            <label style="color: antiquewhite;">Proof</label>
+                            <img src="../static/assets/media/{{data.proof}}" style="height: 150px; width :150px;" class="contact-input">
+                            <br><br><br><br>
+                            <!-- <label style="color: rgb(117, 100, 100);">Select Authority :</label> -->
+                             <label style="color: antiquewhite;">Choosed Authority</label>  &nbsp;&nbsp;&nbsp;<input type="text" name="auth" value="{{data.authority}}" required class="contact-input">
+
+                            <label style="margin-left: 10px;color: rgb(236, 226, 226);">Select Authority :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select name="att" style="width: 500px;height: 35px; border-color: rgb(223, 204, 204);color: rgb(117, 100, 100);" class="contact-input">
+                                        <option>--select--</option>
+
+                                        {% for i in at %}
+                                        <option value={{i.id}}>{{i.authorityname}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br><br>
+                              <label style="color: antiquewhite;">  Due Date :</label><input type="date" name="duedt">
+                                    <!-- <input type="text" name="desc" class="contact-input" required="" placeholder="Enter reason for selection"/> -->
+                               
+                        </table>
+                    </center>
+                    
+                   <br>
+                   
+                    
+				</div>
+				<div style="margin-left: 820px;">
+					<button class="btn btn-style btn-primary">Allocate</button>
+				</div>
+                </form>
+            </div>
+            </div>
+        </section>
+    </div>
+    
+    
+                
+        </div>
+    </div>
+    </section>
+            </div>
+        </div>
+        
+    </section>
+    
+{% endblock %}

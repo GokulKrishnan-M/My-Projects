@@ -1,0 +1,129 @@
+{% extends "commonbaseadmin.html" %}
+{% block content1 %}
+<style>
+	/* th {
+        background-color:palevioletred;
+        color:wheat;
+        padding: 10px;
+    }
+	table {
+		margin-left: 50px;
+		width: 100%; 
+		text-align: center;
+        border: 1px solid brown;
+	} */
+	/* h2{
+        margin-top: 70px;
+		margin-left: 350px;
+
+	} */
+    table,
+	th,
+	td {
+		border: 1px solid rgb(224, 88, 163);
+	}
+	th,
+	td {
+		padding: 10px;
+	}
+	table {
+		margin-top: 20px;
+		width: 100%;
+		text-align: center;
+	}
+   
+</style>
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<h2 class="inner-w3-title">
+						View Users</h2>
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><span class="fas fa-angle-double-right mx-2"></span>View Users</li>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+			<div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+<center>
+    <br><br><br>
+    <br><br>
+        {% if data %}
+        <h2 style="color: antiquewhite;"><b>VIEW USERS</b></h2><br>
+
+    <table>
+        <tr>
+            <!-- <th>ID</th> -->
+            <!-- <th>Profile Pic</th> -->
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Register Date</th>
+
+
+                
+          <th colspan="2"></th>
+        </tr>
+        {% for s in data %}
+        <tr>
+            <!-- <td style="padding: 30px;">{{s.id}}</td> -->
+            <!-- <td style="padding: 30px;"><img src="../static/assets/media/{{s.image}}" style="height: 150px; width :150px; border-radius : 50%"></td> -->
+
+            <td style="padding: 30px;">{{s.name}}</td>
+            <td style="padding: 30px;">{{s.address}}</td>
+            <td style="padding: 30px;">{{s.phone}}</td>
+            <td style="padding: 30px;">{{s.email}}</td>
+            <td style="padding: 30px;">{{s.regdate}}</td>
+            <td><a href="/deleteuser?id={{s.id}}&email={{s.email}}">Delete</a></td>
+
+            <!-- <td><a href="/addrenumeration?id={{s.id}}" style="color:rgb(76, 186, 201)">Make as best authority</a></td> -->
+
+
+            
+    
+    
+          
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</center>
+</form>
+</div>
+</div>
+</section>
+</div>
+
+
+    
+</div>
+</div>
+</section>
+</div>
+</div>
+
+</section>
+
+
+{% if messages %}
+    {% for msg in messages %}
+       <script>
+           alert('{{msg}}')
+       </script>
+    {% endfor %}
+{% endif %}
+{% endblock %}

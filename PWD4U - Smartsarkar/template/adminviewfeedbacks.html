@@ -1,0 +1,100 @@
+{% extends "commonbaseadmin.html" %}
+{% block content1 %}
+<style  type="text/css">
+   
+   table,
+	th,
+	td {
+		border: 1px solid rgb(224, 215, 220);
+	}
+	th,
+	td {
+		padding: 10px;
+	}
+	table {
+		margin-top: 20px;
+		width: 100%;
+		text-align: center;
+        color: antiquewhite;
+	
+	}
+</style>
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<h2 class="inner-w3-title">
+						Feedbacks</h2>
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><span class="fas fa-angle-double-right mx-2"></span> Feedbacks</li>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+			<div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+<center>
+    <div class="center">
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+		<!-- <h3 style="margin: 20px">COMPLAINTS</h3> -->
+        {% if data %}
+		    <table>
+                <tr>
+                    <th>USER</th>
+                    <th>FEEDBACK</th>
+                    <th>DATE</th>
+                    
+                </tr>
+                {% for d in data %}
+                    <tr>
+                        <td>{{d.pid.name}}</td>
+                        <td>{{d.Feedback}}</td>
+                        <td>{{d.date}}</td>
+
+                        
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}    
+     
+        </form>
+    
+    </div>
+</center>
+</form>
+</div>
+</div>
+</section>
+</div>
+
+
+    
+</div>
+</div>
+</section>
+</div>
+</div>
+
+</section>
+{% if messages %}
+{% for msg in messages %}
+   <script>
+    alert('{{msg}}')
+   </script>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

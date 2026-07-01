@@ -1,0 +1,86 @@
+{% extends "commonbasepublic.html" %}
+{% block content2 %}
+
+{% if messages %}
+   {% for msg in messages %}
+       <script>
+        alert('{{msg}}')
+       </script>
+    {% endfor %}
+{% endif %}
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<h2 class="inner-w3-title">
+						Add Additional Requirements</h2>
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><span class="fas fa-angle-double-right mx-2"></span>Additional Requirements</li>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+			<div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+				<div class="input-grids">
+
+                   
+                    <textarea class="contact-textarea contact-input" name="desc" placeholder="Write yor Requirements" required=""></textarea>
+                   
+                    
+				</div>
+				<div style="margin-left: 820px;">
+					<button class="btn btn-style btn-primary">POST</button>
+				</div>
+			</form>
+		</div>
+		</div>
+		{% if data %}
+	<h2 style="color: antiquewhite;"><b>FEEDBACKS</b></h2><br>
+
+<table>
+    <tr>
+        <th>USER NAME</th>
+        <th>FEEDBACK</th>
+       
+		<th></th>
+
+
+
+    </tr>
+    {% for s in data %}
+    <tr>
+        <td style="padding: 30px;">{{s.pid.name}}</td>
+        <td style="padding: 30px;">{{s.Feedback}}</td>
+       
+
+      
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+	</section>
+</div>
+
+
+			
+	</div>
+</div>
+</section>
+		</div>
+	</div>
+	
+</section>
+	
+{% endblock %}

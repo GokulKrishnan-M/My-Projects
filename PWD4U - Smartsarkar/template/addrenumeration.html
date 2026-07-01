@@ -1,0 +1,116 @@
+{% extends "commonbaseadmin.html" %}
+{% block content1 %}
+
+{% if messages %}
+   {% for msg in messages %}
+       <script>
+        alert('{{msg}}')
+       </script>
+    {% endfor %}
+{% endif %}
+
+
+
+<section class="w3l-contact" id="contact">
+	<div class="container py-5">
+		<div class="contacts12-main py-md-3">
+			<div class="header-section text-center">
+				<h3 class="mb-md-5 mb-4">Renumeration
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+			</div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+				<div class="main-input">
+                    <center>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label>Select Period :</label>
+    
+                                </td>
+                                <td>
+                                    <select name="at" class="contact-input">
+                                        <option>--select--</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                  
+                                    </select>
+                                </td>
+                            </tr>
+							
+                            <!-- <tr>
+                                <td>
+                                    <label>Select Authority :</label>
+    
+                                </td>
+                                <td>
+                                    <select name="att" class="contact-input">
+                                        <option>--select--</option>
+
+                                        {% for i in at %}
+                                        <option value={{i.id}}>{{i.authorityname}}</option>
+                                    {% endfor %}
+                                    </select>
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <td>
+                                    <label>Reason for selection</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="desc" class="contact-input" required="" />
+                                </td>
+                            </tr>
+                        </table>
+                    </center>
+                    
+                   <br>
+                   
+                    
+				</div>
+				<div class="text-right">
+					<button class="btn-primary btn theme-button">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- <div class="contant11-top-bg py-5">
+		<div class="container py-lg-3">
+			<div class="d-grid contact section-gap">
+				<div class="contact-info-left d-grid">
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-location-arrow" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Address:</h4>
+							<p>Lorem dolor sit, New York, USA</p>
+						</div>
+					</div>
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-phone" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Phone:</h4>
+							<p><a href="tel:+598-658-456">+598-658-456</a></p>
+							<p><a href="tel:+598-658-457">+598-658-457</a></p>
+						</div>
+					</div>
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-envelope-open-o" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Mail:</h4>
+							<p><a href="mailto:mail@example.com" class="email">info@publication.com</a></p>
+							<p><a href="mailto:mail@example.com" class="email">publication@support.com</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "commonbaseauthority.html" %}
+{% block content3 %}
+
+{% if messages %}
+   {% for msg in messages %}
+       <script>
+        alert('{{msg}}')
+       </script>
+    {% endfor %}
+{% endif %}
+<div class="inner-banner py-5">
+	<section class="w3l-breadcrumb text-left py-sm-5 ">
+		<div class="container">
+			<div class="w3breadcrumb-gids">
+				<div class="w3breadcrumb-left text-left">
+					<!-- <h2 class="inner-w3-title">
+						Public Registration </h2> -->
+					
+				</div>
+				<div class="w3breadcrumb-right">
+					<ul class="breadcrumbs-custom-path">
+						<!-- <li class="active"><span class="fas fa-angle-double-right mx-2"></span> Public Registration</li> -->
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+					</ul>
+				</div>
+			</div>
+			<section class="w3l-contact-2 py-5" id="contact">
+				<div class="container py-lg-4 py-md-3 py-2">
+					
+			
+					<div class="contact-grids d-grid mt-5 pt-lg-3">
+			<div>
+			<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+
+<center>
+    <h1 style="color: antiquewhite;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Welcome {{request.session.name}}</b> </h1>
+</center>
+</form>
+</div>
+</div>
+</section>
+</div>
+
+
+    
+</div>
+</div>
+</section>
+</div>
+</div>
+
+</section>
+{% endblock %}
