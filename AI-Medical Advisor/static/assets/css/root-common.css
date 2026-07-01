@@ -1,0 +1,63 @@
+/* Root common styles extracted from templates/common.html */
+.hero-bg {
+  background: url('../images/bg/about.jpg') center center;
+  background-size: cover;
+}
+
+.hero-bg-101 {
+  background: url('../images/bg/pharm01.jpg') center/cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.hero-bg-101::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 58, 138, 0.3);
+  z-index: 0;
+}
+
+.dd-menu-min {
+  min-width: 200px;
+}
+
+.min-width-200 { min-width: 200px; }
+
+.img-width-240 {
+  width: 240px;
+}
+
+.hr-dashed {
+  border-top: 1px dashed #404040;
+}
+
+.progress-custom {
+  height: 6px;
+  background: rgba(255,255,255,0.2);
+}
+
+.progress-bar-85 {
+  width: 85% !important;
+}
+
+.bg-dark-fix {
+  background-color: #262626 !important;
+}
+
+.icon-font-size-16 {
+  font-size: 16px;
+}
+
+.link-transition {
+  transition: 0.3s;
+}
+
+.card-transition { transition: all .3s ease; }
+.card-hover { cursor: pointer; }
+.card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+
+.btn-login-lg { padding: 15px 30px; font-size: 18px; }
