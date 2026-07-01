@@ -1,0 +1,315 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "hi",
+                "hello",
+                "hey",
+                "good morning",
+                "good evening",
+                "is anyone there",
+                "can you help me",
+                "i need some help"
+            ],
+            "responses": [
+                "Hello. I can help with common symptoms, medicine guidance, prescriptions, appointments, and medicine orders.",
+                "Hi there. Tell me what you need help with, such as fever, cough, prescriptions, medicine questions, or order status.",
+                "Welcome back. Ask me about symptoms, medicines, prescriptions, appointments, or your pharmacy orders."
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "thanks",
+                "thank you",
+                "thanks for helping",
+                "that helped",
+                "helpful",
+                "great thanks",
+                "appreciate it"
+            ],
+            "responses": [
+                "You are welcome. If you need help with anything else, just ask.",
+                "Happy to help. Feel free to ask another health or pharmacy question.",
+                "Glad that helped. I am here if you want to continue."
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "bye",
+                "goodbye",
+                "see you",
+                "talk later",
+                "that is all",
+                "nothing else"
+            ],
+            "responses": [
+                "Take care. Come back anytime if you need pharmacy or health guidance.",
+                "Goodbye. Wishing you good health.",
+                "See you later. I am here whenever you need support."
+            ]
+        },
+        {
+            "tag": "symptom_support",
+            "patterns": [
+                "i have symptoms",
+                "i do not feel well",
+                "i am feeling sick",
+                "can you help with symptoms",
+                "health problem",
+                "medical question",
+                "i am not feeling okay",
+                "something is wrong with my health"
+            ],
+            "responses": [
+                "I can help with general symptom guidance. Tell me the main symptom, when it started, and whether it is getting worse.",
+                "Please describe the symptom, how long you have had it, and whether you have fever, pain, breathing trouble, or medicine allergies.",
+                "Share your symptoms in one message, and I will try to guide you with general next steps. For severe symptoms, seek urgent medical care."
+            ]
+        },
+        {
+            "tag": "fever_support",
+            "patterns": [
+                "i have fever",
+                "high temperature",
+                "running a fever",
+                "body is hot",
+                "fever and chills",
+                "how to manage fever",
+                "temperature is high",
+                "what should i do for fever"
+            ],
+            "responses": [
+                "For mild fever, rest, drink fluids, and monitor your temperature. If the fever is very high, lasts more than a couple of days, or comes with breathing trouble or confusion, contact a doctor quickly.",
+                "Fever often improves with rest, hydration, and appropriate fever medicine if it is safe for you. If you are unsure which medicine is suitable, ask with the medicine name.",
+                "Please watch for warning signs like dehydration, chest pain, persistent vomiting, or worsening weakness. Those need medical attention."
+            ]
+        },
+        {
+            "tag": "cough_cold_support",
+            "patterns": [
+                "i have cough",
+                "i caught a cold",
+                "sore throat and cough",
+                "runny nose",
+                "stuffy nose",
+                "how to treat cold",
+                "dry cough help",
+                "cough remedy"
+            ],
+            "responses": [
+                "For cough or cold, rest, fluids, warm liquids, and avoiding smoke can help. If you have chest pain, shortness of breath, or symptoms that keep worsening, see a doctor.",
+                "A cough or cold can improve with hydration and symptom relief medicines. If you want medicine guidance, tell me the exact medicine name or your main symptom.",
+                "If the cough lasts a long time, becomes severe, or includes breathing trouble or high fever, please seek medical care."
+            ]
+        },
+        {
+            "tag": "headache_support",
+            "patterns": [
+                "i have headache",
+                "head is hurting",
+                "migraine symptoms",
+                "pain in my head",
+                "how to manage headache",
+                "headache medicine",
+                "my head aches",
+                "bad headache"
+            ],
+            "responses": [
+                "Headaches can happen for many reasons such as stress, dehydration, poor sleep, or illness. Rest, fluids, and avoiding bright screens may help mild headaches.",
+                "If your headache is sudden and severe, comes with weakness, confusion, fainting, or vision changes, seek urgent medical care.",
+                "If you want medicine guidance for headache relief, share the medicine name so I can give general safety information."
+            ]
+        },
+        {
+            "tag": "allergy_support",
+            "patterns": [
+                "i think i have allergy",
+                "allergy symptoms",
+                "itching and sneezing",
+                "skin rash after medicine",
+                "how to deal with allergies",
+                "allergic reaction",
+                "i am sneezing a lot",
+                "red rash on skin"
+            ],
+            "responses": [
+                "Common allergy symptoms include sneezing, itching, rash, or watery eyes. If swelling, breathing trouble, or faintness happens, treat it as an emergency.",
+                "Please tell me whether the allergy seems related to food, dust, pollen, or a medicine. That helps narrow down the safest next step.",
+                "If a new medicine caused rash, swelling, or breathing issues, stop and contact a doctor or pharmacist immediately."
+            ]
+        },
+        {
+            "tag": "medicine_info",
+            "patterns": [
+                "tell me about a medicine",
+                "medicine information",
+                "what is this medicine for",
+                "drug details",
+                "uses of a tablet",
+                "can you explain this medicine",
+                "what does this medicine do",
+                "medicine purpose"
+            ],
+            "responses": [
+                "I can give general information about a medicine's common use, usual precautions, and when to ask a doctor. Send the exact medicine name.",
+                "Share the medicine name, and I can explain what it is commonly used for and the kind of precautions people should review.",
+                "If you have the medicine name and strength, send them together for clearer guidance."
+            ]
+        },
+        {
+            "tag": "dosage_guidance",
+            "patterns": [
+                "how much should i take",
+                "what is the dose",
+                "dosage help",
+                "when should i take this tablet",
+                "medicine timing",
+                "missed a dose",
+                "can i take another tablet",
+                "how often to take medicine"
+            ],
+            "responses": [
+                "I can give general medicine timing guidance, but I cannot confirm an exact safe dose without the medicine name, strength, age, and prescription instructions.",
+                "If you missed a dose, the correct next step depends on the medicine. Share the medicine name before taking extra medicine.",
+                "Please check your prescription label first. If you want help understanding it, send the medicine name and the instruction written on the pack."
+            ]
+        },
+        {
+            "tag": "medication_side_effects",
+            "patterns": [
+                "side effects of medicine",
+                "is this medicine causing side effects",
+                "tell me side effects",
+                "medicine made me dizzy",
+                "tablet side effects",
+                "drug side effects",
+                "what reactions can this medicine cause",
+                "side effect help"
+            ],
+            "responses": [
+                "Many medicines can cause side effects like nausea, dizziness, sleepiness, or stomach upset, but the exact list depends on the medicine. Share the medicine name.",
+                "If a medicine causes severe rash, swelling, trouble breathing, chest pain, or fainting, get urgent medical care.",
+                "Tell me the medicine name and what symptom started after taking it, and I can give general guidance."
+            ]
+        },
+        {
+            "tag": "prescription_help",
+            "patterns": [
+                "how do i view my prescription",
+                "show my prescription",
+                "prescription help",
+                "doctor instructions",
+                "where is my prescription",
+                "prescription details",
+                "medicine listed in prescription",
+                "how to understand my prescription"
+            ],
+            "responses": [
+                "You can review your prescriptions from the Prescription section in your account. If you want help understanding a medicine listed there, send the medicine name.",
+                "Your prescription page is the best place to check the doctor instructions and medicine list. I can explain common medicine guidance after you share the name.",
+                "If you are unsure what a prescription instruction means, copy the wording here and I will explain it in simpler terms."
+            ]
+        },
+        {
+            "tag": "appointment_help",
+            "patterns": [
+                "book appointment",
+                "how do i book a doctor",
+                "appointment help",
+                "schedule a visit",
+                "doctor booking",
+                "view my appointments",
+                "need to see a doctor",
+                "appointment status"
+            ],
+            "responses": [
+                "You can book or review visits from the Appointments section in your dashboard. If you tell me your symptom, I can suggest what kind of doctor may be relevant.",
+                "Use the appointment pages in your account to schedule or review doctor visits. I can also help you prepare questions for the doctor.",
+                "If you need help deciding whether to book an appointment, tell me the symptom and how long it has been happening."
+            ]
+        },
+        {
+            "tag": "order_payment_help",
+            "patterns": [
+                "track my order",
+                "medicine order status",
+                "payment help",
+                "invoice details",
+                "where is my medicine order",
+                "cart or payment issue",
+                "order problem",
+                "how do i check invoice"
+            ],
+            "responses": [
+                "You can review your medicine orders from the order, payment, and invoice pages in your account. If an order is still unpaid, complete the payment step first.",
+                "Order progress is usually easiest to verify from your order list and invoice pages. If you tell me what step you are stuck on, I can guide you.",
+                "For cart, payment, or invoice questions, tell me whether the issue is before payment or after payment so I can narrow it down."
+            ]
+        },
+        {
+            "tag": "healthy_lifestyle",
+            "patterns": [
+                "healthy diet tips",
+                "how to stay healthy",
+                "better lifestyle",
+                "nutrition advice",
+                "exercise help",
+                "sleep advice",
+                "healthy routine",
+                "wellness tips"
+            ],
+            "responses": [
+                "Healthy habits usually start with enough water, regular meals, good sleep, daily movement, and taking medicines only as advised.",
+                "A balanced routine with exercise, hydration, vegetables, protein, and steady sleep can improve overall health. I can give tips for one area if you want.",
+                "Tell me whether you want help with diet, sleep, exercise, or stress, and I will keep the advice focused."
+            ]
+        },
+        {
+            "tag": "mental_health_support",
+            "patterns": [
+                "i feel stressed",
+                "anxiety help",
+                "mental health advice",
+                "i am overwhelmed",
+                "coping with stress",
+                "i feel anxious",
+                "not feeling mentally okay",
+                "need emotional support"
+            ],
+            "responses": [
+                "I am sorry you are dealing with that. Slow breathing, water, short breaks, and talking to someone you trust can help in the moment.",
+                "If stress or anxiety is affecting daily life, consider speaking with a doctor or mental health professional for more personal support.",
+                "If you feel unsafe or think you might harm yourself, seek emergency help immediately and contact a trusted person right away."
+            ]
+        },
+        {
+            "tag": "emergency_situations",
+            "patterns": [
+                "medical emergency",
+                "severe bleeding",
+                "cannot breathe",
+                "chest pain",
+                "someone fainted",
+                "seizure help",
+                "urgent health crisis",
+                "need emergency care"
+            ],
+            "responses": [
+                "This may be an emergency. Call emergency services or go to the nearest hospital immediately.",
+                "For chest pain, breathing trouble, severe bleeding, seizures, or loss of consciousness, please seek emergency medical care right away.",
+                "Do not rely on chat alone for severe or rapidly worsening symptoms. Get urgent help now."
+            ]
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [],
+            "responses": [
+                "I could not fully understand that. Try asking about symptoms, medicines, side effects, prescriptions, appointments, or order help.",
+                "I am not sure I understood. You can ask me about common symptoms, medicine guidance, prescriptions, appointments, or medicine orders."
+            ]
+        }
+    ]
+}
