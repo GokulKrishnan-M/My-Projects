@@ -1,0 +1,31 @@
+{% extends "Pharmacist/common.html" %}
+{% block content %}
+
+
+<h2>Pending Orders</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Medicine</th>
+            <th>Quantity</th>
+            <th>Approve Order</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.mid.name }}</td>
+            <td>{{ order.qty }}</td>
+            <td>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                    <button type="submit" class="btn btn-success">Confirm Order</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

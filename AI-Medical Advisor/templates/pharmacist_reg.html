@@ -1,0 +1,312 @@
+{% extends "common.html" %}
+{% load static %}
+{% block hero %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block content %}
+<style>
+    #topnav,
+    #back-to-top {
+        display: none !important;
+    }
+
+    body {
+        background: #0b0f1b;
+    }
+
+    .reg-hero {
+        --accent: #22c55e;
+        --accent-soft: rgba(34, 197, 94, 0.22);
+        position: relative;
+        min-height: 100vh;
+        padding: 90px 0;
+        display: flex;
+        align-items: center;
+        background:
+            radial-gradient(circle at 25% 20%, rgba(34, 197, 94, 0.25), transparent 48%),
+            radial-gradient(circle at 80% 15%, rgba(80, 200, 120, 0.18), transparent 40%),
+            linear-gradient(135deg, #0b1122 0%, #112a2a 55%, #0a0f1f 100%);
+        color: #e9eefc;
+        overflow: hidden;
+    }
+
+    .reg-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 150px),
+            repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 150px);
+        opacity: 0.5;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .reg-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 12% 75%, rgba(34, 197, 94, 0.2), transparent 45%),
+            radial-gradient(circle at 85% 60%, rgba(80, 200, 120, 0.15), transparent 45%),
+            linear-gradient(180deg, rgba(9, 12, 24, 0.35), rgba(7, 10, 20, 0.85));
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .reg-shell {
+        position: relative;
+        z-index: 2;
+    }
+
+    .reg-card {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 28px;
+        background: rgba(10, 14, 26, 0.92);
+        border-radius: 28px;
+        border: 1px solid rgba(34, 197, 94, 0.2);
+        box-shadow: 0 30px 80px rgba(4, 8, 22, 0.6);
+        padding: 30px;
+        backdrop-filter: blur(16px);
+    }
+
+    .reg-panel {
+        background: linear-gradient(145deg, rgba(34, 197, 94, 0.18), rgba(12, 18, 40, 0.9));
+        border-radius: 22px;
+        padding: 28px;
+        border: 1px solid rgba(34, 197, 94, 0.25);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .reg-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .reg-brand img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .reg-brand span {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #f4f7ff;
+    }
+
+    .reg-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(34, 197, 94, 0.18);
+        color: #ccf5de;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        width: fit-content;
+    }
+
+    .reg-panel h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin: 0;
+        color: #f4f7ff;
+    }
+
+    .reg-panel p {
+        color: #b5c3e6;
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+
+    .reg-highlight {
+        display: grid;
+        gap: 12px;
+    }
+
+    .reg-highlight div {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: #d3ddff;
+        font-size: 0.9rem;
+    }
+
+    .reg-highlight i {
+        color: var(--accent);
+    }
+
+    .reg-form h4 {
+        margin-bottom: 4px;
+        font-weight: 700;
+        color: #eef2ff;
+    }
+
+    .reg-form p {
+        color: #94a3c8;
+        font-size: 0.9rem;
+        margin-bottom: 18px;
+    }
+
+    .reg-input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: 14px;
+        border: 1px solid rgba(120, 156, 255, 0.3);
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0.7rem 0.95rem;
+        margin-bottom: 14px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .reg-input:focus-within {
+        border-color: rgba(34, 197, 94, 0.6);
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+    }
+
+    .reg-input i {
+        color: #a0f2c0;
+        font-size: 1rem;
+    }
+
+    .reg-input .form-control {
+        border: 0;
+        background: transparent;
+        padding: 0;
+        color: #ffffff !important;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .reg-input .form-control::placeholder {
+        color: #dce6ff;
+        opacity: 0.9;
+    }
+
+    .reg-btn {
+        border-radius: 12px;
+        padding: 0.85rem 1.4rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--accent) 0%, #7ee089 100%);
+        border: 0;
+        color: #0b1122;
+        box-shadow: 0 16px 32px rgba(34, 197, 94, 0.28);
+    }
+
+    .reg-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #cfe5ff;
+        font-size: 0.85rem;
+        text-decoration: none;
+        margin-bottom: 10px;
+    }
+
+    .reg-back:hover {
+        color: #ffffff;
+    }
+
+    .reg-footer {
+        margin-top: 16px;
+        text-align: center;
+        color: #a8b6d6;
+        font-size: 0.85rem;
+    }
+
+    .reg-footer a {
+        color: #dbe6ff;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    @media (max-width: 991.98px) {
+        .reg-card {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<section class="reg-hero">
+    <div class="container reg-shell">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 col-lg-10">
+                <div class="reg-card">
+                    <div class="reg-panel">
+                        <div class="reg-brand">
+                            <img src="{% static '/assets/images/logo-icon.png' %}" alt="Medical Advisor logo">
+                            <span>Medical Advisor</span>
+                        </div>
+                        <span class="reg-badge"><i class="ri-capsule-line"></i> Pharmacist Registration</span>
+                        <h2>Power the pharmacy side of Medical Advisor.</h2>
+                        <p>Maintain stock, manage medicines, and deliver faster pharmacy service to patients.</p>
+                        <div class="reg-highlight">
+                            <div><i class="ri-stack-line"></i> Inventory & order tracking</div>
+                            <div><i class="ri-pulse-line"></i> Accurate medicine fulfillment</div>
+                            <div><i class="ri-shield-check-line"></i> Licensed pharmacy verification</div>
+                        </div>
+                    </div>
+                    <div class="reg-form">
+                        <a href="javascript:history.back()" class="reg-back"><i class="ri-arrow-left-line"></i> Back</a>
+                        <h4>Pharmacist Registration</h4>
+                        <p>Set up your pharmacy profile below.</p>
+                        <form method="POST" class="login-form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="reg-input">
+                                <i class="ri-user-3-line"></i>
+                                <input type="text" class="form-control" placeholder="Full Name" name="name" required>
+                            </div>
+                            <div class="reg-input">
+                                <i class="ri-mail-line"></i>
+                                <input type="email" class="form-control" placeholder="Email address" name="email" required>
+                            </div>
+                            <div class="reg-input">
+                                <i class="ri-lock-2-line"></i>
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Create password" required
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                    name="password">
+                            </div>
+                            <div class="reg-input">
+                                <i class="ri-phone-line"></i>
+                                <input type="text" class="form-control" name="phone" placeholder="Phone number" required>
+                            </div>
+                            <div class="reg-input">
+                                <i class="ri-map-pin-line"></i>
+                                <input type="text" class="form-control" name="address" placeholder="Address" required>
+                            </div>
+                            <div class="reg-input">
+                                <i class="ri-hospital-line"></i>
+                                <input type="text" class="form-control" name="pharmacy_name" placeholder="Pharmacy name" required>
+                            </div>
+                            <div class="reg-input">
+                                <i class="ri-badge-check-line"></i>
+                                <input type="text" class="form-control" name="pharmacy_license_number" placeholder="Pharmacy license number" required>
+                            </div>
+                            <div class="reg-input">
+                                <i class="ri-image-line"></i>
+                                <input type="file" name="image" class="form-control" required>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn reg-btn">Register Pharmacist</button>
+                            </div>
+                            <div class="reg-footer">
+                           
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "Pharmacist/common.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded">
+        <div class="card-header bg-primary text-dark text-center">
+            <h4 class="mb-0">💰 Profit Report for {{ pharmacist.name }}</h4>
+        </div>
+        <div class="card-body p-4">
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="bg-dark text-dark">
+                    <tr>
+                        <th class="text-center text_dark">Medicine Name</th>
+                        <th class="text-center text_dark">Quantity Sold</th>
+                        <th class="text-center text_dark">Profit (₹)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td class="text-center">{{ order.mid.name }}</td>
+                        <td class="text-center">{{ order.qty }}</td>
+                        <td class="text-center text-success fw-bold">₹{{ order.profit }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted py-3">No sales recorded yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="text-center mt-4">
+                <h4 class="text-primary fw-bold">Total Profit: <span class="text-success">₹{{ total_profit }}</span></h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

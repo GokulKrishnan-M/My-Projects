@@ -1,0 +1,80 @@
+{% extends 'Doctor/common.html' %}
+{% load static %}
+{% block page_title %}Bookings{% endblock %}
+{% block page_subtitle %}Review new appointment requests and respond quickly.{% endblock %}
+{% block content %}
+<section class="rf-section">
+    <div class="container">
+        <div class="row g-4">
+            {% for i in view %}
+            {% if i.status == "Booked" %}
+            <div class="col-lg-6">
+                <div class="rf-card rf-appointment-card">
+                    <div class="rf-appointment-head">
+                        <div class="rf-profile">
+                            <div class="rf-avatar">
+                                <img src="/static/assets/{{i.uid.image}}" alt="{{i.uid.name}}">
+                            </div>
+                            <div>
+                                <h6 class="mb-1 text-white">{{i.uid.name}}</h6>
+                                <span class="text-muted">Booking Request</span>
+                            </div>
+                        </div>
+                        <span class="rf-status pending">Booked</span>
+                    </div>
+                    <div class="rf-meta-grid">
+                        <div class="rf-meta-item">
+                            <span>Time</span>
+                            <strong>{{i.time}}</strong>
+                        </div>
+                        <div class="rf-meta-item">
+                            <span>Date</span>
+                            <strong>{{i.date}}</strong>
+                        </div>
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>Issue</span>
+                            <strong>{{i.desc}}</strong>
+                        </div>
+                        {% if i.chat_session %}
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>Saved Chat Summary</span>
+                            <strong>{{ i.chat_session.doctor_summary_override|default:i.chat_session.symptom_summary }}</strong>
+                        </div>
+                        {% if i.ai_medicine_guidance %}
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>AI Medicine Support</span>
+                            <strong>{{ i.ai_medicine_guidance }}</strong>
+                        </div>
+                        {% endif %}
+                        <div class="rf-meta-item">
+                            <span>Urgency</span>
+                            <strong>{{ i.chat_session.urgency_level|title }}</strong>
+                        </div>
+                        <div class="rf-meta-item">
+                            <span>Suggested Specialty</span>
+                            <strong>{{ i.chat_session.recommended_specialty }}</strong>
+                        </div>
+                        {% if i.chat_session.visual_analysis_summary %}
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>Photo Review</span>
+                            <strong>{{ i.chat_session.visual_analysis_label }}: {{ i.chat_session.visual_analysis_summary }}</strong>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="rf-appointment-actions">
+                        <a href="/accept_bookings?bid={{i.id}}" class="btn rf-btn-primary btn-sm">Accept</a>
+                        <a href="/decline_booking?bid={{i.id}}" class="btn rf-btn-outline btn-sm">Decline</a>
+                        {% if i.chat_session %}
+                        <a href="/doctor_patient_chats" class="btn rf-btn-outline btn-sm">View Intake</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

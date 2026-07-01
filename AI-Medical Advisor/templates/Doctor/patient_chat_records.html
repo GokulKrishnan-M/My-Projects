@@ -1,0 +1,126 @@
+{% extends "Doctor/common.html" %}
+{% block page_title %}Patient Chat Intakes{% endblock %}
+{% block page_subtitle %}Review direct Care Chat submissions and appointment-linked summaries from patients.{% endblock %}
+
+{% block content %}
+<section class="rf-section">
+    <div class="container">
+        <div class="row g-4">
+            {% for record in intake_records %}
+            <div class="col-lg-6">
+                <div class="rf-card rf-appointment-card">
+                    <div class="rf-appointment-head">
+                        <div class="rf-profile">
+                            <div class="rf-avatar">
+                                <img class="img-fluid" src="/static/assets/{{ record.patient.image }}" alt="{{ record.patient.name }}">
+                            </div>
+                            <div>
+                                <h6 class="mb-1 text-white">{{ record.patient.name }}</h6>
+                                {% if record.appointment %}
+                                <span class="text-muted">{{ record.appointment.date }} at {{ record.appointment.time }}</span>
+                                {% else %}
+                                <span class="text-muted">Direct care chat submission</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <span class="rf-status accepted">{{ record.chat_session.urgency_level|title }}</span>
+                    </div>
+                    <div class="rf-meta-grid">
+                        <div class="rf-meta-item">
+                            <span>Intake source</span>
+                            <strong>{{ record.status_label }}</strong>
+                        </div>
+                        <div class="rf-meta-item">
+                            <span>Suggested specialty</span>
+                            <strong>{{ record.chat_session.recommended_specialty }}</strong>
+                        </div>
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>Structured symptoms</span>
+                            <strong>{{ record.chat_session.structured_symptoms }}</strong>
+                        </div>
+                        <div class="rf-meta-item rf-meta-full">
+                            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
+                                <span>AI chat summary</span>
+                                {% if record.doctor_approved_summary %}
+                                <span class="rf-status accepted">Checked &#10003;</span>
+                                {% endif %}
+                            </div>
+                            <strong>{{ record.chat_session.doctor_summary_override|default:record.chat_session.symptom_summary }}</strong>
+                            <form method="post" action="/doctor_patient_chats/" class="mt-3">
+                                {% csrf_token %}
+                                <input type="hidden" name="action" value="toggle_summary_approval">
+                                <input type="hidden" name="chat_session_id" value="{{ record.chat_session.id }}">
+                                <button type="submit" class="btn {% if record.doctor_approved_summary %}rf-btn-outline{% else %}rf-btn-primary{% endif %} btn-sm">
+                                    {% if record.doctor_approved_summary %}Remove Summary Check{% else %}Check Summary{% endif %}
+                                </button>
+                            </form>
+                        </div>
+                        {% if record.medicine_guidance_text %}
+                        <div class="rf-meta-item rf-meta-full">
+                            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
+                                <span>AI medicine support</span>
+                                {% if record.doctor_approved_medicine %}
+                                <span class="rf-status accepted">Checked &#10003;</span>
+                                {% endif %}
+                            </div>
+                            <strong>{{ record.medicine_guidance_text }}</strong>
+                            <form method="post" action="/doctor_patient_chats/" class="mt-3">
+                                {% csrf_token %}
+                                <input type="hidden" name="action" value="toggle_medicine_approval">
+                                <input type="hidden" name="chat_session_id" value="{{ record.chat_session.id }}">
+                                <button type="submit" class="btn {% if record.doctor_approved_medicine %}rf-btn-outline{% else %}rf-btn-primary{% endif %} btn-sm">
+                                    {% if record.doctor_approved_medicine %}Remove Medicine Check{% else %}Check Medicine Support{% endif %}
+                                </button>
+                            </form>
+                        </div>
+                        {% endif %}
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>Latest user message</span>
+                            <strong>{{ record.chat_session.last_user_message }}</strong>
+                        </div>
+                        {% if record.chat_session.visual_analysis_summary %}
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>Photo review</span>
+                            <strong>
+                                {{ record.chat_session.visual_analysis_label }}:
+                                {{ record.chat_session.visual_analysis_summary }}
+                            </strong>
+                        </div>
+                        {% endif %}
+                        {% if record.chat_session.care_image %}
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>Patient photo</span>
+                            <strong><a href="{{ record.chat_session.care_image.url }}" target="_blank">Open uploaded image</a></strong>
+                        </div>
+                        {% endif %}
+                        {% if record.appointment %}
+                        <div class="rf-meta-item rf-meta-full">
+                            <span>Appointment note</span>
+                            <strong>{{ record.appointment.desc }}</strong>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="rf-appointment-actions">
+                        {% if record.appointment %}
+                        <a href="/prescription_patient?id={{ record.appointment.id }}" class="btn rf-btn-outline btn-sm">Create Prescription</a>
+                        {% endif %}
+                    </div>
+                    <div class="mt-3">
+                        {% if not record.appointment %}
+                        <p class="text-muted mb-0">This intake was sent directly from Care Chat.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="rf-card">
+                    <h5 class="text-white mb-2">No chat intakes yet</h5>
+                    <p class="text-muted mb-0">Patient Care Chat summaries will appear here after a patient sends them to your portal or books an appointment with a linked chat.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

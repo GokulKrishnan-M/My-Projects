@@ -1,0 +1,119 @@
+{% extends "User/common.html" %}
+
+{% load static %}
+{% block content %}
+
+<!-- Hero Start -->
+<section class="bg-half-150 d-table w-100 bg-light"
+    style="background: url('{% static "/assets/images/bg/bg-lines-one.png" %}') center;">
+
+<!-- Feedback List -->
+<div class="row mt-5">
+    <div class="col-lg-9 col-md-12 mx-auto">
+        <div class="card shadow rounded border-0">
+            <div class="card-body">
+                <h5 class="mb-4">User Feedback</h5>
+
+                {% if feedbacks %}
+                    {% for fb in feedbacks %}
+                        <div class="border-bottom pb-3 mb-3">
+                            <p class="mb-1">
+                                <strong>{{ fb.user.name }}</strong>
+                                <small class="text-muted">
+                                    | {{ fb.date_submitted|date:"d M Y, h:i A" }}
+                                </small>
+                            </p>
+
+                            <p class="mb-1">
+                                {{ fb.feedback_text }}
+                            </p>
+
+                            <p class="mb-0">
+                                <strong>Rating:</strong>
+                                {{ fb.rating }}/5
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-muted">No feedback submitted yet.</p>
+   
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-12">
+
+                <div class="card login-page shadow mt-4 rounded border-0">
+                    <div class="card-body">
+
+
+             {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+
+<br><br>
+                        <h4 class="text-center">Feedback</h4>
+
+                        <form method="POST" class="login-form mt-4">
+                            {% csrf_token %}
+                            <div class="row">
+
+                                <!-- Feedback Text -->
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            Your Feedback <span class="text-danger">*</span>
+                                        </label>
+                                        <textarea name="feedback_text"
+                                                  class="form-control"
+                                                  rows="4"
+                                                  placeholder="Write your feedback here..."
+                                                  required></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Rating -->
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            Rating <span class="text-danger">*</span>
+                                        </label>
+                                        <select name="rating" class="form-control" required>
+                                            <option value="">Select Rating</option>
+                                            <option value="1">1 - Very Poor</option>
+                                            <option value="2">2 - Poor</option>
+                                            <option value="3">3 - Average</option>
+                                            <option value="4">4 - Good</option>
+                                            <option value="5">5 - Excellent</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-md-12">
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">
+                                            Submit Feedback
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero End -->
+
+<!-- Feedback List -->
+
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "Doctor/common.html" %}
+{% block page_title %}Doctor Profile{% endblock %}
+{% block page_subtitle %}Review your profile details and open update profile when you need to make changes.{% endblock %}
+{% block content %}
+<section class="section py-4">
+    <div class="container">
+        {% if missing_profile %}
+        <div class="rf-card mb-4">
+            <h5 class="text-white mb-2">Profile Not Set Up</h5>
+            <p class="text-muted mb-0">Complete your profile to unlock bookings and appointments.</p>
+        </div>
+        {% endif %}
+
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-7">
+                {% for i in data %}
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <img src="/static/assets/{{ i.image }}" alt="{{ i.name }}" class="rounded-circle shadow-sm" style="width: 84px; height: 84px; object-fit: cover;">
+                            <div>
+                                <h4 class="mb-1">{{ i.name|default:"Doctor Profile" }}</h4>
+                                <p class="text-muted mb-0">{{ i.email|default:"" }}</p>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><strong>Specialization:</strong> {{ i.specialization|default:"Not added yet" }}</li>
+                            <li class="mb-2"><strong>Phone:</strong> {{ i.phone|default:"Not added yet" }}</li>
+                            <li class="mb-2"><strong>Address:</strong> {{ i.address|default:"Not added yet" }}</li>
+                            <li class="mb-0"><strong>License:</strong> {{ i.medical_license_number|default:"Not added yet" }}</li>
+                        </ul>
+                        <a href="/update_DoctorProfile?id={{ i.id }}" class="btn btn-outline-primary">Update Profile</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

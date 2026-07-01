@@ -1,0 +1,38 @@
+{% extends "Pharmacist/common.html" %}
+{% block content %}
+<section class="section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                {% for i in data %}
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <img src="/static/assets/{{ i.image }}" class="rounded-circle shadow-sm" alt="{{ i.name }}" style="width: 84px; height: 84px; object-fit: cover;">
+                            <div>
+                                <h4 class="mb-1">{{ i.name|default:"Pharmacist Profile" }}</h4>
+                                <p class="text-muted mb-0">{{ i.email }}</p>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><strong>Pharmacy:</strong> {{ i.pharmacy_name|default:"Not added yet" }}</li>
+                            <li class="mb-2"><strong>Phone:</strong> {{ i.phone|default:"Not added yet" }}</li>
+                            <li class="mb-2"><strong>Address:</strong> {{ i.address|default:"Not added yet" }}</li>
+                            <li class="mb-0"><strong>License:</strong> {{ i.pharmacy_license_number|default:"Not added yet" }}</li>
+                        </ul>
+                        <a href="/update_pharmacist_Profile?id={{ i.id }}" class="btn btn-outline-primary">Update Profile</a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="mb-2">Pharmacist Profile</h4>
+                        <p class="text-muted mb-0">Profile details are not available yet.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

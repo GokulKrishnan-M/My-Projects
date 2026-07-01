@@ -1,0 +1,77 @@
+{% extends 'Pharmacist/common.html' %}
+{% load static %}
+{% block content %}
+
+
+<br><br><br>
+
+<section class="space-ptb">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-9 col-md-10">
+                <div class="login-form">
+                    <!-- Register form -->
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h3 class="mb-4 text-center text-primary"><b>Add Medical Products</b></h3><br>
+                        <div class="row align-items-center">
+                            <div class="mb-3 col-md-12">
+                                <input type="text" class="form-control" placeholder="product_name" required name="name">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <input type="number" class="form-control" id="email" placeholder="Enter Quantity" required
+                                    name="qty">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <input type="text" class="form-control" placeholder="Price" required name="price">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <input type="text" class="form-control" placeholder="orginal_Price" required name="orginal_Price">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="">Date</label>
+                                <input type="date" class="form-control" placeholder="date"  name="date">
+                            </div>
+
+
+                            <div class="mb-3 col-md-12">
+                                <label for="">Expiry date</label>
+                                <input type="date" class="form-control"  placeholder="exiry"  name="expiry">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="">Side_effects</label>
+                                <input type="text" class="form-control"  placeholder="side_effects"  name="side_effects">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="">Exact Product Pack Photo</label>
+                                <input type="file" class="form-control" required name="image" accept="image/*">
+                                <small class="text-muted">Upload the real strip, box, bottle, tube, sachet, or vial photo for this medicine.</small>
+                            </div>
+                            
+                            <div class="mb-3 col-md-12">
+                                <textarea name="desc" id="" cols="30" rows="4" class="form-control"
+                                    placeholder="Description" required></textarea>
+                            </div>
+                            <div class="col-sm-12 mb-0">
+                                <center>
+                                    <button type="submit" class="btn btn-outline-primary my-3 my-sm-0">Add Now</button><br><br>
+                                   
+                                </center>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <!-- Register form -->
+
+                    <!-- login-social START -->
+                    
+                    <!-- login-social END -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

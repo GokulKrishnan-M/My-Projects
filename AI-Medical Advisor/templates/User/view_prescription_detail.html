@@ -1,0 +1,168 @@
+{% extends 'User/common.html' %}
+{% block content %}
+
+<style>
+    .bg-half-150 {
+        display: none !important;
+    }
+</style>
+
+<div class="container" style="padding-top: 20px;">
+    <!-- Back Button -->
+    <div class="row mb-4" style="margin-top: 70px;">
+        <div class="col-12">
+            <a href="/view_prescription/" class="btn btn-soft-primary"><i class="ri-arrow-left-line"></i> Back to
+                List</a>
+        </div>
+    </div>
+
+    <!-- Prescription Paper (Print Area) -->
+    <div class="card shadow rounded border-0 overflow-hidden" id="prescriptionData" style="margin-bottom: 40px;">
+        <div class="card-body p-4 bg-white">
+
+            <!-- Header -->
+            <div class="header text-center mb-4">
+                <h2 style="margin: 0; font-size: 26px; font-weight: bold; color: #333;">Medical Prescription</h2>
+                <p style="font-size: 16px; color: #666; margin-bottom: 2px;">MediPal Hospital</p>
+                <p style="font-size: 14px; color: #888;">Kochi, Kerala- 666 777</p>
+                <hr style="border-top: 2px solid #333;">
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h6 class="text-uppercase text-muted small fw-bold">Doctor Details</h6>
+                    <p class="mb-1 fw-bold">Dr. {{ i.doctor.name }}</p>
+                    <p class="mb-0 text-muted small">{{ i.doctor.specialization }}</p>
+                </div>
+                <div class="col-md-6 mb-3 text-md-end">
+                    <h6 class="text-uppercase text-muted small fw-bold">Patient Details</h6>
+                    <p class="mb-1 fw-bold">{{ i.uid.name }}</p>
+                    <p class="mb-0 text-muted small">Age: {{ i.uid.age }} | Phone: {{ i.uid.phone }}</p>
+                    <p class="mb-0 text-muted small">Date: {{ i.date | date:"d M Y" }}</p>
+                </div>
+            </div>
+            <hr class="border-secondary my-3" style="border-style: dashed;">
+
+            <!-- Medicines -->
+            <h5 class="mb-3">Prescribed Medicines</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm" style="width: 100%; border-collapse: collapse;">
+                    <thead class="bg-light">
+                        <tr style="background: #f8f9fa;">
+                            <th style="padding: 10px; border: 1px solid #dee2e6;">Medicine Name</th>
+                            <th style="padding: 10px; border: 1px solid #dee2e6;">Dosage</th>
+                            <th style="padding: 10px; border: 1px solid #dee2e6;">Frequency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #dee2e6;">{{ i.medicines }}</td>
+                            <td style="padding: 10px; border: 1px solid #dee2e6;">1 Tablet</td>
+                            <td style="padding: 10px; border: 1px solid #dee2e6;">Twice a day</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Instructions -->
+            {% if i.instructions %}
+            <div class="mt-4 p-3 bg-soft-warning rounded">
+                <h6 class="text-warning mb-2">Additional Instructions:</h6>
+                <p class="mb-0 text-muted">{{ i.instructions }}</p>
+            </div>
+            {% endif %}
+
+            {% if ai_medicine_guidance %}
+            <div class="mt-4 p-3 rounded" style="background: #eef5ff; border: 1px solid #cfe0ff;">
+                <h6 class="text-primary mb-2">AI Medicine Support</h6>
+                <p class="mb-0 text-muted">{{ ai_medicine_guidance }}</p>
+            </div>
+            {% endif %}
+
+            <!-- Footer -->
+            <div class="mt-5 text-end" style="margin-top: 50px; padding-top: 30px; border-top: 2px solid #e9ecef;">
+                <p class="fw-bold mb-0">Dr. {{ i.doctor.name }}</p>
+                <small class="text-muted">(Signature)</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print/Export Actions -->
+    <div class="row" style="margin-top: 10px; margin-bottom: 30px;">
+        <div class="col-12 text-center">
+            <button onclick="window.print()" class="btn btn-primary btn-lg"><i class="ri-printer-line me-1"></i> Print /
+                Save as PDF</button>
+        </div>
+    </div>
+</div>
+
+<!-- Print Styles -->
+<style>
+    @page {
+        size: A4;
+        margin: 7mm;
+    }
+
+    @media print {
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff !important;
+        }
+
+        body * {
+            visibility: hidden;
+        }
+
+        #prescriptionData,
+        #prescriptionData * {
+            visibility: visible;
+        }
+
+        #prescriptionData {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        @page :first {
+            margin-top: 0;
+        }
+
+        #prescriptionData .card-body {
+            padding: 0 !important;
+        }
+
+        .container,
+        .row {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            max-width: none !important;
+        }
+
+        .card {
+            margin: 0 !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .btn,
+        header,
+        footer,
+        .bg-dashboard {
+            display: none !important;
+        }
+    }
+</style>
+
+{% endblock %}

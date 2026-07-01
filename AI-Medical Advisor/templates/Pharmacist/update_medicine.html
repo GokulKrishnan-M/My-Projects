@@ -1,0 +1,75 @@
+{% extends 'Pharmacist/common.html' %}
+{% load static %}
+{% block content %}
+
+
+<br><br><br>
+
+<section class="space-ptb">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-9 col-md-10">
+                <div class="login-form">
+                    <!-- Register form -->
+                    <form method="post" enctype="multipart/form-data">
+                        {% for i in data %}
+                        {% csrf_token %}
+                        <h3 class="mb-4 text-center text-primary"><b>Update Medicine</b></h3><br>
+                        <div class="row align-items-center">
+                            <div class="mb-3 col-md-12">
+                                <input type="text" class="form-control"  value="{{i.name}}" placeholder="product_name" required name="name">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <input type="number" class="form-control"  value="{{i.qty}}" id="email" placeholder="Enter Quantity" required name="qty">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <input type="text" class="form-control"  value="{{i.price}}"  placeholder="Price" required name="price">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <input type="text" class="form-control"  value="{{i.orginal_Price}}"  placeholder="orginal_Price" required name="orginal_Price">
+                            </div>
+                            
+                            <div class="mb-3 col-md-12">
+                                <input  type="text" name="desc" id="" cols="30" rows="4" value="{{i.desc}}" class="form-control" placeholder="Description" required >
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <input  type="text" name="side_effects" id="" cols="30" rows="4" value="{{i.side_effects}}" class="form-control" placeholder="Description" required >
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="date">Date</label>
+                                <input type="date" class="form-control" value="{{i.date}}" placeholder="date"  name="date">
+                            </div>
+
+
+                            <div class="mb-3 col-md-12">
+                                <label for="date">Expiry date</label>
+                                <input type="date" class="form-control"  value="{{i.expiry}}" placeholder="exiry"  name="expiry">
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label for="">Exact Product Pack Photo</label>
+                                {% if i.has_exact_image %}
+                                <div class="mb-2">
+                                    <img src="{{ i.display_image_url }}" alt="{{ i.name }}" class="img-fluid rounded border" style="max-height: 180px;">
+                                </div>
+                                {% else %}
+                                <p class="text-warning mb-2">Current image is only a placeholder. Upload the real strip, box, bottle, tube, sachet, or vial photo here.</p>
+                                {% endif %}
+                                <input type="file" class="form-control" value="{{i.image}}" name="image" accept="image/*">
+                            </div>
+                            <div class="col-sm-12 mb-0">
+                                <center>
+                                    <button type="submit" class="btn btn-outline-primary my-3 my-sm-0">Add Now</button><br><br>
+                                   
+                                </center>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

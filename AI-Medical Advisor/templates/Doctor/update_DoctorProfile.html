@@ -1,0 +1,94 @@
+{% extends "Doctor/common.html" %}
+{% block page_title %}Update Profile{% endblock %}
+{% block page_subtitle %}Keep your contact, specialization, and login details up to date.{% endblock %}
+{% block content %}
+{% load static %}
+<section class="rf-section">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <div class="col-xl-7 col-lg-8">
+                {% for i in data %}
+                <div class="doctor-profile-cover mb-4">
+                    <div class="cover-content">
+                        <div class="doctor-profile-avatar">
+                            <img src="/static/assets/{{ i.image }}" alt="{{ i.name }}">
+                        </div>
+                        <div>
+                            <h4 class="doctor-profile-title">{{ i.name }}</h4>
+                            <div class="doctor-profile-subtitle">{{ i.specialization }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4 p-lg-5">
+                        <h4 class="mb-4 text-center">Update Doctor Profile</h4>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label">Name <span class="text-danger">*</span></label>
+                                    <input type="text" value="{{ i.name }}" class="form-control" placeholder="Name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone <span class="text-danger">*</span></label>
+                                    <input type="text" value="{{ i.phone }}" class="form-control" name="phone" placeholder="Phone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Address <span class="text-danger">*</span></label>
+                                    <input type="text" value="{{ i.address }}" class="form-control" name="address" placeholder="Address" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Specialization <span class="text-danger">*</span></label>
+                                    <input type="text" value="{{ i.specialization }}" class="form-control" name="specialization" placeholder="Specialization" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Medical License Number <span class="text-danger">*</span></label>
+                                    <input type="text" value="{{ i.medical_license_number }}" class="form-control" name="medical_license_number" placeholder="License Number" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Profile Image</label>
+                                    <input type="file" name="image" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary">Update Profile</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-xl-5 col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <h4 class="mb-1">Change Password</h4>
+                            <p class="text-muted mb-0">Update your Doctor portal login password here.</p>
+                        </div>
+                        <form method="post" action="/change_doctor_password/">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label">Current Password</label>
+                                    <input type="password" name="current_password" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">New Password</label>
+                                    <input type="password" name="new_password" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Confirm New Password</label>
+                                    <input type="password" name="confirm_password" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-outline-primary">Change Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

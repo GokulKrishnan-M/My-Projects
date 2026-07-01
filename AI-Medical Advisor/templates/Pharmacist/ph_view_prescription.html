@@ -1,0 +1,68 @@
+{% extends 'Pharmacist/common.html' %}
+{% block content %}
+
+<style>
+    .bg-half-170 {
+        padding: 0 !important;
+    }
+</style>
+
+<div class="container" style="padding-top: 20px;">
+    <h2 class="text-center">Prescriptions Assigned to You</h2>
+    <hr>
+
+    {% if data %}
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Patient Name</th>
+                <th>Doctor</th>
+                <th>Medicines</th>
+                <th>AI Medicine Support</th>
+                <th>Instructions</th>
+                <th>Status</th>
+                <th>Sale</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prescription in data %}
+            <tr>
+                <td>{{ prescription.date|date:"d M Y" }}</td>
+                <td>{{ prescription.uid.name }}</td>
+                <td>{{ prescription.doctor.name }}</td>
+                <td>{{ prescription.medicines }}</td>
+                <td>
+                    {% if prescription.ai_medicine_guidance %}
+                    <small>{{ prescription.ai_medicine_guidance }}</small>
+                    {% else %}
+                    <small class="text-muted">No AI medicine support yet.</small>
+                    {% endif %}
+                </td>
+                <td>{{ prescription.instructions }}</td>
+                <td>
+                    {% if prescription.status == 'Pending' %}
+                    <span class="badge bg-warning text-dark">Pending</span>
+                    {% elif prescription.status == 'Sold' %}
+                    <span class="badge bg-success">Sold</span>
+                    {% else %}
+                    <span class="badge bg-info text-dark">{{ prescription.status }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if prescription.status == 'Pending' %}
+                    <a href="/sales_Medicine?id={{prescription.id}}" class="btn btn-primary mx-2">Sale Medicine</a>
+                    {% else %}
+                    <button class="btn btn-secondary mx-2" disabled>Sold</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center text-danger">No prescriptions assigned to you.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

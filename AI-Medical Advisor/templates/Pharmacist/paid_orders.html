@@ -1,0 +1,38 @@
+{% extends "Pharmacist/common.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Paid Orders</title>
+</head>
+<body>
+    <h2>Paid Orders</h2>
+    <table border="1" class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>User</th>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                {% comment %} <th>Date Ordered</th> {% endcomment %}
+                <th>Generate Invoice</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in paid_orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.uid.name }}</td>
+                    <td>{{ order.mid.name }}</td>
+                    <td>{{ order.qty }}</td>
+                    {% comment %} <td>{{ order.date_ordered }}</td> {% endcomment %}
+                    <td>
+                        <a href="/invoice_details?id={{order.id}}">Generate Invoice</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock  %}

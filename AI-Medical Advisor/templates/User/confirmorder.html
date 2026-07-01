@@ -1,0 +1,29 @@
+{% extends "User/common.html" %}
+{% block content %}
+<h2>Your Orders - Ready for Payment</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Medicine</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <!-- <th>Pay</th> -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.mid.name }}</td>
+            <td>{{ order.qty }}</td>
+            <td>{{ order.total }}</td>
+            <td>
+                <!-- <form method="POST" action="user_payment_page?mid={{order.id}}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Pay Now</button>
+                </form> -->
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

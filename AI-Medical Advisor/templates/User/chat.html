@@ -1,0 +1,11 @@
+{% extends "User/common.html" %}
+
+{% block content %}
+<div style="padding: 2rem 0; text-align: center;">
+    <p style="margin: 0 0 1rem; color: #17345f; font-weight: 700;">Opening Care Chat...</p>
+    <a href="/care-report/" class="btn btn-primary">Open Care Chat</a>
+</div>
+<script>
+    window.location.replace("/care-report/");
+</script>
+{% endblock %}

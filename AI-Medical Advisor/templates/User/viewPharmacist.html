@@ -1,0 +1,31 @@
+{% extends "User/common.html" %}
+{% block header %}
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+                <h4 class="title mb-3">Pharmacists</h4>
+                <p class="text-muted mb-0">Available pharmacy contacts.</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for i in data %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow rounded h-100">
+                    <div class="card-body">
+                        <h5 class="mb-2">{{ i.name }}</h5>
+                        <p class="text-muted mb-1">{{ i.pharmacy_name }}</p>
+                        <p class="mb-1">{{ i.email }}</p>
+                        <p class="mb-0">{{ i.phone }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p class="text-center text-muted mb-0">No pharmacists found.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

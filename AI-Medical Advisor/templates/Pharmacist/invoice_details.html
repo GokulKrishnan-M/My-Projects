@@ -1,0 +1,120 @@
+{% extends "Pharmacist/common.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - {{ invoice.invoice_no }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        .invoice-container {
+            max-width: 700px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .invoice-details, .invoice-footer {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: #fff;
+        }
+        .total {
+            font-weight: bold;
+        }
+        .btn-print {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .btn-print:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <br><br><br><br>
+
+    <div class="invoice-container">
+        {% for invoice in invoice %}
+        <div class="invoice-header">
+        
+            <div>
+                <h4>Pharmacist:{{ invoice.Pharmacist.name }}</h4>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="invoice-details">
+            <h4>Customer Details:</h4>
+            <p><strong>Name:</strong> {{ invoice.uid.name }}</p>
+            <p><strong>Email:</strong> {{ invoice.uid.email }}</p>
+        </div>
+
+        <h4>Medicine Details:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Quantity</th>
+                    <th>Price per unit</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ invoice.mid.name }}</td>
+                    <td>{{ invoice.qty }}</td>
+                    <td>${{ invoice.mid.price }}</td>
+
+                    <td class="total">${{ invoice.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="invoice-footer">
+            <h3>Total Amount: ${{ invoice.total }}</h3>
+            <p>Thank you for your purchase!</p>
+        </div>
+
+        {% comment %} <a href="javascript:window.print()" class="btn-print">Print Invoice</a> {% endcomment %}
+        {% endfor %}
+    </div>
+<br><br><br>
+</body>
+</html>
+{% endblock  %}

@@ -1,0 +1,223 @@
+{% extends 'User/common.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .space-ptb {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+    }
+    
+    .payment-section {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .product-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .product-image {
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+    
+    .product-image:hover {
+        transform: scale(1.05);
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .form-control {
+        border-radius: 8px;
+        border: 2px solid #e0e0e0;
+        padding: 12px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+    }
+    
+    .btn-primary {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        border: none;
+        opacity: 0;
+        animation: fadeIn 0.5s ease forwards 0.8s;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .section-title {
+        margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    
+    .section-title h2:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: #007bff;
+        animation: widthGrow 0.8s ease forwards;
+    }
+    
+    @keyframes widthGrow {
+        from {
+            width: 0;
+        }
+        to {
+            width: 50px;
+        }
+    }
+</style>
+
+<div class="space-ptb bg-holder">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center payment-section">
+                    <h2>Payment</h2>
+                    <p>Complete your payment for the selected product.</p>
+                </div>
+                <div class="product-card payment-section">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Product Details</h4>
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="product-image-container">
+                                    <img src="{{ product.mid.display_image_url }}" alt="{{ product.mid.name }}" class="img-fluid product-image">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h5>{{ product.mid.name }}</h5>
+                                <p class="text-primary font-weight-bold mb-1">Price per unit: ₹{{ product.mid.price }}</p>
+                                <p>{{ product.mid.desc }}</p>
+                                <p class="mb-1">Selected Quantity: {{ product.qty }}</p>
+                                <p>Available Stock: {{ product.mid.qty }}</p>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <form method="post" class="payment-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                            <input type="hidden" name="amount" value="{{ product.total }}">
+                            
+                            <div class="form-group" style="animation-delay: 0.3s;">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" id="cardNumber" class="form-control" 
+                                       placeholder="1234 5678 9012 3456" required
+                                       pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}" >
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" style="animation-delay: 0.5s;">
+                                        <label for="expiryDate">Expiry Date</label>
+                                        <input type="text" id="expiryDate" class="form-control" 
+                                               placeholder="MM/YY" required
+                                               pattern="(0[1-9]|1[0-2])\/([0-9]{2})">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" style="animation-delay: 0.7s;">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" class="form-control" 
+                                               placeholder="123" required
+                                               pattern="\d{3,4}">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Pay ₹{{ product.total }}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Format card number with spaces
+    document.getElementById('cardNumber').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
+        let newValue = '';
+        for(let i = 0; i < value.length; i++) {
+            if(i > 0 && i % 4 === 0) {
+                newValue += ' ';
+            }
+            newValue += value[i];
+        }
+        e.target.value = newValue;
+    });
+
+    // Format expiry date
+    document.getElementById('expiryDate').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if(value.length >= 2) {
+            value = value.slice(0,2) + '/' + value.slice(2,4);
+        }
+        e.target.value = value;
+    });
+
+    // Limit CVV to 4 digits
+    document.getElementById('cvv').addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0,4);
+    });
+});
+</script>
+
+{% endblock %}

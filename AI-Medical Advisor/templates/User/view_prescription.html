@@ -1,0 +1,76 @@
+{% extends 'User/common.html' %}
+{% block content %}
+<style>
+    .bg-dashboard {
+        padding: 0 !important;
+        background: none !important;
+    }
+    .section-title {
+        padding: 40px 0 20px 0;
+    }
+</style>
+<section class="bg-dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title mb-4 pb-2 text-center">
+                    <h4 class="title mb-4">My Prescriptions</h4>
+                    <p class="text-muted para-desc mx-auto mb-0">View your medical history and prescriptions from your
+                        doctors.</p>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+
+                <!-- Loop 1: Display the List Cards -->
+                {% for i in data %}
+                <!-- Compact Card for List View -->
+                <div class="card shadow rounded border-0 mb-3 overflow-hidden">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <div class="icon text-primary me-3">
+                                    <i class="ri-file-list-3-line h2 mb-0"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 text-dark">Dr. {{ i.doctor.name }}</h6>
+                                    <small class="text-muted">{{ i.doctor.specialization }}</small>
+                                    {% if i.ai_medicine_guidance %}
+                                    <div class="mt-2">
+                                        <small class="text-primary d-block fw-semibold">AI medicine support</small>
+                                        <small class="text-muted">{{ i.ai_medicine_guidance }}</small>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge bg-soft-primary text-dark mb-1 d-block">{{ i.date }}</span>
+                                <!-- Button links to detail page -->
+                                <a href="{% url 'view_prescription_detail' i.id %}" class="btn btn-sm btn-primary">
+                                    View Prescription
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center">
+                    <div class="card border-0 rounded shadow py-5">
+                        <div class="card-body">
+                            <i class="ri-file-list-3-line text-muted display-1"></i>
+                            <h5 class="mt-4 mb-0">No Prescriptions Found</h5>
+                            <p class="text-muted">You haven't received any prescriptions yet.</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br>
+{% endblock %}

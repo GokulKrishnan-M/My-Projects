@@ -1,0 +1,2372 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+    
+<!-- Mirrored from  Medipalin/doctris/layouts/landing/aboutus.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Feb 2025 06:57:53 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>Medical Advisor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="Appointment, Booking, System, Dashboard, Health" />
+    <meta name="author" content="Shreethemes" />
+    <meta name="email" content="support@medipalin.com" />
+    <meta name="website" content="https://medipalin.com/" />
+    <meta name="Version" content="v1.4.0" />
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=3">
+    <link rel="shortcut icon" href="/favicon.ico?v=3">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Css -->
+    <link href="/static/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+    <link href="/static/assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="/static/assets/css/bootstrap.min.css" class="theme-opt" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/libs/remixicon/fonts/remixicon.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
+    <!-- Style Css-->
+    <link href="/static/assets/css/style.min.css" class="theme-opt" rel="stylesheet" type="text/css" />
+    <!-- User Portal Custom Css -->
+    <link href="/static/css/user-portal.css" rel="stylesheet" type="text/css" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bs-font-sans-serif: "Instrument Sans", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --portal-font-sans: "Instrument Sans", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --portal-nav-accent: #4f7cff;
+            --portal-nav-accent-dark: #2149b7;
+            --portal-nav-ink: #18213b;
+            --portal-nav-soft: #f4f8ff;
+            --portal-nav-line: rgba(79, 124, 255, 0.14);
+        }
+
+        #topnav.portal-navbar-wrap {
+            top: 0;
+            min-height: auto;
+            padding: 0;
+            margin: 0;
+            background: transparent !important;
+            box-shadow: none !important;
+            z-index: 1030;
+        }
+
+        body {
+            font-family: var(--portal-font-sans) !important;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit !important;
+        }
+
+        #topnav.portal-navbar-wrap .container {
+            display: block;
+            width: 100%;
+        }
+
+        .portal-navbar-shell {
+            position: relative;
+            overflow: visible;
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 26px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--portal-nav-line);
+            box-shadow: 0 22px 54px rgba(17, 35, 86, 0.12);
+            backdrop-filter: blur(18px);
+            align-items: center;
+            gap: 14px;
+        }
+
+        .portal-navbar-shell::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            left: 18px;
+            width: 180px;
+            height: 180px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(79, 124, 255, 0.14) 0%, rgba(79, 124, 255, 0) 72%);
+            pointer-events: none;
+        }
+
+        .portal-navbar-shell > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        #topnav.portal-navbar-wrap.nav-sticky {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        #topnav.portal-navbar-wrap.nav-sticky .portal-navbar-shell {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 24px 56px rgba(17, 35, 86, 0.15);
+        }
+
+        .portal-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .portal-brand-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #4f7cff 0%, #6b8dff 100%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 18px 32px rgba(79, 124, 255, 0.22);
+        }
+
+        .portal-brand-badge img {
+            width: 26px;
+            height: 26px;
+        }
+
+        .portal-brand-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            line-height: 1;
+        }
+
+        .portal-brand-copy strong {
+            color: var(--portal-nav-ink);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .portal-brand-copy span {
+            color: #63708f;
+            font-size: 0.74rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .portal-navbar-toggler {
+            border: 0;
+            padding: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 15px;
+            background: #f7f9ff;
+            box-shadow: inset 0 0 0 1px var(--portal-nav-line);
+        }
+
+        .portal-navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(79, 124, 255, 0.18);
+        }
+
+        .portal-navbar-toggler span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--portal-nav-ink);
+            margin: 0 auto;
+        }
+
+        .portal-navbar-toggler span + span {
+            margin-top: 4px;
+        }
+
+        .portal-nav-collapse {
+            flex: 1 1 auto;
+            align-items: center;
+        }
+
+        .portal-nav-list {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 0 0 0 auto;
+            padding: 0;
+        }
+
+        .portal-nav-item,
+        .portal-nav-item-dropdown {
+            list-style: none;
+        }
+
+        .portal-nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 12px !important;
+            border-radius: 999px;
+            color: var(--portal-nav-ink) !important;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.1;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .portal-nav-link i {
+            color: var(--portal-nav-accent);
+        }
+
+        .portal-logout-link {
+            background: linear-gradient(135deg, #315efb 0%, #6d8eff 100%);
+            border: 1px solid transparent;
+            color: #fff !important;
+            box-shadow: 0 16px 28px rgba(49, 94, 251, 0.22);
+        }
+
+        .portal-logout-link i {
+            color: #fff;
+        }
+
+        .portal-logout-link:hover,
+        .portal-logout-link:focus {
+            background: linear-gradient(135deg, #2448d9 0%, #5c7dff 100%);
+            color: #fff !important;
+            box-shadow: 0 18px 30px rgba(49, 94, 251, 0.28);
+            transform: translateY(-1px);
+        }
+
+        .portal-profile-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .portal-profile-link {
+            width: 52px;
+            height: 52px;
+            border-radius: 999px;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .portal-profile-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 999px;
+            object-fit: cover;
+        }
+
+        .portal-profile-float {
+            position: fixed;
+            top: 26px;
+            right: 28px;
+            z-index: 1045;
+            display: flex;
+            align-items: center;
+        }
+
+        .portal-profile-card {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            padding: 0;
+            border-radius: 999px;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+        }
+
+        .portal-profile-meta {
+            position: absolute;
+            left: 50%;
+            top: calc(100% + 8px);
+            transform: translate(-50%, 6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .portal-profile-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            text-shadow: 0 8px 20px rgba(12, 20, 45, 0.35);
+        }
+
+        .portal-profile-card:hover .portal-profile-meta,
+        .portal-profile-card:focus .portal-profile-meta,
+        .portal-profile-card:focus-visible .portal-profile-meta,
+        .portal-profile-card:active .portal-profile-meta {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .portal-nav-link:hover,
+        .portal-nav-link:focus,
+        .portal-nav-link.is-current,
+        .show > .portal-nav-link {
+            color: var(--portal-nav-accent-dark) !important;
+            background: var(--portal-nav-soft);
+            box-shadow: inset 0 0 0 1px var(--portal-nav-line);
+            transform: translateY(-1px);
+        }
+
+        .portal-nav-item-dropdown > .dropdown-toggle::after {
+            margin-left: 0.45rem;
+        }
+
+        .portal-nav-dropdown-menu {
+            min-width: 250px;
+            margin-top: 12px !important;
+            padding: 10px;
+            border: 1px solid var(--portal-nav-line);
+            border-radius: 22px;
+            box-shadow: 0 22px 44px rgba(17, 35, 86, 0.14);
+            background: rgba(255, 255, 255, 0.99);
+        }
+
+        .portal-nav-dropdown-menu.show {
+            display: block;
+        }
+
+        .portal-nav-dropdown-label {
+            padding: 4px 6px 10px;
+            color: #6a7896;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .portal-nav-dropdown-grid {
+            display: grid;
+            gap: 6px;
+        }
+
+        .portal-dropdown-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 16px;
+            color: var(--portal-nav-ink);
+            text-decoration: none;
+            white-space: normal;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .portal-dropdown-link:hover,
+        .portal-dropdown-link:focus,
+        .portal-dropdown-link.is-current {
+            color: var(--portal-nav-accent-dark);
+            background: #f7f9ff;
+            transform: translateY(-1px);
+        }
+
+        .portal-dropdown-link-danger {
+            color: #c23d54;
+            background: #fff7f9;
+        }
+
+        .portal-dropdown-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #eef3ff 0%, #e6eeff 100%);
+            box-shadow: inset 0 0 0 1px rgba(79, 124, 255, 0.08);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 40px;
+            color: var(--portal-nav-accent);
+            font-size: 1rem;
+        }
+
+        .portal-dropdown-link-danger .portal-dropdown-icon {
+            background: linear-gradient(135deg, #fff0f4 0%, #ffe7ee 100%);
+            color: #d24b66;
+        }
+
+        .portal-dropdown-copy {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .portal-dropdown-copy strong {
+            color: inherit;
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-transform: none;
+            line-height: 1.25;
+        }
+
+
+        .user-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .user-hero-image,
+        .user-hero-overlay,
+        .user-hero-content {
+            position: absolute;
+            inset: 0;
+        }
+
+        .user-hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            display: none;
+        }
+
+        .user-hero {
+            background: url('/static/assets/images/bg/pharm01.jpg') center/cover !important;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .user-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 58, 138, 0.3);
+            z-index: 1;
+        }
+
+        .user-hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .user-hero-overlay {
+            z-index: 1;
+        }
+
+        .user-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .user-hero > *:not(.user-hero-image):not(.user-hero-overlay):not(.user-hero-content) {
+            position: relative;
+            z-index: 2;
+        }
+
+        html {
+            background: #f3f7ff;
+        }
+
+        body {
+            min-height: 100vh;
+            color: #17213a;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(108, 125, 255, 0.16), transparent 24%),
+                radial-gradient(circle at 92% 14%, rgba(97, 225, 255, 0.16), transparent 18%),
+                linear-gradient(180deg, #f8fbff 0%, #eef3fb 54%, #f9fbff 100%);
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            border-radius: 999px;
+            filter: blur(14px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::before {
+            top: 120px;
+            left: -120px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(94, 122, 255, 0.14) 0%, rgba(94, 122, 255, 0) 72%);
+        }
+
+        body::after {
+            right: -110px;
+            bottom: 110px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(63, 196, 255, 0.16) 0%, rgba(63, 196, 255, 0) 72%);
+        }
+
+        a,
+        .btn,
+        .card,
+        .form-control,
+        .form-select,
+        .table tbody tr,
+        .portal-hero-chip,
+        .portal-footer-links a,
+        .portal-social-chip {
+            transition:
+                transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.32s ease,
+                background-color 0.28s ease,
+                border-color 0.28s ease,
+                color 0.28s ease,
+                opacity 0.28s ease;
+        }
+
+        .user-hero {
+            display: flex;
+            align-items: center;
+            min-height: 390px;
+            background:
+                linear-gradient(135deg, rgba(18, 29, 71, 0.76) 0%, rgba(36, 61, 145, 0.6) 50%, rgba(65, 110, 255, 0.4) 100%),
+                url('/static/assets/images/bg/pharm01.jpg') center/cover !important;
+            background-attachment: fixed;
+            border-radius: 0 0 38px 38px;
+        }
+
+        .user-hero::before {
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18), transparent 18%),
+                linear-gradient(180deg, rgba(7, 15, 39, 0.04), rgba(7, 15, 39, 0.24));
+        }
+
+        .user-hero::after {
+            content: "";
+            position: absolute;
+            right: 8%;
+            bottom: -80px;
+            width: 360px;
+            height: 220px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(149, 197, 255, 0.22) 0%, rgba(149, 197, 255, 0) 72%);
+            filter: blur(10px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .user-hero-content {
+            width: 100%;
+            padding-top: 42px;
+            padding-bottom: 84px;
+        }
+
+        .portal-hero-panel {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 34px 38px;
+            border-radius: 34px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+            box-shadow: 0 32px 70px rgba(8, 18, 47, 0.26);
+            backdrop-filter: blur(24px);
+        }
+
+        .portal-hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .portal-hero-kicker i {
+            color: #92e9ff;
+            font-size: 1rem;
+        }
+
+        .portal-hero-title {
+            margin-bottom: 16px;
+            color: #fff;
+            font-size: clamp(2rem, 3.4vw, 3.45rem) !important;
+            line-height: 1.03;
+            letter-spacing: -0.05em;
+            font-weight: 800 !important;
+        }
+
+        .portal-hero-copy {
+            max-width: 720px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 1.04rem;
+            line-height: 1.8;
+        }
+
+        .portal-hero-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .portal-hero-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-size: 0.92rem;
+            font-weight: 600;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+        }
+
+        .portal-hero-chip i {
+            color: #9ce5ff;
+        }
+
+        .portal-main-stage {
+            position: relative;
+            z-index: 2;
+            margin-top: 0;
+            padding-bottom: 96px;
+        }
+
+        .portal-main-stage::before,
+        .portal-main-stage::after {
+            content: "";
+            position: absolute;
+            border-radius: 999px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .portal-main-stage::before {
+            top: 30px;
+            left: 6%;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(99, 132, 255, 0.12) 0%, rgba(99, 132, 255, 0) 72%);
+        }
+
+        .portal-main-stage::after {
+            right: 4%;
+            top: 260px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(64, 193, 255, 0.12) 0%, rgba(64, 193, 255, 0) 72%);
+        }
+
+        .portal-content-shell {
+            position: relative;
+            z-index: 1;
+        }
+
+        .portal-common-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .portal-common-content > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .portal-common-content .container,
+        .portal-common-content .container-fluid {
+            position: relative;
+        }
+
+        .portal-common-content .card {
+            border: 1px solid rgba(109, 132, 214, 0.14) !important;
+            border-radius: 28px !important;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 255, 0.88)) !important;
+            box-shadow: 0 26px 56px rgba(18, 36, 88, 0.11) !important;
+            overflow: hidden;
+            backdrop-filter: blur(18px);
+        }
+
+        .portal-common-content .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 32px 70px rgba(18, 36, 88, 0.15) !important;
+        }
+
+        .portal-common-content .card-header,
+        .portal-common-content .card-header.bg-primary,
+        .portal-common-content .card-header.bg-dark {
+            padding: 1.2rem 1.5rem;
+            border: 0 !important;
+            background: linear-gradient(135deg, #345ffd 0%, #6387ff 55%, #8cbcff 100%) !important;
+            color: #fff !important;
+        }
+
+        .portal-common-content .card-body {
+            padding: 1.55rem;
+        }
+
+        .portal-common-content .shadow,
+        .portal-common-content .shadow-sm,
+        .portal-common-content .shadow-lg {
+            box-shadow: 0 26px 56px rgba(18, 36, 88, 0.11) !important;
+        }
+
+        .portal-common-content h1,
+        .portal-common-content h2,
+        .portal-common-content h3,
+        .portal-common-content h4,
+        .portal-common-content h5,
+        .portal-common-content h6 {
+            color: #17213a;
+            letter-spacing: -0.03em;
+        }
+
+        .portal-common-content .text-muted {
+            color: #6f7f9d !important;
+        }
+
+        .portal-common-content .btn {
+            border-radius: 999px;
+            padding: 0.82rem 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            border-width: 1px;
+        }
+
+        .portal-common-content .btn:hover,
+        .premium-footer .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .portal-common-content .btn-primary {
+            border-color: transparent;
+            background: linear-gradient(135deg, #315efb 0%, #6d8eff 100%) !important;
+            box-shadow: 0 18px 28px rgba(49, 94, 251, 0.2);
+        }
+
+        .portal-common-content .btn-outline-primary {
+            color: #315efb;
+            border-color: rgba(49, 94, 251, 0.18);
+            background: rgba(49, 94, 251, 0.06);
+        }
+
+        .portal-common-content .btn-outline-primary:hover {
+            color: #fff;
+            border-color: transparent;
+            background: linear-gradient(135deg, #315efb 0%, #6d8eff 100%);
+        }
+
+        .portal-common-content .form-control,
+        .portal-common-content .form-select,
+        .portal-common-content select,
+        .portal-common-content textarea {
+            min-height: 54px;
+            padding: 0.9rem 1rem;
+            border-radius: 18px;
+            border: 1px solid rgba(104, 127, 207, 0.16);
+            background: rgba(250, 252, 255, 0.9);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .portal-common-content textarea {
+            min-height: 140px;
+        }
+
+        .portal-common-content .form-control:focus,
+        .portal-common-content .form-select:focus,
+        .portal-common-content select:focus,
+        .portal-common-content textarea:focus {
+            border-color: rgba(49, 94, 251, 0.34);
+            background: #fff;
+            box-shadow: 0 0 0 0.25rem rgba(49, 94, 251, 0.12), 0 14px 28px rgba(49, 94, 251, 0.08);
+        }
+
+        .portal-common-content .badge {
+            padding: 0.62em 0.95em;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .portal-common-content .table-responsive {
+            padding: 10px;
+            border-radius: 28px;
+            border: 1px solid rgba(109, 132, 214, 0.14);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(247, 250, 255, 0.94));
+            box-shadow: 0 24px 48px rgba(18, 36, 88, 0.08);
+        }
+
+        .portal-common-content .table {
+            --bs-table-bg: transparent;
+            --bs-table-striped-bg: transparent;
+            --bs-table-hover-bg: transparent;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            margin-bottom: 0;
+        }
+
+        .portal-common-content .table thead th {
+            border: 0 !important;
+            background: rgba(62, 102, 251, 0.08);
+            color: #29416d !important;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.95rem 0.9rem;
+        }
+
+        .portal-common-content .table thead th:first-child,
+        .portal-common-content .table tbody td:first-child {
+            border-top-left-radius: 18px;
+            border-bottom-left-radius: 18px;
+        }
+
+        .portal-common-content .table thead th:last-child,
+        .portal-common-content .table tbody td:last-child {
+            border-top-right-radius: 18px;
+            border-bottom-right-radius: 18px;
+        }
+
+        .portal-common-content .table tbody tr {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .portal-common-content .table tbody tr:hover {
+            transform: translateX(4px);
+        }
+
+        .portal-common-content .table tbody td {
+            border: 0 !important;
+            padding: 1rem 0.9rem;
+            background: transparent;
+            box-shadow: 0 16px 28px rgba(18, 36, 88, 0.05);
+        }
+
+        .portal-common-content .table img,
+        .portal-common-content .rounded-circle {
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 18px rgba(18, 36, 88, 0.12);
+        }
+
+        .portal-common-content .shop-image img,
+        .portal-common-content .team-person img,
+        .portal-common-content .card img.img-fluid {
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+        }
+
+        .portal-common-content .card:hover .shop-image img,
+        .portal-common-content .card:hover .team-person img,
+        .portal-common-content .card:hover img.img-fluid {
+            transform: scale(1.04);
+            filter: saturate(1.05);
+        }
+
+        .premium-footer {
+            position: relative;
+            overflow: hidden;
+            margin-top: 36px;
+            padding: 86px 0 38px;
+            background: linear-gradient(135deg, #0f172b 0%, #16285a 40%, #0a1020 100%);
+            border-top: 1px solid rgba(159, 183, 255, 0.16);
+        }
+
+        .premium-footer::before,
+        .premium-footer::after {
+            content: "";
+            position: absolute;
+            border-radius: 999px;
+            pointer-events: none;
+            filter: blur(10px);
+        }
+
+        .premium-footer::before {
+            top: -100px;
+            left: -80px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(110, 133, 255, 0.2) 0%, rgba(110, 133, 255, 0) 72%);
+        }
+
+        .premium-footer::after {
+            right: -80px;
+            bottom: -100px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(85, 214, 255, 0.18) 0%, rgba(85, 214, 255, 0) 72%);
+        }
+
+        .premium-footer .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .portal-footer-panel {
+            height: 100%;
+            padding: 26px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+        }
+
+        .portal-footer-title {
+            margin-bottom: 18px;
+            color: #fff;
+            font-size: 0.98rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .portal-footer-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .portal-footer-links li + li {
+            margin-top: 0.8rem;
+        }
+
+        .portal-footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.72);
+            text-decoration: none;
+            font-size: 0.96rem;
+        }
+
+        .portal-footer-links a:hover {
+            color: #fff;
+            transform: translateX(4px);
+        }
+
+        .portal-footer-links i,
+        .portal-footer-contact-item i {
+            color: #89d7ff;
+        }
+
+        .portal-footer-chips,
+        .portal-social-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .portal-footer-chip,
+        .portal-social-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.82);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+
+        .portal-footer-chip i,
+        .portal-social-chip i {
+            color: #9ce5ff;
+        }
+
+        .portal-footer-chip:hover,
+        .portal-social-chip:hover {
+            color: #fff;
+            border-color: rgba(156, 229, 255, 0.24);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .portal-footer-contact-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .portal-footer-contact-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            color: rgba(255, 255, 255, 0.74);
+        }
+
+        .portal-footer-contact-item strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .portal-footer-contact-item span,
+        .portal-footer-note {
+            color: rgba(255, 255, 255, 0.64);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        .portal-footer-bottom {
+            margin-top: 34px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .portal-footer-bottom a {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .portal-footer-bottom a:hover {
+            color: #fff;
+        }
+
+        html.js-enabled .portal-hero-chip,
+        html.js-enabled .portal-hero-panel,
+        html.js-enabled .portal-footer-panel,
+        html.js-enabled .portal-footer-bottom {
+            opacity: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .portal-common-content .card:hover,
+            .portal-common-content .btn:hover,
+            .premium-footer .btn:hover,
+            .portal-footer-links a:hover,
+            .portal-social-chip:hover {
+                transform: none !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .portal-nav-collapse {
+                display: flex !important;
+                justify-content: flex-end;
+            }
+
+            .portal-nav-item-dropdown:hover > .portal-nav-dropdown-menu {
+                display: block;
+            }
+
+            .portal-nav-item-dropdown:hover > .portal-nav-link {
+                color: var(--portal-nav-accent-dark) !important;
+                background: var(--portal-nav-soft);
+                box-shadow: inset 0 0 0 1px var(--portal-nav-line);
+            }
+        }
+
+        @media (max-width: 1199.98px) {
+            .user-hero {
+                background-attachment: scroll;
+            }
+
+            .portal-navbar-shell {
+                padding: 14px;
+                border-radius: 24px;
+            }
+
+            .portal-navbar-toggler {
+                margin-left: auto;
+            }
+
+            .portal-nav-collapse {
+                margin-top: 14px;
+                padding-top: 14px;
+                border-top: 1px solid rgba(79, 124, 255, 0.10);
+            }
+
+            .portal-nav-list {
+                width: 100%;
+                flex-direction: column;
+                gap: 6px;
+                align-items: stretch;
+                margin: 0;
+            }
+
+            .portal-nav-item,
+            .portal-nav-item-dropdown {
+                width: 100%;
+            }
+
+            .portal-nav-link {
+                width: 100%;
+                justify-content: space-between;
+                padding: 13px 14px !important;
+            }
+
+            .portal-nav-dropdown-menu {
+                position: static !important;
+                inset: auto !important;
+                transform: none !important;
+                width: 100%;
+                min-width: 0;
+                margin-top: 8px !important;
+                box-shadow: none;
+                background: #f9fbff;
+            }
+
+            .portal-main-stage {
+                margin-top: 0;
+            }
+
+            .portal-hero-panel {
+                padding: 30px 26px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .portal-navbar-shell {
+                padding: 12px;
+                border-radius: 20px;
+            }
+
+            .portal-brand-badge {
+                width: 46px;
+                height: 46px;
+                border-radius: 15px;
+            }
+
+            .portal-brand-copy strong {
+                font-size: 0.95rem;
+            }
+
+            .portal-brand-copy span {
+                font-size: 0.71rem;
+                letter-spacing: 0.12em;
+            }
+
+            .portal-nav-link {
+                font-size: 13px;
+            }
+
+            .portal-dropdown-link {
+                padding: 9px 11px;
+            }
+
+            .user-hero {
+                min-height: 390px;
+                border-radius: 0 0 28px 28px;
+            }
+
+            .user-hero-content {
+                padding-top: 28px;
+                padding-bottom: 92px;
+            }
+
+            .portal-main-stage {
+                margin-top: 0;
+                padding-bottom: 72px;
+            }
+
+            .portal-hero-panel {
+                padding: 26px 18px;
+                border-radius: 26px;
+            }
+
+            .portal-hero-copy {
+                font-size: 0.95rem;
+            }
+
+            .portal-hero-chip {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .portal-common-content .card,
+            .portal-common-content .table-responsive,
+            .portal-footer-panel {
+                border-radius: 22px !important;
+            }
+
+            .portal-common-content .card-body {
+                padding: 1.2rem;
+            }
+
+            .premium-footer {
+                padding-top: 72px;
+            }
+        }
+
+        html.js-enabled .portal-hero-chip,
+        html.js-enabled .portal-hero-panel,
+        html.js-enabled .portal-footer-panel,
+        html.js-enabled .portal-footer-bottom,
+        html.js-enabled .portal-surface-block,
+        html.js-enabled .portal-footer-grid,
+        html.js-enabled .animate-on-scroll,
+        html.js-enabled .animate-float,
+        html.js-enabled .card-animate,
+        html.js-enabled .section-animate,
+        html.js-enabled .text-animate {
+            opacity: 1 !important;
+            transform: none !important;
+            animation: none !important;
+        }
+
+        .animated {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* Smilune-inspired common page theme */
+        :root {
+            --common-bg: #eef3ff;
+            --common-surface: #ffffff;
+            --common-surface-soft: #f5f8ff;
+            --common-ink: #17213c;
+            --common-muted: #6c7b97;
+            --common-accent: #315bff;
+            --common-accent-dark: #203fc3;
+            --common-line: rgba(63, 95, 215, 0.12);
+            --common-shadow: 0 26px 60px rgba(23, 33, 60, 0.1);
+        }
+
+        body {
+            color: var(--common-ink) !important;
+            background:
+                radial-gradient(circle at 8% 12%, rgba(126, 154, 255, 0.18), transparent 18%),
+                radial-gradient(circle at 88% 10%, rgba(109, 224, 255, 0.16), transparent 15%),
+                linear-gradient(180deg, #eff4ff 0%, #f6f9ff 100%) !important;
+        }
+
+        body::before,
+        body::after,
+        .portal-main-stage::before,
+        .portal-main-stage::after {
+            display: none !important;
+        }
+
+        .portal-content-shell {
+            max-width: 1320px;
+        }
+
+        .user-hero,
+        .user-hero-image,
+        .user-hero-overlay {
+            background-image: none !important;
+        }
+
+        .user-hero-image,
+        .user-hero-overlay {
+            display: none !important;
+        }
+
+        .user-hero {
+            padding: 0 !important;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            border-radius: 0 0 30px 30px;
+            background: linear-gradient(135deg, #2f2cf3 0%, #2b41e8 48%, #1f5bff 100%) !important;
+            overflow: hidden;
+        }
+
+        .user-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            display: block !important;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, rgba(255, 255, 255, 0) 1px 120px),
+                repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0 1px, rgba(255, 255, 255, 0) 1px 120px);
+            background-size: auto;
+            opacity: 0.7;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .user-hero::after {
+            display: none !important;
+        }
+
+        .user-hero-content {
+            position: relative !important;
+            inset: auto !important;
+            z-index: 2;
+            width: 100%;
+            padding-top: 124px;
+            padding-bottom: 54px;
+        }
+
+        .portal-hero-panel {
+            max-width: 560px;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+
+        .portal-hero-kicker {
+            margin-bottom: 8px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 14px 26px rgba(17, 31, 76, 0.14);
+        }
+
+        .portal-hero-kicker i {
+            color: #9cfff7;
+        }
+
+        .portal-hero-title {
+            color: #fff !important;
+            font-size: clamp(1.35rem, 2vw, 2rem) !important;
+            line-height: 1.02;
+            letter-spacing: -0.055em;
+        }
+
+        .portal-hero-copy {
+            max-width: 420px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.82rem;
+            line-height: 1.45;
+            margin-bottom: 0;
+        }
+
+        .portal-main-stage {
+            margin-top: 0;
+            padding-bottom: 56px;
+        }
+
+        .portal-content-shell {
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .portal-surface-block {
+            margin-bottom: 28px;
+            border-radius: 30px;
+            border: 1px solid var(--common-line);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: var(--common-shadow);
+        }
+
+        .portal-common-content > .portal-surface-block:first-child {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .portal-surface-block.section,
+        .portal-surface-block.bg-half-150,
+        .portal-surface-block.bg-dashboard,
+        .portal-surface-block.bg-light {
+            padding: 44px 0 !important;
+            background-color: rgba(255, 255, 255, 0.96) !important;
+            background-image: none !important;
+        }
+
+        .portal-surface-block.container,
+        .portal-surface-block.container-fluid {
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .portal-common-content .section {
+            padding: 24px 0 44px;
+        }
+
+        .portal-common-content .card {
+            border-radius: 24px !important;
+            border: 1px solid rgba(49, 91, 255, 0.1) !important;
+            background: #fff !important;
+            box-shadow: 0 18px 34px rgba(34, 63, 168, 0.08) !important;
+            backdrop-filter: none;
+        }
+
+        .portal-common-content .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 42px rgba(34, 63, 168, 0.12) !important;
+        }
+
+        .portal-common-content .card-header,
+        .portal-common-content .card-header.bg-primary,
+        .portal-common-content .card-header.bg-dark {
+            background: linear-gradient(135deg, #2f34f6 0%, #2d6bff 100%) !important;
+            color: #fff !important;
+        }
+
+        .portal-common-content h1,
+        .portal-common-content h2,
+        .portal-common-content h3,
+        .portal-common-content h4,
+        .portal-common-content h5,
+        .portal-common-content h6 {
+            color: var(--common-ink);
+        }
+
+        .portal-common-content .text-muted {
+            color: var(--common-muted) !important;
+        }
+
+        .portal-common-content .btn-primary {
+            background: var(--common-accent) !important;
+            border-color: var(--common-accent) !important;
+            box-shadow: 0 14px 28px rgba(49, 91, 255, 0.18);
+        }
+
+        .portal-common-content .btn-primary:hover,
+        .portal-common-content .btn-primary:focus {
+            background: var(--common-accent-dark) !important;
+            border-color: var(--common-accent-dark) !important;
+        }
+
+        .portal-common-content .btn-outline-primary {
+            color: var(--common-accent-dark);
+            border-color: rgba(49, 91, 255, 0.2);
+            background: #f5f8ff;
+        }
+
+        .portal-common-content .btn-outline-primary:hover {
+            color: #fff;
+            background: var(--common-accent) !important;
+            border-color: var(--common-accent) !important;
+        }
+
+        .portal-common-content .form-control,
+        .portal-common-content .form-select,
+        .portal-common-content select,
+        .portal-common-content textarea {
+            border-radius: 18px;
+            border-color: rgba(49, 91, 255, 0.12);
+            background: #f6f8ff;
+            box-shadow: none;
+        }
+
+        .portal-common-content .form-control:focus,
+        .portal-common-content .form-select:focus,
+        .portal-common-content select:focus,
+        .portal-common-content textarea:focus {
+            border-color: rgba(49, 91, 255, 0.28);
+            box-shadow: 0 0 0 0.22rem rgba(49, 91, 255, 0.1);
+        }
+
+        .portal-common-content .table-responsive {
+            padding: 0;
+            border-radius: 24px;
+            border: 1px solid rgba(49, 91, 255, 0.12);
+            background: #fff;
+            box-shadow: 0 16px 34px rgba(34, 63, 168, 0.08);
+        }
+
+        .portal-common-content .table {
+            border-spacing: 0;
+        }
+
+        .portal-common-content .table thead th {
+            background: #eef3ff;
+            color: #5d6d90 !important;
+            font-size: 0.75rem;
+        }
+
+        .portal-common-content .table tbody tr:hover {
+            transform: none;
+        }
+
+        .portal-common-content .table tbody td {
+            box-shadow: none;
+            border-top: 1px solid rgba(49, 91, 255, 0.08) !important;
+        }
+
+        .portal-common-content .table tbody tr:first-child td {
+            border-top: 0 !important;
+        }
+
+        .premium-footer {
+            margin-top: 0;
+            background: linear-gradient(to right, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%) !important;
+            border-top: 2px solid #007bff;
+        }
+
+        .premium-footer::before,
+        .premium-footer::after {
+            content: none !important;
+            display: none !important;
+        }
+
+        .footer-note-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.55rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 0.82rem;
+            margin: 0.25rem 0.25rem 0 0;
+        }
+
+        .portal-footer-grid {
+            border-radius: 32px;
+            overflow: hidden;
+        }
+
+        .portal-footer-grid {
+            padding: 26px 30px;
+            background: linear-gradient(135deg, #121f69 0%, #1842a1 100%);
+            box-shadow: 0 22px 42px rgba(18, 31, 105, 0.22);
+        }
+
+        .portal-footer-grid .portal-footer-brand strong {
+            color: #fff;
+        }
+
+        .portal-footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .portal-footer-brand-copy span,
+        .portal-footer-note,
+        .portal-footer-minimal-note,
+        .portal-footer-bottom p {
+            color: rgba(255, 255, 255, 0.68);
+        }
+
+        .portal-footer-minimal-note {
+            max-width: 520px;
+            margin-bottom: 0;
+            line-height: 1.65;
+        }
+
+        html.js-enabled .portal-surface-block,
+        html.js-enabled .portal-footer-grid {
+            opacity: 0;
+        }
+
+        @media (max-width: 991.98px) {
+            .portal-main-stage {
+                margin-top: 0;
+            }
+
+            .portal-footer-grid {
+                padding: 24px 22px;
+            }
+        }
+
+         @media (max-width: 575.98px) {
+            .user-hero {
+                min-height: 0;
+                border-radius: 0 0 24px 24px;
+            }
+
+            .user-hero-content {
+                padding-top: 112px;
+                padding-bottom: 30px;
+            }
+
+            .portal-main-stage {
+                margin-top: 0;
+                padding-bottom: 52px;
+            }
+
+            .portal-surface-block,
+            .portal-footer-grid {
+                border-radius: 24px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .portal-nav-collapse {
+                display: flex !important;
+                justify-content: flex-end;
+            }
+
+            .portal-nav-item-dropdown:hover > .portal-nav-dropdown-menu {
+                display: block;
+            }
+
+            .portal-nav-item-dropdown:hover > .portal-nav-link {
+                color: var(--portal-nav-accent-dark) !important;
+                background: var(--portal-nav-soft);
+                box-shadow: inset 0 0 0 1px var(--portal-nav-line);
+            }
+        }
+
+        @media (max-width: 1199.98px) {
+            .portal-navbar-shell {
+                padding: 14px;
+                border-radius: 24px;
+            }
+
+            .portal-navbar-toggler {
+                margin-left: auto;
+            }
+
+            .portal-nav-collapse {
+                margin-top: 14px;
+                padding-top: 14px;
+                border-top: 1px solid rgba(79, 124, 255, 0.10);
+            }
+
+            .portal-nav-list {
+                width: 100%;
+                flex-direction: column;
+                gap: 6px;
+                align-items: stretch;
+                margin: 0;
+            }
+
+            .portal-nav-item,
+            .portal-nav-item-dropdown {
+                width: 100%;
+            }
+
+            .portal-nav-link {
+                width: 100%;
+                justify-content: space-between;
+                padding: 13px 14px !important;
+            }
+
+            .portal-nav-dropdown-menu {
+                position: static !important;
+                inset: auto !important;
+                transform: none !important;
+                width: 100%;
+                min-width: 0;
+                margin-top: 8px !important;
+                box-shadow: none;
+                background: #f9fbff;
+            }
+
+            .portal-profile-item {
+                justify-content: flex-start;
+            }
+
+            .portal-profile-link {
+                margin-left: 6px;
+            }
+
+            .portal-profile-float {
+                top: 16px;
+                right: 18px;
+            }
+
+            .portal-profile-name {
+                font-size: 0.88rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .portal-profile-meta {
+                top: calc(100% + 6px);
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .portal-navbar-shell {
+                padding: 12px;
+                border-radius: 20px;
+            }
+
+            .portal-brand-badge {
+                width: 46px;
+                height: 46px;
+                border-radius: 15px;
+            }
+
+            .portal-brand-copy strong {
+                font-size: 0.95rem;
+            }
+
+            .portal-brand-copy span {
+                font-size: 0.71rem;
+                letter-spacing: 0.12em;
+            }
+
+            .portal-nav-link {
+                font-size: 13px;
+            }
+
+            .portal-dropdown-link {
+                padding: 9px 11px;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .portal-common-content .card:hover,
+            .portal-common-content .btn:hover,
+            .premium-footer .btn:hover,
+            .portal-footer-links a:hover,
+            .portal-social-chip:hover {
+                transform: none !important;
+            }
+        }
+
+        html.js-enabled .portal-hero-chip,
+        html.js-enabled .portal-hero-panel,
+        html.js-enabled .portal-footer-panel,
+        html.js-enabled .portal-footer-bottom,
+        html.js-enabled .portal-surface-block,
+        html.js-enabled .portal-footer-grid,
+        html.js-enabled .animate-on-scroll,
+        html.js-enabled .animate-float,
+        html.js-enabled .card-animate,
+        html.js-enabled .section-animate,
+        html.js-enabled .text-animate {
+            opacity: 1 !important;
+            transform: none !important;
+            animation: none !important;
+        }
+
+        .animated {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    </style>
+
+</head>
+
+    <body>
+        {% for m in messages %}
+    <script>
+        alert('{{m}}');
+    </script>
+{% endfor %}
+        <!-- Loader -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader -->
+        
+        <!-- Navbar STart -->
+        <header id="topnav" class="navigation sticky portal-navbar-wrap">
+            <div class="container">
+                <nav class="navbar navbar-expand-xl portal-navbar-shell portal-user-navbar" aria-label="User portal navigation">
+                    <a class="navbar-brand portal-brand" href="/userHome">
+                        <span class="portal-brand-badge">
+                            <img src="/static/assets/images/logo-icon.png" alt="">
+                        </span>
+                        <span class="portal-brand-copy">
+                            <strong>Medical Advisor</strong>
+                            <span>User Portal</span>
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler portal-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portalUserNav" aria-controls="portalUserNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse portal-nav-collapse" id="portalUserNav">
+                    <ul class="navbar-nav portal-nav-list">
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/userHome" data-nav-match="/userHome">
+                                <i class="ri-home-5-line"></i>Home
+                                </a>
+                            </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/UserProfile" data-nav-match="/UserProfile,/update_userProfile">
+                                <i class="ri-user-3-line"></i>Profile
+                            </a>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/view_prescription" data-nav-match="/view_prescription,/view_prescription_detail">
+                                <i class="ri-file-list-3-line"></i>Prescription
+                            </a>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/care-report/" data-nav-match="/chat,/care-report">
+                                <i class="ri-message-2-line"></i>Chat
+                            </a>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/add_feedback" data-nav-match="/add_feedback">
+                                <i class="ri-chat-smile-3-line"></i>Feedback
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown portal-nav-item-dropdown">
+                            <a class="nav-link portal-nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                                <i class="ri-calendar-check-line"></i>Appointments
+                            </a>
+                                <div class="dropdown-menu portal-nav-dropdown-menu">
+                                    <div class="portal-nav-dropdown-label">Appointment services</div>
+                                    <div class="portal-nav-dropdown-grid">
+                                        <a class="dropdown-item portal-dropdown-link" href="/book_appoinment" data-nav-match="/book_appoinment">
+                                            <span class="portal-dropdown-icon"><i class="ri-calendar-event-line"></i></span>
+                                            <span class="portal-dropdown-copy">
+                                                <strong>Book Appointment</strong>
+                                            </span>
+                                        </a>
+                                        <a class="dropdown-item portal-dropdown-link" href="/view_bookedappointment" data-nav-match="/view_bookedappointment">
+                                            <span class="portal-dropdown-icon"><i class="ri-calendar-todo-line"></i></span>
+                                            <span class="portal-dropdown-copy">
+                                                <strong>View Bookings</strong>
+                                            </span>
+                                        </a>
+                                        <a class="dropdown-item portal-dropdown-link" href="/invoice" data-nav-match="/invoice,/invoice_detail">
+                                            <span class="portal-dropdown-icon"><i class="ri-file-list-3-line"></i></span>
+                                            <span class="portal-dropdown-copy">
+                                                <strong>Invoices</strong>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        <li class="nav-item dropdown portal-nav-item-dropdown">
+                            <a class="nav-link portal-nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                                <i class="ri-capsule-line"></i>Medicines
+                            </a>
+                                <div class="dropdown-menu portal-nav-dropdown-menu">
+                                    <div class="portal-nav-dropdown-label">Medicine services</div>
+                                    <div class="portal-nav-dropdown-grid">
+                                        <a class="dropdown-item portal-dropdown-link" href="/user_viewMedicine" data-nav-match="/user_viewMedicine,/user_viewMedicineDetails,/place_order,/medicine_payment,/user_payment_page">
+                                            <span class="portal-dropdown-icon"><i class="ri-medicine-bottle-line"></i></span>
+                                            <span class="portal-dropdown-copy">
+                                                <strong>Browse Medicine</strong>
+                                            </span>
+                                        </a>
+                                        <a class="dropdown-item portal-dropdown-link" href="/ph_givenMedicine" data-nav-match="/ph_givenMedicine">
+                                            <span class="portal-dropdown-icon"><i class="ri-store-2-line"></i></span>
+                                            <span class="portal-dropdown-copy">
+                                                <strong>Pharmacy</strong>
+                                            </span>
+                                        </a>
+                                        <a class="dropdown-item portal-dropdown-link" href="/confirmorder" data-nav-match="/confirmorder">
+                                            <span class="portal-dropdown-icon"><i class="ri-truck-line"></i></span>
+                                            <span class="portal-dropdown-copy">
+                                                <strong>Orders</strong>
+                                            </span>
+                                        </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link portal-logout-link" href="/logout/">
+                                <i class="ri-logout-box-r-line"></i>Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                </nav>
+            </div><!--end container-->
+        </header><!--end header-->
+        <!-- Navbar End -->
+        <div class="portal-profile-float">
+            <a class="portal-profile-card" href="/UserProfile" aria-label="Profile">
+                <span class="portal-profile-link">
+                    {% if portal_user and portal_user.image %}
+                        <img src="{{ portal_user.image.url }}" alt="Profile" class="portal-profile-avatar">
+                    {% else %}
+                        <img src="/static/assets/images/client/01.jpg" alt="Profile" class="portal-profile-avatar">
+                    {% endif %}
+                </span>
+            <span class="portal-profile-meta">
+                <span class="portal-profile-name">
+                    {% if portal_user and portal_user.name %}
+                        {{ portal_user.name }}
+                    {% else %}
+                        User
+                    {% endif %}
+                </span>
+            </span>
+        </a>
+    </div>
+
+        <!-- Start Hero -->
+        <section class="bg-half-170 d-table w-100 user-hero">
+            <img src="/static/assets/images/bg/about.jpg" alt="" class="user-hero-image">
+            <div class="bg-overlay bg-overlay-dark user-hero-overlay"></div>
+            <div class="container user-hero-content">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title text-center portal-hero-panel">
+                            <span class="portal-hero-kicker">
+                                <i class="ri-sparkling-2-line"></i>
+                                <span id="portalHeroLabel"></span>
+                            </span>
+                            <h3 class="sub-title mb-2 text-white title-dark portal-hero-title" id="portalHeroTitle"></h3>
+                            <p class="portal-hero-copy" id="portalHeroSubtitle"></p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- End Hero -->
+        <!-- End -->
+        <main class="portal-main-stage">
+            <div class="portal-content-shell">
+                <div class="portal-common-content">
+{% block content %}{% endblock  %}
+                </div>
+            </div>
+        </main>
+    <!-- Premium Dark Footer (Match User Home) -->
+        <footer class="premium-footer py-5">
+            <div class="container">
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3 footer-brand-badge">
+                                <i class="ri-hospital-line text-white icon-brand"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-white">Medical Advisor</h6>
+                                <small class="text-info">Patient Portal</small>
+                            </div>
+                        </div>
+                        <p class="text-light small mb-3">Comprehensive healthcare management and medicine platform.</p>
+                        <div class="mb-3">
+                            <span class="footer-note-chip"><i class="ri-calendar-check-line"></i>Appointments</span>
+                            <span class="footer-note-chip"><i class="ri-capsule-line"></i>Medicine</span>
+                            <span class="footer-note-chip"><i class="ri-file-list-3-line"></i>Prescriptions</span>
+                        </div>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="#" class="badge bg-info text-dark text-decoration-none"><i class="ri-facebook-fill"></i></a>
+                            <a href="#" class="badge bg-info text-dark text-decoration-none"><i class="ri-twitter-fill"></i></a>
+                            <a href="#" class="badge bg-info text-dark text-decoration-none"><i class="ri-linkedin-fill"></i></a>
+                            <a href="#" class="badge bg-info text-dark text-decoration-none"><i class="ri-instagram-fill"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h6 class="fw-bold text-white mb-3"><i class="ri-links-line me-2 text-info"></i>Company</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ About us</a></li>
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Services</a></li>
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Team</a></li>
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Project</a></li>
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h6 class="fw-bold text-white mb-3"><i class="ri-hospital-line me-2 text-info"></i>Departments</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Eye Care</a></li>
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Cardiology</a></li>
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Dental</a></li>
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Orthopedic</a></li>
+                            <li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Gynecology</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="bg-dark rounded shadow-sm p-3 footer-contact">
+                            <h6 class="fw-bold text-white mb-3"><i class="ri-phone-line me-2 text-danger"></i>Contact</h6>
+                            <div class="mb-2">
+                                <a href="mailto:contact@example.com" class="text-light text-decoration-none small d-flex align-items-center">
+                                    <i class="ri-mail-line me-2 text-info icon-contact"></i><span>contact@example.com</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="tel:+152534-468-854" class="text-light text-decoration-none small d-flex align-items-center">
+                                    <i class="ri-phone-fill me-2 text-info icon-contact"></i><span>+152 534-468-854</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4 opacity-50 footer-divider">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="small mb-0 text-light">
+                            <script>document.write(new Date().getFullYear())</script> © Medical Advisor |
+                            <a href="terms.html" class="text-light text-decoration-none">Terms</a> |
+                            <a href="privacy.html" class="text-light text-decoration-none">Privacy</a> |
+                            <a href="contact.html" class="text-light text-decoration-none">Contact</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <a href="/logout/" class="btn btn-sm btn-danger rounded-pill">
+                            <i class="ri-logout-box-line me-2"></i>Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer><!--end footer-->
+        <!-- End -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5 rounded-pill text-center bg-primary justify-content-center align-items-center"><i data-feather="arrow-up" class="fea icon-sm"></i></a>
+        <!-- Back to top -->
+
+        <!-- Offcanvas Start -->
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop">
+            <div class="offcanvas-body d-flex align-items-center align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h4>Search now.....</h4>
+                                <div class="subcribe-form mt-4">
+                                    <form>
+                                        <div class="mb-0">
+                                            <input type="text" id="help" name="name" class="border rounded-pill" required="" placeholder="Search">
+                                            <button type="submit" class="btn btn-pills btn-primary">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end container-->
+            </div>
+        </div>
+        <!-- Offcanvas End -->
+
+        <!-- Offcanvas Start -->
+        <div class="offcanvas offcanvas-end shadow border-0" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header p-4 border-bottom">
+                <h5 id="offcanvasRightLabel" class="mb-0">
+                    <img src="/static/assets/images/logo-dark.png" height="22" class="light-version" alt="">
+                    <img src="/static/assets/images/logo-light.png" height="22" class="dark-version" alt="">
+                </h5>
+                <button type="button" class="btn-close d-flex align-items-center text-dark" data-bs-dismiss="offcanvas" aria-label="Close"><i class="uil uil-times fs-4"></i></button>
+            </div>
+            <div class="offcanvas-body p-4 px-md-5">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Style switcher -->
+                        <div id="style-switcher">
+                            <div>
+                                <ul class="text-center style-switcher list-unstyled mb-0">
+                                    <li class="d-grid"><a href="javascript:void(0)" class="rtl-version t-rtl-light" onclick="setTheme('style-rtl')"><img src="../assets/images/layouts/landing-light-rtl.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">RTL Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="ltr-version t-ltr-light" onclick="setTheme('style')"><img src="../assets/images/layouts/landing-light.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">LTR Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="dark-rtl-version t-rtl-dark" onclick="setTheme('style-dark-rtl')"><img src="../assets/images/layouts/landing-dark-rtl.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">RTL Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="dark-ltr-version t-ltr-dark" onclick="setTheme('style-dark')"><img src="../assets/images/layouts/landing-dark.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">LTR Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="dark-version t-dark mt-4" onclick="setTheme('style-dark')"><img src="../assets/images/layouts/landing-dark.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">Dark Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="light-version t-light mt-4" onclick="setTheme('style')"><img src="../assets/images/layouts/landing-light.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">Light Version</span></a></li>
+                                    <li class="d-grid"><a href="https://medipalin.com/doctris/layouts/admin/index.html" target="_blank" rel="noopener noreferrer" class="mt-4"><img src="../assets/images/layouts/light-dash.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">Admin Dashboard</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end Style switcher -->
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div>
+
+            <div class="offcanvas-footer p-4 border-top text-center">
+                <ul class="list-unstyled social-icon social mb-0">
+                    <li class="list-inline-item mb-0"><a href="https://1.envato.market/doctris-template" target="_blank" rel="noopener noreferrer" class="rounded"><i class="uil uil-shopping-cart align-middle" title="Buy Now"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://dribbble.com/shreethemes" target="_blank" rel="noopener noreferrer" class="rounded"><i class="uil uil-dribbble align-middle" title="dribbble"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://www.behance.net/shreethemes" target="_blank" rel="noopener noreferrer" class="rounded"><i class="uil uil-behance align-middle" title="behance"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://www.facebook.com/shreethemes" target="_blank" rel="noopener noreferrer" class="rounded"><i class="uil uil-facebook-f align-middle" title="facebook"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://www.instagram.com/shreethemes/" target="_blank" rel="noopener noreferrer" class="rounded"><i class="uil uil-instagram align-middle" title="instagram"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://x.com/shreethemes" target="_blank" rel="noopener noreferrer" class="rounded"><i class="uil uil-twitter align-middle" title="twitter"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="mailto:support@medipalin.com" class="rounded"><i class="uil uil-envelope align-middle" title="email"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://medipalin.com/" target="_blank" rel="noopener noreferrer" class="rounded"><i class="uil uil-globe align-middle" title="website"></i></a></li>
+                </ul><!--end icon-->
+            </div>
+        </div>
+        <!-- Offcanvas End -->
+        
+        <script src="/static/assets/libs/tiny-slider/min/tiny-slider.js"></script>
+        <script src="/static/assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="/static/assets/libs/feather-icons/feather.min.js"></script>
+        <!-- JAVASCRIPT -->
+        <script src="/static/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/assets/js/plugins.init.js"></script>
+        <script src="/static/assets/js/app.js"></script>
+        <script src="/static/assets/libs/tiny-slider/min/tiny-slider.js"></script>
+        <script src="/static/assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="/static/assets/libs/feather-icons/feather.min.js"></script>
+        <!-- JAVASCRIPT -->
+        <script src="/static/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/assets/js/plugins.init.js"></script>
+        <script src="/static/assets/js/app.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var navRoot = document.querySelector('.portal-user-navbar');
+                if (!navRoot) {
+                    return;
+                }
+
+                function normalizePath(value) {
+                    var normalized = (value || '/').split('?')[0].replace(/\/+$/, '');
+                    return normalized || '/';
+                }
+
+                var currentPath = normalizePath(window.location.pathname);
+
+                navRoot.querySelectorAll('[data-nav-match]').forEach(function (link) {
+                    var matches = (link.getAttribute('data-nav-match') || '')
+                        .split(',')
+                        .map(function (item) {
+                            return normalizePath(item.trim());
+                        })
+                        .filter(Boolean);
+
+                    var isCurrent = matches.some(function (match) {
+                        return currentPath === match || currentPath.indexOf(match + '/') === 0;
+                    });
+
+                    if (!isCurrent) {
+                        return;
+                    }
+
+                    link.classList.add('is-current');
+                    link.setAttribute('aria-current', 'page');
+
+                    var dropdown = link.closest('.portal-nav-item-dropdown');
+                    if (dropdown) {
+                        var dropdownToggle = dropdown.querySelector('.portal-nav-link.dropdown-toggle');
+                        if (dropdownToggle) {
+                            dropdownToggle.classList.add('is-current');
+                        }
+                    }
+                });
+
+                function closeDropdowns(exceptItem) {
+                    navRoot.querySelectorAll('.portal-nav-item-dropdown').forEach(function (item) {
+                        if (exceptItem && item === exceptItem) {
+                            return;
+                        }
+
+                        item.classList.remove('show');
+
+                        var menu = item.querySelector('.portal-nav-dropdown-menu');
+                        var toggle = item.querySelector('.portal-nav-link.dropdown-toggle');
+
+                        if (menu) {
+                            menu.classList.remove('show');
+                        }
+
+                        if (toggle) {
+                            toggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                }
+
+                navRoot.querySelectorAll('.portal-nav-item-dropdown > .dropdown-toggle').forEach(function (toggle) {
+                    toggle.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        var item = toggle.closest('.portal-nav-item-dropdown');
+                        var menu = item ? item.querySelector('.portal-nav-dropdown-menu') : null;
+
+                        if (!item || !menu) {
+                            return;
+                        }
+
+                        var willOpen = !item.classList.contains('show');
+                        closeDropdowns(item);
+
+                        item.classList.toggle('show', willOpen);
+                        menu.classList.toggle('show', willOpen);
+                        toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+                    });
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!navRoot.contains(event.target)) {
+                        closeDropdowns();
+                    }
+                });
+
+                window.addEventListener('resize', function () {
+                    if (window.innerWidth >= 1200) {
+                        closeDropdowns();
+                    }
+                });
+
+                var collapseElement = document.getElementById('portalUserNav');
+                if (collapseElement && window.bootstrap && window.bootstrap.Collapse) {
+                    var collapseInstance = window.bootstrap.Collapse.getOrCreateInstance(collapseElement, {
+                        toggle: false
+                    });
+
+                    collapseElement.querySelectorAll('a[href]:not(.dropdown-toggle)').forEach(function (link) {
+                        link.addEventListener('click', function () {
+                            if (window.innerWidth < 1200) {
+                                closeDropdowns();
+                                collapseInstance.hide();
+                            }
+                        });
+                    });
+                }
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                function normalizePath(value) {
+                    var normalized = (value || '/').split('?')[0].replace(/\/+$/, '');
+                    return normalized || '/';
+                }
+
+                var currentPath = normalizePath(window.location.pathname);
+                var pageProfiles = [
+                    {
+                        matches: ['/UserProfile', '/update_userProfile'],
+                        label: 'Profile',
+                        title: 'Your profile',
+                        subtitle: 'Manage your account details.'
+                    },
+                    {
+                        matches: ['/view_prescription', '/view_prescription_detail'],
+                        label: 'Prescriptions',
+                        title: 'Prescriptions',
+                        subtitle: 'Review prescription details.'
+                    },
+                    {
+                        matches: ['/book_appoinment'],
+                        label: 'Appointments',
+                        title: 'Book appointment',
+                        subtitle: 'Choose a slot and confirm.'
+                    },
+                    {
+                        matches: ['/view_bookedappointment'],
+                        label: 'Appointments',
+                        title: 'Your bookings',
+                        subtitle: 'Check timing and status.'
+                    },
+                    {
+                        matches: ['/invoice', '/invoice_detail'],
+                        label: 'Billing',
+                        title: 'Billing details',
+                        subtitle: 'View invoices and payments.'
+                    },
+                    {
+                        matches: ['/user_viewMedicine', '/user_viewMedicineDetails', '/place_order', '/medicine_payment', '/user_payment_page', '/confirmorder', '/ph_givenMedicine'],
+                        label: 'Medicine',
+                        title: 'Medicines and orders',
+                        subtitle: 'Browse and track orders.'
+                    },
+                    {
+                        matches: ['/chat', '/care-report'],
+                        label: 'Care Chat',
+                        title: 'Care Chat',
+                        subtitle: 'Stay connected with your care conversation.'
+                    },
+                    {
+                        matches: ['/add_feedback'],
+                        label: 'Feedback',
+                        title: 'Share your feedback',
+                        subtitle: 'Help improve the portal.'
+                    }
+                ];
+
+                var activeProfile = pageProfiles.find(function (profile) {
+                    return profile.matches.some(function (match) {
+                        var normalizedMatch = normalizePath(match);
+                        return currentPath === normalizedMatch || currentPath.indexOf(normalizedMatch + '/') === 0;
+                    });
+                });
+
+                if (!activeProfile) {
+                    var activeLink = document.querySelector('.portal-user-navbar .portal-nav-link.is-current');
+                    var firstHeading = document.querySelector('.portal-common-content h1, .portal-common-content h2, .portal-common-content h3, .portal-common-content h4');
+
+                    activeProfile = {
+                        label: activeLink ? activeLink.textContent.trim() : 'Portal',
+                        title: firstHeading ? firstHeading.textContent.trim() : 'Patient pages',
+                        subtitle: 'A cleaner shared layout.'
+                    };
+                }
+
+                var labelNode = document.getElementById('portalHeroLabel');
+                var titleNode = document.getElementById('portalHeroTitle');
+                var subtitleNode = document.getElementById('portalHeroSubtitle');
+
+                if (labelNode) {
+                    labelNode.textContent = activeProfile.label;
+                }
+
+                if (titleNode) {
+                    titleNode.textContent = activeProfile.title;
+                }
+
+                if (subtitleNode) {
+                    subtitleNode.textContent = activeProfile.subtitle;
+                }
+
+                var contentRoot = document.querySelector('.portal-common-content');
+                if (contentRoot) {
+                    Array.prototype.forEach.call(contentRoot.children, function (element) {
+                        if (element.classList.contains('back-to-home')) {
+                            return;
+                        }
+
+                        element.classList.add('portal-surface-block');
+                    });
+                }
+
+                [
+                    // Keep hero panel text intact (no duplicate overlay)
+                    ['.portal-surface-block', 'section-animate'],
+                    ['.portal-common-content .section-title', 'text-animate'],
+                    ['.premium-footer', 'section-animate']
+                ].forEach(function (entry) {
+                    document.querySelectorAll(entry[0]).forEach(function (element) {
+                        if (
+                            element.classList.contains('animate-on-scroll') ||
+                            element.classList.contains('section-animate') ||
+                            element.classList.contains('card-animate') ||
+                            element.classList.contains('text-animate') ||
+                            element.classList.contains('animate-float')
+                        ) {
+                            return;
+                        }
+
+                        element.classList.add(entry[1]);
+                    });
+                });
+            });
+        </script>
+        <script src="/static/js/smooth-transitions.js"></script>
+    </body>
+
+
+<!-- Mirrored from  Medipalin/doctris/layouts/landing/aboutus.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Feb 2025 06:57:54 GMT -->
+</html>

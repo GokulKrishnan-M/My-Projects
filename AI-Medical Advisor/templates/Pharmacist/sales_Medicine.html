@@ -1,0 +1,63 @@
+{% extends 'Pharmacist/common.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-primary">Sell Medicine</h2>
+        <hr>
+
+        <!-- Patient & Prescription Details -->
+        <div class="mb-4">
+            <h4 class="text-secondary">Patient Details</h4>
+            <p><strong>Name:</strong> {{ patient.name }} {{ user.name }}</p>
+            <p><strong>Email:</strong> {{ patient.email }} {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ patient.phone }} {{ user.phone }}</p>
+            <p><strong>Address:</strong> {{ patient.address }} {{ user.address }}</p>
+        </div>
+
+        <div class="mb-4">
+            <h4 class="text-secondary">Prescription Details</h4>
+            <p><strong>Doctor:</strong> {{ prescription.doctor.name }}</p>
+            <p><strong>Date:</strong> {{ prescription.date|date:"d M Y" }}</p>
+            <p><strong>Instructions:</strong> {{ prescription.instructions }}</p>
+        </div>
+
+        {% if ai_medicine_guidance %}
+        <div class="mb-4 p-3 rounded" style="background: #eef5ff; border: 1px solid #cfe0ff;">
+            <h4 class="text-primary">AI Medicine Support</h4>
+            <p class="mb-0 text-muted">{{ ai_medicine_guidance }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Medicine Selection Form -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="medicine" class="form-label"><strong>QTY:</strong></label>
+                <input type="button" class="minus" value="-">
+                <input type="number" size="4" class="input-text qty text" title="Qty" value="{{i.qty}}" name="qty" min="1" step="1" required>
+                <input type="button" class="plus" value="+">
+                <input type="hidden" class="form-control" id="medicine_id" name="id" value="{{i.id}}">
+                <input type="submit" class="btn btn-light" value="Update">
+            </div>
+
+            <div class="mb-3">
+                <label for="medicine" class="form-label"><strong>Select Medicine:</strong></label>
+                <select name="medicine" id="medicine" class="form-control" required>
+                    <option value="" disabled selected>Select a medicine</option>
+                    {% for med in medicines %}
+                        <option value="{{ med.id }}">{{ med.name }} - ₹{{ med.price }} (Stock: {{ med.qty }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Confirm Sale</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a href="/ph_view_prescription" class="btn btn-secondary">Back to Prescriptions</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

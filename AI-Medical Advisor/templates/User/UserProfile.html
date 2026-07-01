@@ -1,0 +1,69 @@
+{% extends "User/common.html" %}
+{% block content %}
+<section class="section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-9">
+                {% for i in data %}
+                <div class="card border-0 shadow-sm overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="p-4 p-lg-5 text-white" style="background: linear-gradient(135deg, #315efb 0%, #6d8eff 100%);">
+                            <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="rounded-circle shadow-sm border border-3 border-white bg-white d-inline-flex align-items-center justify-content-center p-2" style="width: 96px; height: 96px;">
+                                        <img src="/static/assets/{{ i.image }}" alt="{{ i.name }}" style="width: 100%; height: 100%; object-fit: contain;" class="rounded-circle">
+                                    </div>
+                                    <div>
+                                        <span class="badge rounded-pill bg-white text-primary mb-2">User Portal Profile</span>
+                                        <h3 class="mb-1 text-white">{{ i.name|default:"User Profile" }}</h3>
+                                        <p class="mb-0 text-white-50">{{ i.email }}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="/update_userProfile?id={{ i.id }}" class="btn btn-light text-primary fw-semibold px-4">Update Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 p-lg-5 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="h-100 rounded-4 border bg-light p-3">
+                                        <div class="text-uppercase small fw-bold text-primary mb-2">Email</div>
+                                        <div class="fw-semibold text-dark">{{ i.email|default:"Not added yet" }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="h-100 rounded-4 border bg-light p-3">
+                                        <div class="text-uppercase small fw-bold text-primary mb-2">Phone</div>
+                                        <div class="fw-semibold text-dark">{{ i.phone|default:"Not added yet" }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="h-100 rounded-4 border bg-light p-3">
+                                        <div class="text-uppercase small fw-bold text-primary mb-2">Blood Group</div>
+                                        <div class="fw-semibold text-dark">{{ i.blood_group|default:"Not added yet" }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="rounded-4 border bg-light p-3 p-lg-4">
+                                        <div class="text-uppercase small fw-bold text-primary mb-2">Address</div>
+                                        <div class="fw-semibold text-dark">{{ i.address|default:"Not added yet" }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4 p-lg-5 text-center">
+                        <h4 class="mb-2">User Profile</h4>
+                        <p class="text-muted mb-0">Profile details are not available yet.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

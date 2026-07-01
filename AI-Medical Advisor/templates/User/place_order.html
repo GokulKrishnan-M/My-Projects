@@ -1,0 +1,43 @@
+{% extends "User/common.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-primary mb-4">Place an Order</h2>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="medicine_id" class="form-label fw-bold">Select Medicine:</label>
+                <select class="form-select" name="medicine_id" required>
+                    <option value="" disabled selected>-- Choose Medicine --</option>
+                    {% for medicine in medicines %}
+                    <option value="{{ medicine.id }}">{{ medicine.name }} - ₹{{ medicine.price }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="pharmacist_id" class="form-label fw-bold">Select Pharmacist:</label>
+                <select class="form-select" name="pharmacist_id" required>
+                    <option value="" disabled selected>-- Choose Pharmacist --</option>
+                    {% for pharmacist in ph %}
+                    <option value="{{ pharmacist.id }}">{{ pharmacist.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="qty" class="form-label fw-bold">Quantity:</label>
+                <input type="number" class="form-control" name="qty" min="1" required>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success px-4 py-2">Submit Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

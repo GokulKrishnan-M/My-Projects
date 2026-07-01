@@ -1,0 +1,1316 @@
+{% load static %}
+<!doctype html>
+<html lang="en" dir="ltr">
+
+    
+<!-- Mirrored from  Medipalin/doctris/layouts/landing/aboutus.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Feb 2025 06:57:53 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>Medical Advisor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="Appointment, Booking, System, Dashboard, Health" />
+    <meta name="author" content="Shreethemes" />
+    <meta name="email" content="support@ Medipalin" />
+    <meta name="website" content="https:// Medipalin/" />
+    <meta name="Version" content="v1.4.0" />
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=3">
+    <link rel="shortcut icon" href="/favicon.ico?v=3">
+    <!-- Css -->
+    <link href="{% static '/assets/libs/tiny-slider/tiny-slider.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/libs/tobii/css/tobii.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="{% static '/assets/css/bootstrap.min.css' %}" class="theme-opt" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{% static '/assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static '/assets/libs/remixicon/fonts/remixicon.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static '/assets/libs/%40iconscout/unicons/css/line.css' %}" type="text/css" rel="stylesheet" />
+    <!-- Brand Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Style Css-->
+    <link href="{% static '/assets/css/style.min.css' %}" class="theme-opt" rel="stylesheet" type="text/css" />
+
+    <style>
+        :root {
+            --rf-bg: #080101;
+            --rf-surface: #13252d;
+            --rf-card: #172c36;
+            --rf-primary: #3b82f6;
+            --rf-primary-2: #22d3ee;
+            --rf-text: #e2e8f0;
+            --rf-muted: #94a3b8;
+            --rf-border: rgba(148, 163, 184, 0.18);
+        }
+
+        body {
+            font-family: 'Manrope', 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at 18% 20%, rgba(56, 189, 248, 0.18), transparent 46%),
+                radial-gradient(circle at 82% 18%, rgba(45, 212, 191, 0.16), transparent 46%),
+                linear-gradient(180deg, #0b1620 0%, var(--rf-bg) 50%, #0b1620 100%);
+            color: var(--rf-text);
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(18px);
+            opacity: 0.6;
+        }
+
+        body::before {
+            top: -180px;
+            left: -140px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.55), transparent 65%);
+        }
+
+        body::after {
+            bottom: -200px;
+            right: -160px;
+            background: radial-gradient(circle, rgba(45, 212, 191, 0.5), transparent 65%);
+        }
+
+        .text-muted {
+            color: var(--rf-muted) !important;
+        }
+
+        #topnav {
+            background: rgba(13, 27, 34, 0.55);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--rf-border);
+            box-shadow: 0 12px 28px rgba(3, 10, 18, 0.35);
+        }
+
+        #topnav.nav-sticky,
+        #topnav.scroll {
+            background: rgba(13, 27, 34, 0.7);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow: 0 16px 32px rgba(3, 10, 18, 0.4);
+        }
+
+        #topnav .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1;
+        }
+
+        #topnav .rf-nav-shell {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 18px;
+            padding: 7px 0;
+            position: relative;
+            min-height: 82px;
+        }
+
+        #topnav #navigation {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #topnav #navigation .navigation-menu {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px;
+            margin: 0;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid transparent;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            width: fit-content;
+            max-width: 100%;
+            box-shadow: 0 10px 24px rgba(3, 10, 18, 0.3);
+        }
+
+        #topnav #navigation .navigation-menu.nav-left {
+            float: none;
+        }
+
+        #topnav .logo img {
+            height: 26px;
+        }
+
+        #topnav .logo .brand-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--rf-text);
+            letter-spacing: 0.3px;
+        }
+
+        #topnav .navigation-menu > li > a {
+            text-transform: none !important;
+            letter-spacing: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: rgba(226, 232, 240, 0.78) !important;
+            padding: 8px 14px;
+            border-radius: 999px;
+            transition: all 0.2s ease;
+        }
+
+        #topnav .navigation-menu > li:last-child > a {
+            background: linear-gradient(135deg, rgba(47, 107, 205, 0.35), rgba(34, 211, 238, 0.25));
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            color: #e2e8f0 !important;
+            border-radius: 33px;
+        }
+
+        #topnav .navigation-menu > li.active > a,
+        #topnav .navigation-menu > li:hover > a {
+            color: #f8fafc !important;
+            background: rgba(123, 168, 239, 0.18);
+        }
+
+        #topnav .navigation-menu > li:last-child > a:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(34, 211, 238, 0.4));
+        }
+
+        #topnav .navigation-menu.nav-light .menu-arrow {
+            border-color: rgba(226, 232, 240, 0.55) !important;
+        }
+
+        #topnav .navigation-menu > li .submenu {
+            background: rgba(19, 37, 45, 0.95);
+            border: 1px solid var(--rf-border);
+            border-radius: 14px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        @media (max-width: 991px) {
+            #topnav .rf-nav-shell {
+                flex-wrap: wrap;
+                grid-template-columns: 1fr auto;
+            }
+
+            #topnav #navigation {
+                width: 100%;
+                justify-content: flex-start;
+                order: 3;
+                position: static;
+                transform: none;
+            }
+
+            #topnav #navigation .navigation-menu {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                border-radius: 18px;
+                padding: 12px;
+                background: rgba(15, 23, 42, 0.65);
+            }
+
+            #topnav .navigation-menu > li > a {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            #topnav .navigation-menu > li > a {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                height: 34px;
+                line-height: 1;
+            }
+
+            #topnav .navigation-menu > li:last-child > a {
+                height: 30px;
+                padding: 0 12px;
+                font-size: 0.85rem;
+            }
+
+            #topnav .navigation-menu .menu-arrow {
+                position: static;
+                margin-left: 4px;
+                top: auto;
+                right: auto;
+                transform: none;
+            }
+        }
+
+        #topnav .navigation-menu > li .submenu li a {
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(226, 232, 240, 0.82) !important;
+        }
+
+        #topnav .navigation-menu > li .submenu li a:hover {
+            background: rgba(59, 130, 246, 0.18);
+            color: #f8fafc !important;
+        }
+
+        .rf-hero {
+            position: relative;
+            padding: 140px 0 90px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.18), transparent 45%),
+                radial-gradient(circle at 80% 15%, rgba(45, 212, 191, 0.14), transparent 45%),
+                linear-gradient(135deg, #0d1b22 0%, #112733 55%, #0d1b22 100%);
+        }
+
+        .rf-hero::after {
+            content: "";
+            position: absolute;
+            inset: 16px 22px 26px;
+            border-radius: 28px;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            z-index: 0;
+        }
+
+        .rf-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(90deg, rgba(56, 189, 248, 0.18) 0 1px, transparent 1px 140px),
+                repeating-linear-gradient(180deg, rgba(45, 212, 191, 0.14) 0 1px, transparent 1px 140px);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .rf-hero-inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .rf-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.18);
+            color: #bfdbfe;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .rf-title {
+            font-size: clamp(2.3rem, 3vw, 3.4rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #f8fafc;
+        }
+
+        .rf-subtitle {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--rf-muted);
+            font-size: 1rem;
+        }
+
+        .rf-section {
+            padding: 80px 0;
+        }
+
+        .rf-card {
+            background: rgba(23, 44, 54, 0.62);
+            border: 1px solid var(--rf-border);
+            border-radius: 22px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            height: 100%;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .rf-summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .rf-summary-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 16px;
+            background: rgba(15, 23, 42, 0.35);
+            border: 1px solid var(--rf-border);
+        }
+
+        .rf-summary-item i {
+            color: #7dd3fc;
+            font-size: 20px;
+        }
+
+        .rf-summary-item span {
+            color: var(--rf-muted);
+            font-size: 0.85rem;
+        }
+
+        .rf-summary-item strong {
+            color: var(--rf-text);
+            font-weight: 600;
+        }
+
+        .rf-appointment-card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .rf-appointment-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .rf-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .rf-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--rf-border);
+            background: rgba(15, 23, 42, 0.4);
+            flex-shrink: 0;
+        }
+
+        .rf-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rf-status {
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .rf-status.pending {
+            background: rgba(56, 189, 248, 0.2);
+            color: #bae6fd;
+        }
+
+        .rf-status.accepted {
+            background: rgba(34, 197, 94, 0.2);
+            color: #bbf7d0;
+        }
+
+        .rf-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .rf-meta-item {
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.32);
+            border: 1px solid var(--rf-border);
+        }
+
+        .rf-meta-item span {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--rf-muted);
+        }
+
+        .rf-meta-item strong {
+            color: var(--rf-text);
+            font-weight: 600;
+        }
+
+        .rf-meta-full {
+            grid-column: 1 / -1;
+        }
+
+        .rf-appointment-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .rf-profile-card .rf-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+        }
+
+        .rf-info-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .rf-info-item {
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.32);
+            border: 1px solid var(--rf-border);
+        }
+
+        .rf-info-item span {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--rf-muted);
+        }
+
+        .rf-info-item strong {
+            color: var(--rf-text);
+            font-weight: 600;
+        }
+
+        .rf-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: rgba(59, 130, 246, 0.18);
+            color: #bfdbfe;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .rf-btn-primary {
+            background: linear-gradient(135deg, var(--rf-primary) 0%, var(--rf-primary-2) 100%);
+            border: 0;
+            color: #ffffff;
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 0.7rem 1.4rem;
+        }
+
+        .rf-btn-outline {
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #bfdbfe;
+            background: transparent;
+            border-radius: 12px;
+            padding: 0.65rem 1.2rem;
+            font-weight: 600;
+        }
+
+        .rf-search {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .rf-search input {
+            flex: 1 1 240px;
+            background: #112733;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: #e2e8f0;
+        }
+
+        .rf-search input::placeholder {
+            color: rgba(226, 232, 240, 0.5);
+        }
+
+        .rf-link-list a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            color: #e2e8f0;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+        }
+
+        .rf-link-list a:last-child {
+            border-bottom: 0;
+        }
+
+        .rf-filter-card {
+            padding: 20px;
+        }
+
+        .rf-filter-card .form-control,
+        .rf-filter-card .form-select,
+        .rf-filter-card .input-group-text {
+            background: rgba(15, 23, 42, 0.45) !important;
+            border: 1px solid rgba(148, 163, 184, 0.2) !important;
+            color: var(--rf-text) !important;
+        }
+
+        .rf-filter-card .input-group-text {
+            color: #7dd3fc;
+        }
+
+        .rf-medicine-card {
+            padding: 18px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: linear-gradient(160deg, rgba(23, 44, 54, 0.85), rgba(15, 29, 38, 0.9));
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .rf-medicine-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px rgba(8, 16, 26, 0.35);
+        }
+
+        .rf-medicine-image {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: rgba(15, 23, 42, 0.4);
+            padding: 12px;
+        }
+
+        .rf-medicine-image img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.25s ease;
+            border-radius: 14px;
+            background: #0b131b;
+        }
+
+        .rf-medicine-card:hover .rf-medicine-image img {
+            transform: scale(1.04);
+        }
+
+        .rf-medicine-body h6 {
+            color: var(--rf-text);
+            font-weight: 600;
+        }
+
+        .rf-meta-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .rf-meta-pill {
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            font-size: 0.75rem;
+            color: var(--rf-muted);
+            min-height: 58px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .rf-meta-pill strong {
+            display: block;
+            color: var(--rf-text);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .doctor-profile-cover {
+            position: relative;
+            padding: 22px 28px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 45%, #3b82f6 100%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            overflow: hidden;
+        }
+
+        .doctor-profile-cover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18), transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.12), transparent 45%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .doctor-profile-cover .cover-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .doctor-profile-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.7);
+            background: rgba(15, 23, 42, 0.2);
+            box-shadow: 0 10px 26px rgba(7, 15, 39, 0.4);
+            flex-shrink: 0;
+        }
+
+        .doctor-profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .doctor-profile-title {
+            color: #f8fafc;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .doctor-profile-subtitle {
+            color: rgba(226, 232, 240, 0.85);
+            font-size: 0.9rem;
+        }
+
+        .doctor-portal .section,
+        .doctor-portal .space-ptb {
+            background: transparent;
+            padding: 80px 0;
+        }
+
+        .doctor-portal .bg-light {
+            background: transparent !important;
+        }
+
+        .doctor-portal h1,
+        .doctor-portal h2,
+        .doctor-portal h3,
+        .doctor-portal h4,
+        .doctor-portal h5,
+        .doctor-portal h6 {
+            color: var(--rf-text);
+        }
+
+        .doctor-portal .text-dark {
+            color: var(--rf-text) !important;
+        }
+
+        .doctor-portal .card,
+        .doctor-portal .blog-post,
+        .doctor-portal .team,
+        .doctor-portal .login-page,
+        .doctor-portal .blog-post-content,
+        .doctor-portal .blog-post-details,
+        .doctor-portal .shop-list,
+        .doctor-portal .table,
+        .doctor-portal .table > :not(caption) > * > * {
+            background: rgba(23, 44, 54, 0.62) !important;
+            border-color: var(--rf-border) !important;
+            color: var(--rf-text);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .doctor-portal .table thead th,
+        .doctor-portal .table th,
+        .doctor-portal .table td {
+            color: var(--rf-text);
+        }
+
+        .doctor-portal .blog-post-title a,
+        .doctor-portal .blog-post-meta a,
+        .doctor-portal .link,
+        .doctor-portal .title {
+            color: var(--rf-text) !important;
+        }
+
+        .doctor-portal .form-control,
+        .doctor-portal .form-select,
+        .doctor-portal textarea.form-control {
+            background: #112733 !important;
+            border: 1px solid rgba(148, 163, 184, 0.2) !important;
+            color: #e2e8f0 !important;
+        }
+
+        .doctor-portal .form-control::placeholder {
+            color: rgba(226, 232, 240, 0.5);
+        }
+
+        .doctor-portal .form-label,
+        .doctor-portal label {
+            color: #cbd5f5;
+        }
+
+        .doctor-portal .btn-outline-primary {
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #bfdbfe;
+        }
+
+        .doctor-portal .btn-outline-primary:hover {
+            background: rgba(59, 130, 246, 0.18);
+            color: #bfdbfe;
+        }
+
+        .doctor-portal .section-title span,
+        .doctor-portal .section-title p,
+        .doctor-portal .blog-post-description p,
+        .doctor-portal .para-desc {
+            color: var(--rf-muted) !important;
+        }
+
+        .doctor-portal .blog-post-image img,
+        .doctor-portal .team-person img,
+        .doctor-portal .shop-image img,
+        .doctor-portal .client-review-slider img {
+            border-radius: 18px;
+        }
+
+        .rf-footer {
+            background: linear-gradient(135deg, #0b1520 0%, #0f222b 55%, #0b1520 100%);
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rf-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 0%, rgba(59, 130, 246, 0.18), transparent 45%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .rf-footer .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .rf-footer-card {
+            background: rgba(17, 39, 51, 0.55);
+            border: 1px solid var(--rf-border);
+            border-radius: 18px;
+            padding: 20px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .rf-footer a {
+            color: #cbd5f5;
+            text-decoration: none;
+        }
+
+        .rf-footer a:hover {
+            color: #e2e8f0;
+        }
+
+        .rf-footer-bottom {
+            border-top: 1px solid rgba(148, 163, 184, 0.18);
+            padding-top: 18px;
+            margin-top: 18px;
+            color: var(--rf-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+
+</head>
+
+    <body class="doctor-portal">
+
+        {% for m in messages %}
+    <script>
+        alert('{{m}}');
+    </script>
+{% endfor %}
+        <!-- Loader -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader -->
+        
+        <!-- Navbar STart -->
+        <header id="topnav" class="navigation sticky">
+            <div class="container">
+                <div class="rf-nav-shell">
+                    <!-- Logo container-->
+                    <div>
+                        <a class="logo" href="/doctorHome">
+                            <img src="{% static '/assets/images/logo-icon.png' %}" alt="Medical Advisor">
+                            <span class="brand-text">Medical Advisor</span>
+                        </a>
+                    </div>
+                    <!-- End Logo container-->
+
+                    <div id="navigation">
+                        <!-- Navigation Menu-->   
+                        <ul class="navigation-menu nav-left nav-light">
+                            <li class="has-submenu parent-menu-item">
+                                <a href="/doctorHome">Home</a>
+                            </li>
+                            <li><a href="/DoctorProfile" class="sub-menu-item">Profile</a></li>
+                            <li><a href="/dr_viewMedicine" class="sub-menu-item">Medicine</a></li>
+                            <li class="has-submenu parent-parent-menu-item">
+                                <a>Booking</a><span class="menu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="/doc_view_bookings" class="sub-menu-item">Bookings</a></li>
+                                    <li><a href="/accepted_appointments" class="sub-menu-item">Accepted Appointments</a></li>
+                                    <li><a href="/doctor_patient_chats" class="sub-menu-item">Patient Chat Intakes</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/logout/" class="sub-menu-item">Logout</a></li>
+                        </ul><!--end navigation menu-->
+                    </div><!--end navigation-->
+
+                    <!-- Start Mobile Toggle -->
+                    <div class="menu-extras">
+                        <div class="menu-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </div>
+                    </div>
+                    <!-- End Mobile Toggle -->
+                </div>
+            </div><!--end container-->
+        </header><!--end header-->
+        <!-- Navbar End -->
+
+        <!-- Start Hero -->
+        <section class="rf-hero">
+            <div class="container rf-hero-inner">
+                <span class="rf-pill"><i class="ri-stethoscope-line"></i> Doctor Portal</span>
+                <h1 class="rf-title">{% block page_title %}Doctor Dashboard{% endblock %}</h1>
+                <p class="rf-subtitle">{% block page_subtitle %}Manage appointments, prescriptions, and medicine access with a modern workspace designed for focus.{% endblock %}</p>
+            </div>
+        </section><!--end section-->
+        {% comment %} <div class="position-relative">
+            <div class="shape overflow-hidden text-color-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!-- End Hero -->
+         
+
+        <!-- Start -->
+        <section class="section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="position-relative">
+                            <img src="{% static '/assets/images/about/about-2.png' %}" class="img-fluid" alt="">
+                            <div class="play-icon">
+                                <a  data-type="youtube" data-id="yba7hPeTSjk" class="play-btn lightbox video-play-icon">
+                                    <i class="mdi mdi-play text-primary rounded-circle shadow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-lg-7 col-md-6 mt-4 mt-lg-0 pt- pt-lg-0">
+                        <div class="ms-lg-4">
+                            <div class="section-title me-lg-5">
+                                <span class="badge rounded-pill bg-soft-primary">About Doctris</span>
+                                <h4 class="title mt-3 mb-4">Good Services And Better <br> Health By Our Specialists</h4>
+                                <p class="para-desc text-muted"> </p>
+                                <p class="para-desc text-muted">The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. Lorem Ipsum is composed in a pseudo-Latin language which more or less corresponds to 'proper' Latin. It contains a series of real Latin words.</p>
+                                <div class="mt-4">
+                                    <a href="javascript:void(0)" class="btn btn-soft-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+
+            <div class="container mt-100 mt-60">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title mb-4 pb-2 text-center">
+                            <span class="badge rounded-pill bg-soft-primary mb-3">Departments</span>
+                            <h4 class="title mb-4">Our Medical Services</h4>
+                            <p class="text-muted mx-auto para-desc mb-0"> </p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row">
+                    <div class="col-xl-3 col-md-4 col-12 mt-4 pt-2">
+                        <div class="card features feature-primary border-0">
+                            <div class="icon text-center rounded-md">
+                                <i class="ri-eye-fill h3 mb-0"></i>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <a href="javascript:void(0)" class="title text-dark h5">Eye Care</a>
+                                <p class="text-muted mt-3">Professional eye examination and vision correction services to ensure optimal eye health and clear vision.</p>
+                                <a href="javascript:void(0)" class="link">Read More <i class="ri-arrow-right-line align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-xl-3 col-md-4 col-12 mt-4 pt-2">
+                        <div class="card features feature-primary border-0">
+                            <div class="icon text-center rounded-md">
+                                <i class="ri-psychotherapy-fill h3 mb-0"></i>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <a href="javascript:void(0)" class="title text-dark h5">Psychotherapy</a>
+                                <p class="text-muted mt-3">Mental health support and counseling services to help manage stress, anxiety, and emotional well-being.</p>
+                                <a href="javascript:void(0)" class="link">Read More <i class="ri-arrow-right-line align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-xl-3 col-md-4 col-12 mt-4 pt-2">
+                        <div class="card features feature-primary border-0">
+                            <div class="icon text-center rounded-md">
+                                <i class="ri-stethoscope-fill h3 mb-0"></i>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <a href="javascript:void(0)" class="title text-dark h5">Primary Care</a>
+                                <p class="text-muted mt-3">Comprehensive healthcare services for routine check-ups, preventive care, and general medical consultations.</p>
+                                <a href="javascript:void(0)" class="link">Read More <i class="ri-arrow-right-line align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-xl-3 col-md-4 col-12 mt-4 pt-2">
+                        <div class="card features feature-primary border-0">
+                            <div class="icon text-center rounded-md">
+                                <i class="ri-capsule-fill h3 mb-0"></i>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <a href="javascript:void(0)" class="title text-dark h5">Dental Care</a>
+                                <p class="text-muted mt-3">Professional dental services including cleanings, treatments, and procedures for healthy teeth and gums.</p>
+                                <a href="javascript:void(0)" class="link">Read More <i class="ri-arrow-right-line align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-xl-3 col-md-4 col-12 mt-4 pt-2">
+                        <div class="card features feature-primary border-0">
+                            <div class="icon text-center rounded-md">
+                                <i class="ri-microscope-fill h3 mb-0"></i>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <a href="javascript:void(0)" class="title text-dark h5">Orthopedic</a>
+                                <p class="text-muted mt-3">Specialized care for bone, joint, and muscle disorders including diagnosis, treatment, and rehabilitation.</p>
+                                <a href="javascript:void(0)" class="link">Read More <i class="ri-arrow-right-line align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-xl-3 col-md-4 col-12 mt-4 pt-2">
+                        <div class="card features feature-primary border-0">
+                            <div class="icon text-center rounded-md">
+                                <i class="ri-pulse-fill h3 mb-0"></i>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <a href="javascript:void(0)" class="title text-dark h5">Cardiology</a>
+                                <p class="text-muted mt-3">Expert cardiovascular health services for heart disease prevention, diagnosis, and management.</p>
+                                <a href="javascript:void(0)" class="link">Read More <i class="ri-arrow-right-line align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-xl-3 col-md-4 col-12 mt-4 pt-2">
+                        <div class="card features feature-primary border-0">
+                            <div class="icon text-center rounded-md">
+                                <i class="ri-empathize-fill h3 mb-0"></i>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <a href="javascript:void(0)" class="title text-dark h5">Gynecology</a>
+                                <p class="text-muted mt-3">Comprehensive women's health services including preventive care, wellness exams, and specialized treatments.</p>
+                                <a href="javascript:void(0)" class="link">Read More <i class="ri-arrow-right-line align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-xl-3 col-md-4 col-12 mt-4 pt-2">
+                        <div class="card features feature-primary border-0">
+                            <div class="icon text-center rounded-md">
+                                <i class="ri-mind-map h3 mb-0"></i>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <a href="javascript:void(0)" class="title text-dark h5">Neurology</a>
+                                <p class="text-muted mt-3">Specialized neurological care for brain and nervous system disorders with advanced diagnostic and treatment options.</p>
+                                <a href="javascript:void(0)" class="link">Read More <i class="ri-arrow-right-line align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+
+            <div class="container mt-100 mt-60">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title text-center mb-4 pb-2">
+                            <h4 class="title mb-4">Doctors</h4>
+                            <p class="text-muted mx-auto para-desc mb-0"> </p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-3 col-md-6 mt-4 pt-2">
+                        <div class="card team border-0 rounded shadow overflow-hidden">
+                            <div class="team-img position-relative">
+                                <img src="../assets/images/doctors/01.jpg" class="img-fluid" alt="">
+                                <ul class="list-unstyled team-social mb-0">
+                                    <li><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="facebook" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="linkedin" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="github" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="twitter" class="icons"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body content text-center">
+                                <a href="#" class="title text-dark h5 d-block mb-0">Calvin Carlo</a>
+                                <small class="text-muted speciality">Eye Care</small>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-xl-3 col-lg-3 col-md-6 mt-4 pt-2">
+                        <div class="card team border-0 rounded shadow overflow-hidden">
+                            <div class="team-img position-relative">
+                                <img src="../assets/images/doctors/02.jpg" class="img-fluid" alt="">
+                                <ul class="list-unstyled team-social mb-0">
+                                    <li><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="facebook" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="linkedin" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="github" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="twitter" class="icons"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body content text-center">
+                                <a href="#" class="title text-dark h5 d-block mb-0">Cristino Murphy</a>
+                                <small class="text-muted speciality">Gynecology</small>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-xl-3 col-lg-3 col-md-6 mt-4 pt-2">
+                        <div class="card team border-0 rounded shadow overflow-hidden">
+                            <div class="team-img position-relative">
+                                <img src="../assets/images/doctors/03.jpg" class="img-fluid" alt="">
+                                <ul class="list-unstyled team-social mb-0">
+                                    <li><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="facebook" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="linkedin" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="github" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="twitter" class="icons"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body content text-center">
+                                <a href="#" class="title text-dark h5 d-block mb-0">Alia Reddy</a>
+                                <small class="text-muted speciality">Psychotherapy</small>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-xl-3 col-lg-3 col-md-6 mt-4 pt-2">
+                        <div class="card team border-0 rounded shadow overflow-hidden">
+                            <div class="team-img position-relative">
+                                <img src="../assets/images/doctors/04.jpg" class="img-fluid" alt="">
+                                <ul class="list-unstyled team-social mb-0">
+                                    <li><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="facebook" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="linkedin" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="github" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="twitter" class="icons"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body content text-center">
+                                <a href="#" class="title text-dark h5 d-block mb-0">Toni Kovar</a>
+                                <small class="text-muted speciality">Orthopedic</small>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-12 mt-4 pt-2 text-center">
+                        <a href="doctor-team-one.html" class="btn btn-primary">See More</a>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section><!--end section--> {% endcomment %}
+        <!-- End -->
+{% block content %}{% endblock  %}
+        <footer class="rf-footer py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="rf-footer-card">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="rf-icon" style="width: 42px; height: 42px;">
+                                    <i class="ri-heart-pulse-line"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1 text-white">Medical Advisor</h6>
+                                    <small class="text-muted">Doctor Portal</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">Deliver better care with unified scheduling, prescriptions, and pharmacy coordination.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="rf-footer-card">
+                            <h6 class="text-white mb-3">Quick Links</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <a href="/doctorHome">Dashboard</a>
+                                <a href="/DoctorProfile">Profile</a>
+                                <a href="/doc_view_bookings">Bookings</a>
+                                <a href="/accepted_appointments">Accepted Appointments</a>
+                                <a href="/doctor_patient_chats">Patient Chat Intakes</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="rf-footer-card">
+                            <h6 class="text-white mb-3">Support</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <span class="text-muted">Need help? Reach us at</span>
+                                <a href="mailto:contact@example.com">contact@example.com</a>
+                                <a href="tel:+152534-468-854">+152 534-468-854</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rf-footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+                    <span>&copy; <script>document.write(new Date().getFullYear())</script> Medical Advisor. All rights reserved.</span>
+                    <span>
+                        <a href="terms.html">Terms</a> ·
+                        <a href="privacy.html">Privacy</a> ·
+                        <a href="contact.html">Contact</a>
+                    </span>
+                </div>
+            </div>
+        </footer><!--end footer-->
+        <!-- End -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5 rounded-pill text-center bg-primary justify-content-center align-items-center"><i data-feather="arrow-up" class="fea icon-sm"></i></a>
+        <!-- Back to top -->
+
+        <!-- Offcanvas Start -->
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop">
+            <div class="offcanvas-body d-flex align-items-center align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h4>Search now.....</h4>
+                                <div class="subcribe-form mt-4">
+                                    <form>
+                                        <div class="mb-0">
+                                            <input type="text" id="help" name="name" class="border rounded-pill" required="" placeholder="Search">
+                                            <button type="submit" class="btn btn-pills btn-primary">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end container-->
+            </div>
+        </div>
+        <!-- Offcanvas End -->
+
+        <!-- Offcanvas Start -->
+        <div class="offcanvas offcanvas-end shadow border-0" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header p-4 border-bottom">
+                <h5 id="offcanvasRightLabel" class="mb-0">
+                    <img src="../assets/images/logo-dark.png" height="22" class="light-version" alt="">
+                    <img src="../assets/images/logo-light.png" height="22" class="dark-version" alt="">
+                </h5>
+                <button type="button" class="btn-close d-flex align-items-center text-dark" data-bs-dismiss="offcanvas" aria-label="Close"><i class="uil uil-times fs-4"></i></button>
+            </div>
+            <div class="offcanvas-body p-4 px-md-5">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Style switcher -->
+                        <div id="style-switcher">
+                            <div>
+                                <ul class="text-center style-switcher list-unstyled mb-0">
+                                    <li class="d-grid"><a href="javascript:void(0)" class="rtl-version t-rtl-light" onclick="setTheme('style-rtl')"><img src="../assets/images/layouts/landing-light-rtl.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">RTL Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="ltr-version t-ltr-light" onclick="setTheme('style')"><img src="../assets/images/layouts/landing-light.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">LTR Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="dark-rtl-version t-rtl-dark" onclick="setTheme('style-dark-rtl')"><img src="../assets/images/layouts/landing-dark-rtl.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">RTL Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="dark-ltr-version t-ltr-dark" onclick="setTheme('style-dark')"><img src="../assets/images/layouts/landing-dark.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">LTR Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="dark-version t-dark mt-4" onclick="setTheme('style-dark')"><img src="../assets/images/layouts/landing-dark.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">Dark Version</span></a></li>
+                                    <li class="d-grid"><a href="javascript:void(0)" class="light-version t-light mt-4" onclick="setTheme('style')"><img src="../assets/images/layouts/landing-light.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">Light Version</span></a></li>
+                                    <li class="d-grid"><a href="https:// Medipalin/doctris/layouts/admin/index.html" target="_blank" class="mt-4"><img src="../assets/images/layouts/light-dash.png" class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;" alt=""><span class="text-dark fw-medium mt-3 d-block">Admin Dashboard</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end Style switcher -->
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div>
+
+            <div class="offcanvas-footer p-4 border-top text-center">
+                <ul class="list-unstyled social-icon social mb-0">
+                    <li class="list-inline-item mb-0"><a href="https://1.envato.market/doctris-template" target="_blank" class="rounded"><i class="uil uil-shopping-cart align-middle" title="Buy Now"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://dribbble.com/shreethemes" target="_blank" class="rounded"><i class="uil uil-dribbble align-middle" title="dribbble"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://www.behance.net/shreethemes" target="_blank" class="rounded"><i class="uil uil-behance align-middle" title="behance"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://www.facebook.com/shreethemes" target="_blank" class="rounded"><i class="uil uil-facebook-f align-middle" title="facebook"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://www.instagram.com/shreethemes/" target="_blank" class="rounded"><i class="uil uil-instagram align-middle" title="instagram"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https://x.com/shreethemes" target="_blank" class="rounded"><i class="uil uil-twitter align-middle" title="twitter"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="mailto:support@ Medipalin" class="rounded"><i class="uil uil-envelope align-middle" title="email"></i></a></li>
+                    <li class="list-inline-item mb-0"><a href="https:// Medipalin/" target="_blank" class="rounded"><i class="uil uil-globe align-middle" title="website"></i></a></li>
+                </ul><!--end icon-->
+            </div>
+        </div>
+        <!-- Offcanvas End -->
+        
+        <script src="{% static 'assets/libs/tiny-slider/min/tiny-slider.js' %}"></script>
+        <script src="{% static 'assets/libs/tobii/js/tobii.min.js' %}"></script>
+        <script src="{% static 'assets/libs/feather-icons/feather.min.js' %}"></script>
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/js/plugins.init.js' %}"></script>
+        <script src="{% static 'assets/js/app.js' %}"></script>
+    </body>
+
+
+<!-- Mirrored from  Medipalin/doctris/layouts/landing/aboutus.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Feb 2025 06:57:54 GMT -->
+</html>

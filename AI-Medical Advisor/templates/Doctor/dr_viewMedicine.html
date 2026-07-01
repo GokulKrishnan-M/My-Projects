@@ -1,0 +1,109 @@
+{% extends "Doctor/common.html" %}
+{% block page_title %}Medicine Library{% endblock %}
+{% block page_subtitle %}Search approved medicines and verify details before prescribing.{% endblock %}
+{% block content %}
+<section class="rf-section">
+    <div class="container">
+        <div class="rf-card rf-filter-card mb-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
+                <div>
+                    <h5 class="mb-1 text-white">Search & Filter Medicines</h5>
+                    <small class="text-muted">Filters update with new registrations</small>
+                </div>
+            </div>
+            <form method="GET" action="{% url 'dr_viewMedicine' %}">
+                <div class="row g-3 align-items-end">
+                    <div class="col-lg-3 col-md-6">
+                        <label class="form-label text-muted">Search</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="ri-search-line"></i></span>
+                            <input type="text" name="q" class="form-control" placeholder="Search medicine" value="{{ q }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="form-label text-muted">Place</label>
+                        <select name="place" class="form-select">
+                            <option value="">All Places</option>
+                            {% for p in places %}
+                            <option value="{{ p }}" {% if place == p %}selected{% endif %}>{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="form-label text-muted">Stock</label>
+                        <select name="stock" class="form-select">
+                            <option value="">All Stock</option>
+                            <option value="in" {% if stock == "in" %}selected{% endif %}>In Stock</option>
+                            <option value="low" {% if stock == "low" %}selected{% endif %}>Low Stock</option>
+                            <option value="out" {% if stock == "out" %}selected{% endif %}>Out of Stock</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="form-label text-muted">Expiry</label>
+                        <select name="expiry" class="form-select">
+                            <option value="">All Expiry</option>
+                            <option value="valid" {% if expiry == "valid" %}selected{% endif %}>Valid</option>
+                            <option value="soon" {% if expiry == "soon" %}selected{% endif %}>Expiring Soon</option>
+                            <option value="expired" {% if expiry == "expired" %}selected{% endif %}>Expired</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="form-label text-muted">Sort</label>
+                        <select name="sort" class="form-select">
+                            <option value="">Sort</option>
+                            <option value="name_asc" {% if sort == "name_asc" %}selected{% endif %}>Name A-Z</option>
+                            <option value="price_asc" {% if sort == "price_asc" %}selected{% endif %}>Price Low-High</option>
+                            <option value="price_desc" {% if sort == "price_desc" %}selected{% endif %}>Price High-Low</option>
+                            <option value="expiry_asc" {% if sort == "expiry_asc" %}selected{% endif %}>Expiry Soon</option>
+                            <option value="expiry_desc" {% if sort == "expiry_desc" %}selected{% endif %}>Expiry Far</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-auto col-md-6">
+                        <button type="submit" class="btn rf-btn-primary px-4 text-nowrap">Apply Filters</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="row g-4">
+            {% for i in data %}
+            <div class="col-lg-3 col-md-6 col-12">
+                <div class="rf-card rf-medicine-card">
+                    <div class="rf-medicine-image mb-3">
+                        <img src="{{ i.display_image_url }}" alt="{{ i.name }}">
+                    </div>
+                    <div class="rf-medicine-body">
+                        <h6 class="mb-1">{{ i.name }}</h6>
+                        <p class="text-muted small mb-2">Verified inventory details</p>
+                        <div class="rf-meta-row">
+                            <div class="rf-meta-pill">
+                                <span>Price</span>
+                                <strong>{{ i.price }}</strong>
+                            </div>
+                            <div class="rf-meta-pill">
+                                <span>Qty</span>
+                                <strong>{{ i.qty }}</strong>
+                            </div>
+                            <div class="rf-meta-pill">
+                                <span>Expiry</span>
+                                <strong>{{ i.expiry }}</strong>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <a href="/dr_viewMedicinedetails?id={{ i.id }}" class="btn rf-btn-outline btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="rf-card text-center">
+                    <h6 class="text-white">No medicines found</h6>
+                    <p class="text-muted mb-0">Try adjusting your filters or search keywords.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

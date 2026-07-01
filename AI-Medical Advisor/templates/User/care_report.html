@@ -1,0 +1,1277 @@
+{% extends "User/common.html" %}
+
+{% block content %}
+<style>
+    .care-portal-page {
+        --care-blue-950: #133066;
+        --care-blue-900: #1a4184;
+        --care-blue-850: #2453a4;
+        --care-blue-800: #2f69d1;
+        --care-blue-700: #4195f0;
+        --care-chat-base: #eef5ff;
+        --care-chat-base-strong: #e2edff;
+        --care-chat-glass: rgba(255, 255, 255, 0.7);
+        --care-chat-glass-strong: rgba(255, 255, 255, 0.82);
+        --care-chat-border: rgba(163, 192, 238, 0.46);
+        --care-chat-text: #17345f;
+        --care-chat-text-soft: #6482aa;
+        --care-line: rgba(255, 255, 255, 0.14);
+        --care-surface: #ffffff;
+        --care-border: #c8daf7;
+        --care-border-strong: #a7c5f6;
+        --care-text: #17345f;
+        --care-text-soft: #5d7aa2;
+        --care-shadow: 0 24px 54px rgba(20, 52, 103, 0.12);
+        margin: -112px auto 0;
+        max-width: 1500px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .care-portal-page * {
+        box-sizing: border-box;
+    }
+
+    .care-grid {
+        display: grid;
+        gap: 26px;
+        grid-template-columns: minmax(0, 1.7fr) minmax(340px, 0.95fr);
+        align-items: start;
+    }
+
+    .care-shell,
+    .care-report-card {
+        background: var(--care-surface);
+        border: 1px solid rgba(163, 192, 238, 0.74);
+        border-radius: 28px;
+        box-shadow: var(--care-shadow);
+        overflow: hidden;
+    }
+
+    .care-cover,
+    .care-card-cover {
+        background:
+            linear-gradient(var(--care-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--care-line) 1px, transparent 1px),
+            linear-gradient(135deg, var(--care-blue-950) 0%, var(--care-blue-900) 45%, var(--care-blue-850) 100%);
+        background-size: 120px 120px, 120px 120px, auto;
+        color: #ffffff;
+        padding: 24px 28px;
+    }
+
+    .care-cover-top {
+        align-items: flex-start;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+    }
+
+    .care-kicker {
+        color: rgba(255, 255, 255, 0.84);
+        display: inline-flex;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    .care-cover h1,
+    .care-card-cover h2 {
+        color: #ffffff;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.08;
+        margin: 0 0 8px;
+    }
+
+    .care-card-cover h2 {
+        font-size: 1.85rem;
+        margin-bottom: 10px;
+    }
+
+    .care-cover p,
+    .care-card-cover p {
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 1rem;
+        line-height: 1.65;
+        margin: 0;
+        max-width: 680px;
+    }
+
+    .care-secondary-button,
+    .care-primary-button,
+    .care-icon-button,
+    .care-prompt-button {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .care-secondary-button {
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 999px;
+        color: #ffffff;
+        font-size: 0.98rem;
+        font-weight: 700;
+        min-width: 132px;
+        padding: 12px 20px;
+        white-space: nowrap;
+    }
+
+    .care-secondary-button:hover,
+    .care-primary-button:hover,
+    .care-icon-button:hover,
+    .care-prompt-button:hover {
+        transform: translateY(-1px);
+    }
+
+    .care-chat-body {
+        background:
+            radial-gradient(circle at top right, rgba(111, 181, 255, 0.22), transparent 30%),
+            radial-gradient(circle at left center, rgba(255, 255, 255, 0.94), transparent 26%),
+            linear-gradient(180deg, var(--care-chat-base) 0%, var(--care-chat-base-strong) 100%);
+        padding: 24px 28px 28px;
+    }
+
+    .care-stats {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin-bottom: 18px;
+    }
+
+    .care-stat {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(246, 250, 255, 0.68) 100%);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--care-chat-border);
+        border-radius: 22px;
+        box-shadow: 0 14px 30px rgba(24, 63, 122, 0.12);
+        min-height: 112px;
+        padding: 18px 18px 16px;
+    }
+
+    .care-stat-label {
+        color: #6f8db6;
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .care-stat-value {
+        color: var(--care-chat-text);
+        font-size: 1.05rem;
+        font-weight: 800;
+        line-height: 1.35;
+        margin: 0 0 8px;
+    }
+
+    .care-stat-note {
+        color: var(--care-chat-text-soft);
+        font-size: 0.94rem;
+        line-height: 1.45;
+        margin: 0;
+    }
+
+    .care-photo-note {
+        align-items: flex-start;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(242, 248, 255, 0.7) 100%);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--care-chat-border);
+        border-radius: 22px;
+        color: var(--care-chat-text);
+        display: flex;
+        gap: 14px;
+        margin-bottom: 18px;
+        padding: 16px 18px;
+    }
+
+    .care-photo-note[hidden] {
+        display: none !important;
+    }
+
+    .care-photo-badge {
+        align-items: center;
+        background: linear-gradient(135deg, var(--care-blue-850), var(--care-blue-700));
+        border-radius: 14px;
+        color: #ffffff;
+        display: inline-flex;
+        font-size: 0.82rem;
+        font-weight: 800;
+        justify-content: center;
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0 10px;
+        text-transform: uppercase;
+    }
+
+    .care-photo-copy strong {
+        color: var(--care-chat-text);
+        display: block;
+        font-size: 0.96rem;
+        margin-bottom: 4px;
+    }
+
+    .care-photo-copy p {
+        color: var(--care-chat-text-soft);
+        font-size: 0.94rem;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .care-transcript-wrap {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.84) 0%, rgba(246, 250, 255, 0.74) 100%);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border: 1px solid var(--care-chat-border);
+        border-radius: 26px;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.55),
+            0 16px 36px rgba(24, 63, 122, 0.12);
+        padding: 14px;
+    }
+
+    .care-status {
+        background: rgba(245, 250, 255, 0.88);
+        border: 1px solid var(--care-chat-border);
+        border-radius: 16px;
+        color: var(--care-chat-text);
+        font-size: 0.92rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        padding: 10px 14px;
+    }
+
+    .care-status.is-error {
+        background: #fff0f0;
+        border-color: #f5c7c7;
+        color: #b43434;
+    }
+
+    .care-transcript {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        height: 460px;
+        overflow-y: auto;
+        padding-right: 6px;
+        scrollbar-color: #7ea9ec #dbe8fb;
+        scrollbar-width: thin;
+    }
+
+    .care-transcript::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    .care-transcript::-webkit-scrollbar-track {
+        background: #dbe8fb;
+        border-radius: 999px;
+    }
+
+    .care-transcript::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #78b7ff, #327dea);
+        border: 2px solid #dbe8fb;
+        border-radius: 999px;
+    }
+
+    .care-transcript-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        min-height: min-content;
+    }
+
+    .care-message {
+        display: flex;
+        gap: 12px;
+        max-width: 88%;
+    }
+
+    .care-message.is-user {
+        align-self: flex-end;
+        flex-direction: row-reverse;
+    }
+
+    .care-avatar {
+        align-items: center;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(177, 204, 242, 0.8);
+        box-shadow: 0 10px 22px rgba(26, 68, 132, 0.1);
+        border-radius: 16px;
+        color: var(--care-blue-850);
+        display: inline-flex;
+        font-size: 0.84rem;
+        font-weight: 800;
+        height: 46px;
+        justify-content: center;
+        min-width: 46px;
+        text-transform: uppercase;
+    }
+
+    .care-message.is-user .care-avatar {
+        background: #d9ebff;
+        color: var(--care-blue-900);
+    }
+
+    .care-message.is-doctor .care-avatar {
+        background: #dff4ee;
+        color: #116149;
+    }
+
+    .care-bubble {
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(193, 214, 248, 0.9);
+        border-radius: 24px;
+        box-shadow: 0 18px 36px rgba(5, 20, 49, 0.18);
+        color: var(--care-text);
+        padding: 18px 20px;
+    }
+
+    .care-message.is-user .care-bubble {
+        background: linear-gradient(135deg, var(--care-blue-800), #5a8bff);
+        border-color: transparent;
+        color: #ffffff;
+    }
+
+    .care-message.is-doctor .care-bubble {
+        background: linear-gradient(180deg, #f2fffb 0%, #e6fbf3 100%);
+        border-color: #bfe9d8;
+        color: #15443a;
+    }
+
+    .care-bubble-label {
+        color: #7e9bc0;
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .care-message.is-user .care-bubble-label {
+        color: rgba(255, 255, 255, 0.84);
+    }
+
+    .care-bubble-text {
+        font-size: 1.06rem;
+        line-height: 1.8;
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .care-typing {
+        align-self: flex-start;
+        background: rgba(248, 251, 255, 0.84);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--care-chat-border);
+        border-radius: 16px;
+        color: var(--care-chat-text-soft);
+        font-size: 0.94rem;
+        font-weight: 700;
+        padding: 10px 14px;
+    }
+
+    .care-compose-form {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(246, 250, 255, 0.7) 100%);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid var(--care-chat-border);
+        border-radius: 26px;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.58),
+            0 16px 34px rgba(24, 63, 122, 0.12);
+        margin-top: 18px;
+        padding: 14px;
+    }
+
+    .care-compose-row {
+        align-items: flex-end;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .care-compose-form textarea {
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(199, 219, 248, 0.92);
+        border-radius: 20px;
+        color: var(--care-text);
+        font-family: inherit;
+        font-size: 1rem;
+        line-height: 1.6;
+        min-height: 86px;
+        outline: none;
+        padding: 16px 18px;
+        resize: none;
+        width: 100%;
+    }
+
+    .care-compose-form textarea::placeholder {
+        color: #7f99bb;
+    }
+
+    .care-compose-form textarea:focus {
+        border-color: rgba(181, 215, 255, 0.42);
+        box-shadow: 0 0 0 3px rgba(101, 171, 255, 0.18);
+    }
+
+    .care-compose-actions {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+
+    .care-icon-button {
+        align-items: center;
+        background: rgba(230, 240, 255, 0.88);
+        border: 1px solid rgba(188, 211, 245, 0.9);
+        box-shadow: 0 12px 24px rgba(24, 63, 122, 0.1);
+        border-radius: 18px;
+        color: var(--care-blue-850);
+        display: inline-flex;
+        font-size: 1.7rem;
+        font-weight: 500;
+        height: 56px;
+        justify-content: center;
+        width: 56px;
+    }
+
+    .care-primary-button {
+        background: linear-gradient(135deg, var(--care-blue-850), var(--care-blue-700));
+        border-radius: 20px;
+        box-shadow: 0 14px 26px rgba(41, 102, 191, 0.24);
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 800;
+        min-height: 56px;
+        min-width: 132px;
+        padding: 0 24px;
+    }
+
+    .care-primary-button.is-full {
+        width: 100%;
+    }
+
+    .care-compose-help {
+        color: var(--care-text-soft);
+        font-size: 0.92rem;
+        line-height: 1.55;
+        margin-top: 10px;
+        padding: 0 4px;
+    }
+
+    .care-prompt-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+    }
+
+    .care-prompt-button {
+        background: rgba(255, 255, 255, 0.76);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(188, 211, 245, 0.84);
+        border-radius: 999px;
+        color: var(--care-text);
+        box-shadow: 0 12px 24px rgba(24, 63, 122, 0.1);
+        font-size: 0.95rem;
+        font-weight: 700;
+        padding: 10px 16px;
+    }
+
+    .care-side-column {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .care-card-cover {
+        padding-bottom: 20px;
+    }
+
+    .care-card-cover .care-kicker {
+        margin-bottom: 10px;
+    }
+
+    .care-card-body {
+        padding: 18px 22px 22px;
+    }
+
+    .care-inline-chip {
+        align-items: flex-start;
+        background: #edf5ff;
+        border: 1px solid var(--care-border);
+        border-radius: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 18px;
+        padding: 16px 18px;
+    }
+
+    .care-inline-chip strong {
+        color: var(--care-text);
+        font-size: 1.04rem;
+        line-height: 1.45;
+    }
+
+    .care-inline-chip span {
+        color: #6c88af;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .care-summary-list {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .care-summary-item {
+        background: #f8fbff;
+        border: 1px solid var(--care-border);
+        border-radius: 18px;
+        padding: 14px 16px;
+    }
+
+    .care-summary-item dt {
+        color: #7390b7;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+    }
+
+    .care-summary-item dd {
+        color: var(--care-text);
+        font-size: 0.98rem;
+        line-height: 1.55;
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .care-field-label {
+        color: var(--care-text);
+        display: block;
+        font-size: 0.92rem;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .care-field-head {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .care-approval-badge {
+        align-items: center;
+        background: #eaf8ef;
+        border: 1px solid #bfe1c9;
+        border-radius: 999px;
+        color: #1f724c;
+        display: inline-flex;
+        font-size: 0.8rem;
+        font-weight: 800;
+        gap: 6px;
+        letter-spacing: 0.02em;
+        padding: 7px 12px;
+        white-space: nowrap;
+    }
+
+    .care-approval-badge[hidden] {
+        display: none !important;
+    }
+
+    .care-summary-note {
+        background: #f4f8ff;
+        border: 1px solid var(--care-border);
+        border-radius: 16px;
+        color: var(--care-text-soft);
+        font-size: 0.94rem;
+        line-height: 1.55;
+        margin: 0 0 16px;
+        padding: 12px 14px;
+    }
+
+    .care-report-card textarea {
+        background: #f7fbff;
+        border: 1px solid var(--care-border);
+        border-radius: 22px;
+        color: var(--care-text);
+        font-family: inherit;
+        font-size: 1rem;
+        line-height: 1.7;
+        min-height: 120px;
+        outline: none;
+        padding: 16px 18px;
+        resize: vertical;
+        width: 100%;
+    }
+
+    .care-report-card textarea:focus {
+        border-color: var(--care-border-strong);
+        box-shadow: 0 0 0 3px rgba(86, 146, 237, 0.18);
+    }
+
+    .care-precautions {
+        margin: 0;
+        padding-left: 22px;
+    }
+
+    .care-precautions li {
+        color: var(--care-text);
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    .care-flash-stack {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .care-flash {
+        border-radius: 16px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        padding: 12px 16px;
+    }
+
+    .care-flash.success {
+        background: #eaf9ef;
+        border: 1px solid #b9e1c5;
+        color: #21613a;
+    }
+
+    .care-flash.error {
+        background: #fff0f0;
+        border: 1px solid #f2c2c2;
+        color: #a63e3e;
+    }
+
+    .care-flash.info {
+        background: #ecf5ff;
+        border: 1px solid var(--care-border);
+        color: var(--care-text);
+    }
+
+    @media (max-width: 1200px) {
+        .care-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .care-transcript {
+            height: 420px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .care-portal-page {
+            margin-top: -84px;
+        }
+
+        .care-cover-top {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .care-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 640px) {
+        .care-portal-page {
+            margin-top: -62px;
+        }
+
+        .care-cover,
+        .care-card-cover,
+        .care-chat-body,
+        .care-card-body {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+        .care-stats {
+            grid-template-columns: 1fr;
+        }
+
+        .care-compose-row {
+            grid-template-columns: 1fr;
+        }
+
+        .care-compose-actions {
+            justify-content: space-between;
+        }
+
+        .care-primary-button {
+            flex: 1 1 auto;
+        }
+
+        .care-message {
+            max-width: 100%;
+        }
+    }
+</style>
+<div class="care-portal-page">
+    {% if messages %}
+        <div class="care-flash-stack">
+            {% for message in messages %}
+                <div class="care-flash {% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="care-grid">
+        <section class="care-shell">
+            <div class="care-cover">
+                <div class="care-cover-top">
+                    <div>
+                        <span class="care-kicker">Care Chat</span>
+                        <h1>Talk with Care Chat</h1>
+                        
+                    </div>
+                    <form id="clearChatForm" method="post" action="/chat/" novalidate>
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="clear">
+                        <input type="hidden" name="chat_session_id" value="{{ active_chat_session.id }}">
+                        <button class="care-secondary-button" type="submit" id="clearChatButton">New Chat</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="care-chat-body">
+                <div class="care-stats">
+                    <div class="care-stat">
+                        <span class="care-stat-label">Current Topic</span>
+                        <p class="care-stat-value" id="currentTopicValue">{{ care_summary.title|default:"Care chat" }}</p>
+                        <p class="care-stat-note">{{ care_summary.symptoms_display|default:"No clear symptom markers yet" }}</p>
+                    </div>
+                    <div class="care-stat">
+                        <span class="care-stat-label">Likely Condition</span>
+                        <p class="care-stat-value" id="likelyConditionValue">{{ care_summary.condition_name|default:"General health concern" }}</p>
+                        <p class="care-stat-note">{{ care_summary.recommended_specialty|default:"General Physician" }}</p>
+                    </div>
+                    <div class="care-stat">
+                        <span class="care-stat-label">Urgency</span>
+                        <p class="care-stat-value" id="urgencyValue">{{ care_summary.urgency_level|title|default:"Routine" }}</p>
+                        <p class="care-stat-note">Based on the details shared so far.</p>
+                    </div>
+                    <div class="care-stat">
+                        <span class="care-stat-label">Doctor Match</span>
+                        <p class="care-stat-value" id="doctorMatchName">
+                            {% if top_recommended_doctor %}
+                                {{ top_recommended_doctor.name }} - {{ top_recommended_doctor.specialization }}
+                            {% else %}
+                                Not identified yet
+                            {% endif %}
+                        </p>
+                        <p class="care-stat-note" id="doctorMatchNote">
+                            {% if has_specialty_match %}
+                                Best match from your current chat.
+                            {% else %}
+                                A closer match will appear as you add more details.
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="care-photo-note"{% if not visual_analysis_summary %} hidden{% endif %} id="photoReviewBox">
+                    <div class="care-photo-badge" id="photoReviewLabel">
+                        {{ visual_analysis_label|default:"Photo" }}
+                    </div>
+                    <div class="care-photo-copy">
+                        <strong>Photo review</strong>
+                        <p id="photoReviewSummary">{{ visual_analysis_summary }}</p>
+                    </div>
+                </div>
+
+                <div class="care-transcript-wrap">
+                    <div class="care-status" id="careChatStatus" hidden></div>
+                    <div class="care-transcript" id="careChatTranscript">
+                        <div class="care-transcript-inner" id="careChatTranscriptInner">
+                            {% for item in chat_history %}
+                                <div class="care-message {% if item.role == 'user' %}is-user{% elif item.role == 'doctor' %}is-doctor{% endif %}">
+                                    <div class="care-avatar">
+                                        {% if item.role == "user" %}You{% elif item.role == "doctor" %}Dr{% else %}AI{% endif %}
+                                    </div>
+                                    <div class="care-bubble">
+                                        <span class="care-bubble-label">
+                                            {% if item.role == "user" %}
+                                                You
+                                        {% elif item.role == "doctor" %}
+                                                {{ item.sender_name|default:"Doctor" }}
+                                            {% else %}
+                                                Care Chat
+                                            {% endif %}
+                                        </span>
+                                        <p class="care-bubble-text">{{ item.text }}</p>
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <div class="care-message">
+                                    <div class="care-avatar">AI</div>
+                                    <div class="care-bubble">
+                                        <span class="care-bubble-label">Care Chat</span>
+                                        <p class="care-bubble-text">Tell me what symptoms or concerns you want help with.</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="care-typing" id="careChatTyping" hidden>Care Chat is thinking...</div>
+                    </div>
+                </div>
+
+                <form id="careChatForm" class="care-compose-form" method="post" action="/chat/" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="chat_session_id" value="{{ active_chat_session.id }}" id="activeChatSessionId">
+                    <input type="file" name="care_image" id="careImageInput" accept="image/*" hidden>
+                    <div class="care-compose-row">
+                        <textarea name="message" id="careChatInput" rows="2" placeholder="Type your symptom or question here..."></textarea>
+                        <div class="care-compose-actions">
+                            <button class="care-icon-button" type="button" id="careImageButton" aria-label="Upload a photo">+</button>
+                            <button class="care-primary-button" type="submit" id="careChatSendButton">Send</button>
+                        </div>
+                    </div>
+                    <div class="care-compose-help">Use the + button for photo review. Press Enter to send and Shift + Enter for a new line.</div>
+                </form>
+
+                {% if chat_state.chat_prompts %}
+                    <div class="care-prompt-row">
+                        {% for prompt in chat_state.chat_prompts|slice:":4" %}
+                            <button class="care-prompt-button" type="button" data-care-prompt="{{ prompt }}">{{ prompt }}</button>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+
+        <aside class="care-side-column">
+            <section class="care-report-card">
+                <div class="care-card-cover">
+                    <span class="care-kicker">Care Report</span>
+                    <h2>Data Shared With Doctor</h2>
+                    <p>The matched doctor receives your short symptom summary plus a separate AI medicine-support note.</p>
+                </div>
+                <div class="care-card-body">
+                    <form method="post" action="{{ care_report_url }}" id="doctorSummaryForm">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="send_to_doctor">
+                        <input type="hidden" name="chat_session_id" value="{{ active_chat_session.id }}" id="doctorSummarySessionId">
+                        <div class="care-inline-chip">
+                            <span>Doctor Identification</span>
+                            <strong id="doctorMatchSummary">
+                                {% if top_recommended_doctor %}
+                                    {{ top_recommended_doctor.name }} - {{ top_recommended_doctor.specialization }}
+                                {% else %}
+                                    Not identified yet
+                                {% endif %}
+                            </strong>
+                        </div>
+
+                        <p class="care-summary-note">You can edit only the short symptom summary here. The medicine-support note below is generated by Care Chat.</p>
+                        <div class="care-field-head">
+                            <label class="care-field-label" for="doctorSummaryTextarea">AI chat summary</label>
+                            <span class="care-approval-badge" id="doctorSummaryApprovalBadge"{% if not doctor_approved_summary %} hidden{% endif %}>Doctor checked &#10003;</span>
+                        </div>
+                        <textarea name="edited_summary" id="doctorSummaryTextarea">{{ doctor_summary_text|default:care_summary.summary }}</textarea>
+                        <div class="care-field-head">
+                            <label class="care-field-label" for="medicineSupportText">AI medicine support</label>
+                            <span class="care-approval-badge" id="medicineApprovalBadge"{% if not doctor_approved_medicine %} hidden{% endif %}>Doctor checked &#10003;</span>
+                        </div>
+                        <div class="care-summary-note" id="medicineSupportText">
+                            {{ medicine_guidance_text|default:care_summary.medicine_guidance|default:"Care Chat will add medicine support once the condition is clear enough." }}
+                        </div>
+                        <button class="care-primary-button is-full" type="submit">Send Directly to Doctor Portal</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="care-report-card">
+                <div class="care-card-cover">
+                    <span class="care-kicker">Care Report</span>
+                    <h2>Small Precautions</h2>
+                    <p>Only the most useful next steps are shown here.</p>
+                </div>
+                <div class="care-card-body">
+                    <ul class="care-precautions" id="precautionList">
+                        {% for item in precautions|slice:":3" %}
+                            <li>{{ item }}</li>
+                        {% empty %}
+                            <li>Share your main symptom, when it started, and whether it is getting worse so Care Chat can guide you better.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        </aside>
+    </div>
+</div>
+
+{{ chat_state|json_script:"careChatInitialState" }}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var stateNode = document.getElementById("careChatInitialState");
+        var currentState = stateNode ? JSON.parse(stateNode.textContent) : {};
+        var chatForm = document.getElementById("careChatForm");
+        var clearForm = document.getElementById("clearChatForm");
+        var transcript = document.getElementById("careChatTranscript");
+        var transcriptInner = document.getElementById("careChatTranscriptInner");
+        var typingNode = document.getElementById("careChatTyping");
+        var statusNode = document.getElementById("careChatStatus");
+        var inputNode = document.getElementById("careChatInput");
+        var imageButton = document.getElementById("careImageButton");
+        var imageInput = document.getElementById("careImageInput");
+        var sendButton = document.getElementById("careChatSendButton");
+        var clearButton = document.getElementById("clearChatButton");
+        var activeSessionNode = document.getElementById("activeChatSessionId");
+        var summarySessionNode = document.getElementById("doctorSummarySessionId");
+        var doctorSummaryForm = document.getElementById("doctorSummaryForm");
+        var doctorSummaryNode = document.getElementById("doctorSummaryTextarea");
+        var doctorSummaryApprovalBadge = document.getElementById("doctorSummaryApprovalBadge");
+        var medicineSupportNode = document.getElementById("medicineSupportText");
+        var medicineApprovalBadge = document.getElementById("medicineApprovalBadge");
+        var doctorHandoffList = document.getElementById("doctorHandoffList");
+        var precautionList = document.getElementById("precautionList");
+        var currentTopicValue = document.getElementById("currentTopicValue");
+        var likelyConditionValue = document.getElementById("likelyConditionValue");
+        var urgencyValue = document.getElementById("urgencyValue");
+        var doctorMatchName = document.getElementById("doctorMatchName");
+        var doctorMatchSummary = document.getElementById("doctorMatchSummary");
+        var doctorMatchNote = document.getElementById("doctorMatchNote");
+        var photoReviewBox = document.getElementById("photoReviewBox");
+        var photoReviewLabel = document.getElementById("photoReviewLabel");
+        var photoReviewSummary = document.getElementById("photoReviewSummary");
+        var promptButtons = Array.prototype.slice.call(document.querySelectorAll("[data-care-prompt]"));
+        var summaryDirty = false;
+
+        function getCsrfToken() {
+            var tokenInput = chatForm ? chatForm.querySelector('input[name="csrfmiddlewaretoken"]') : null;
+            return tokenInput ? tokenInput.value : "";
+        }
+
+        function escapeHtml(value) {
+            return String(value || "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/\"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        function safeValue(value, fallback) {
+            var text = String(value || "").trim();
+            return text || fallback;
+        }
+
+        function doctorText(doctor) {
+            if (!doctor || !doctor.name) {
+                return "Not identified yet";
+            }
+
+            var specialization = doctor.specialization ? " - " + doctor.specialization : "";
+            return doctor.name + specialization;
+        }
+
+        function renderTranscript(history) {
+            var items = Array.isArray(history) && history.length ? history : [
+                { role: "assistant", text: "Tell me what symptoms or concerns you want help with." }
+            ];
+
+            transcriptInner.innerHTML = items.map(function (item) {
+                var role = item.role || "assistant";
+                var isUser = role === "user";
+                var isDoctor = role === "doctor";
+                var avatarText = isUser ? "You" : (isDoctor ? "Dr" : "AI");
+                var labelText = isUser ? "You" : (isDoctor ? (item.sender_name || "Doctor") : "Care Chat");
+                return [
+                    '<div class="care-message', isUser ? ' is-user' : '', isDoctor ? ' is-doctor' : '', '">',
+                        '<div class="care-avatar">', escapeHtml(avatarText), '</div>',
+                        '<div class="care-bubble">',
+                            '<span class="care-bubble-label">', escapeHtml(labelText), '</span>',
+                            '<p class="care-bubble-text">', escapeHtml(item.text), '</p>',
+                        '</div>',
+                    '</div>'
+                ].join("");
+            }).join("");
+
+            requestAnimationFrame(function () {
+                transcript.scrollTop = transcript.scrollHeight;
+            });
+        }
+
+        function renderSummaryItems(items) {
+            if (!doctorHandoffList) {
+                return;
+            }
+
+            var handoffItems = Array.isArray(items) ? items : [];
+            if (!handoffItems.length) {
+                doctorHandoffList.innerHTML = '<div class="care-summary-item"><dt>Care Summary</dt><dd>No summary yet.</dd></div>';
+                return;
+            }
+
+            doctorHandoffList.innerHTML = handoffItems.map(function (item) {
+                return [
+                    '<div class="care-summary-item">',
+                        '<dt>', escapeHtml(item.label), '</dt>',
+                        '<dd>', escapeHtml(item.value), '</dd>',
+                    '</div>'
+                ].join("");
+            }).join("");
+        }
+
+        function renderPrecautions(items) {
+            var precautions = Array.isArray(items) ? items.slice(0, 3) : [];
+            if (!precautions.length) {
+                precautions = [
+                    "Share your main symptom, when it started, and whether it is getting worse so Care Chat can guide you better."
+                ];
+            }
+
+            precautionList.innerHTML = precautions.map(function (item) {
+                return "<li>" + escapeHtml(item) + "</li>";
+            }).join("");
+        }
+
+        function renderPhotoReview(state) {
+            var label = safeValue(state.visual_analysis_label, "Photo");
+            var summary = safeValue(state.visual_analysis_summary, "");
+
+            if (!summary) {
+                photoReviewBox.hidden = true;
+                return;
+            }
+
+            photoReviewBox.hidden = false;
+            photoReviewLabel.textContent = label;
+            photoReviewSummary.textContent = summary;
+        }
+
+        function syncSessionFields(state) {
+            var chatSessionId = state.active_chat_session_id || "";
+            var reportUrl = state.care_report_url || "/care-report/";
+
+            activeSessionNode.value = chatSessionId;
+            summarySessionNode.value = chatSessionId;
+            clearForm.querySelector('input[name="chat_session_id"]').value = chatSessionId;
+            doctorSummaryForm.action = reportUrl;
+
+            if (window.history && reportUrl) {
+                window.history.replaceState({}, "", reportUrl);
+            }
+        }
+
+        function renderMeta(state) {
+            var summary = state.care_summary || {};
+            var topDoctor = state.top_recommended_doctor || null;
+            var hasSpecialtyMatch = Boolean(state.has_specialty_match);
+
+            currentTopicValue.textContent = safeValue(summary.title, "Care chat");
+            likelyConditionValue.textContent = safeValue(summary.condition_name, "General health concern");
+            urgencyValue.textContent = safeValue(summary.urgency_level, "Routine").replace(/\b\w/g, function (letter) {
+                return letter.toUpperCase();
+            });
+            doctorMatchName.textContent = doctorText(topDoctor);
+            doctorMatchSummary.textContent = doctorText(topDoctor);
+            doctorMatchNote.textContent = topDoctor
+                ? (hasSpecialtyMatch
+                    ? "Best match from your current chat."
+                    : "A close available match based on your current chat.")
+                : "A closer match will appear as you add more details.";
+
+            if (!summaryDirty) {
+                doctorSummaryNode.value = safeValue(
+                    state.doctor_summary_text || summary.summary,
+                    doctorSummaryNode.value
+                );
+            }
+            if (medicineSupportNode) {
+                medicineSupportNode.textContent = safeValue(
+                    state.medicine_guidance_text || summary.medicine_guidance,
+                    "Care Chat will add medicine support once the condition is clear enough."
+                );
+            }
+            if (doctorSummaryApprovalBadge) {
+                doctorSummaryApprovalBadge.hidden = !Boolean(state.doctor_approved_summary);
+            }
+            if (medicineApprovalBadge) {
+                medicineApprovalBadge.hidden = !Boolean(state.doctor_approved_medicine);
+            }
+        }
+
+        function renderState(state) {
+            currentState = state || {};
+            syncSessionFields(currentState);
+            renderMeta(currentState);
+            renderTranscript(currentState.chat_history || []);
+            renderSummaryItems(currentState.doctor_handoff || []);
+            renderPrecautions(currentState.precautions || []);
+            renderPhotoReview(currentState);
+        }
+
+        function setStatus(message, isError) {
+            if (!message) {
+                statusNode.hidden = true;
+                statusNode.textContent = "";
+                statusNode.classList.remove("is-error");
+                return;
+            }
+
+            statusNode.hidden = false;
+            statusNode.textContent = message;
+            statusNode.classList.toggle("is-error", Boolean(isError));
+        }
+
+        function setBusy(isBusy) {
+            sendButton.disabled = isBusy;
+            clearButton.disabled = isBusy;
+            imageButton.disabled = isBusy;
+            typingNode.hidden = !isBusy;
+        }
+
+        async function postChat(formData) {
+            var response = await fetch("/chat/", {
+                method: "POST",
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                    "X-CSRFToken": getCsrfToken()
+                },
+                body: formData
+            });
+            var data = await response.json();
+            if (!response.ok || !data.ok) {
+                throw new Error(data.error || "Care Chat could not complete that request.");
+            }
+            return data;
+        }
+
+        chatForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            var message = inputNode.value.trim();
+            if (!message) {
+                setStatus("Please type a message before sending.", true);
+                inputNode.focus();
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append("chat_session_id", activeSessionNode.value);
+            formData.append("message", message);
+
+            setBusy(true);
+            setStatus("");
+
+            try {
+                var data = await postChat(formData);
+                inputNode.value = "";
+                renderState(data);
+            } catch (error) {
+                setStatus(error.message, true);
+            } finally {
+                setBusy(false);
+                inputNode.focus();
+            }
+        });
+
+        clearForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            var formData = new FormData();
+            formData.append("action", "clear");
+            formData.append("chat_session_id", activeSessionNode.value);
+
+            setBusy(true);
+            setStatus("");
+
+            try {
+                var data = await postChat(formData);
+                summaryDirty = false;
+                doctorSummaryNode.value = "";
+                imageInput.value = "";
+                renderState(data);
+            } catch (error) {
+                setStatus(error.message, true);
+            } finally {
+                setBusy(false);
+                inputNode.focus();
+            }
+        });
+
+        imageButton.addEventListener("click", function () {
+            imageInput.click();
+        });
+
+        imageInput.addEventListener("change", async function () {
+            if (!imageInput.files.length) {
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append("action", "analyze_image");
+            formData.append("chat_session_id", activeSessionNode.value);
+            formData.append("care_image", imageInput.files[0]);
+
+            setBusy(true);
+            setStatus("Analyzing image...");
+
+            try {
+                var data = await postChat(formData);
+                renderState(data);
+                setStatus("Photo review updated.");
+            } catch (error) {
+                setStatus(error.message, true);
+            } finally {
+                setBusy(false);
+                imageInput.value = "";
+            }
+        });
+
+        inputNode.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+                chatForm.requestSubmit();
+            }
+        });
+
+        doctorSummaryNode.addEventListener("input", function () {
+            summaryDirty = true;
+        });
+
+        promptButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                inputNode.value = button.getAttribute("data-care-prompt") || "";
+                inputNode.focus();
+            });
+        });
+
+        renderState(currentState);
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,1368 @@
+{% load static %}
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <title>Medical Advisor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="Appointment, Booking, System, Dashboard, Health" />
+    <meta name="author" content="Shreethemes" />
+    <meta name="Version" content="v1.4.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=3">
+    <link rel="shortcut icon" href="/favicon.ico?v=3">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="{% static '/assets/libs/tiny-slider/tiny-slider.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/libs/tobii/css/tobii.min.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/css/bootstrap.min.css' %}" class="theme-opt" rel="stylesheet" type="text/css" />
+    <link href="{% static '/assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static '/assets/libs/remixicon/fonts/remixicon.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static '/assets/libs/%40iconscout/unicons/css/line.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static '/assets/css/style.min.css' %}" class="theme-opt" rel="stylesheet" type="text/css" />
+    <link href="{% static '/css/user-portal.css' %}" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --bs-font-sans-serif: "Instrument Sans", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --portal-font-sans: "Instrument Sans", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --home-accent: #4f7cff;
+            --home-accent-dark: #2248b7;
+            --home-soft: #f6f9ff;
+            --home-border: rgba(79, 124, 255, 0.14);
+            --home-ink: #172033;
+            --portal-nav-accent: #4f7cff;
+            --portal-nav-accent-dark: #2149b7;
+            --portal-nav-ink: #18213b;
+            --portal-nav-soft: #f4f8ff;
+            --portal-nav-line: rgba(79, 124, 255, 0.14);
+        }
+
+        body {
+            font-family: var(--portal-font-sans) !important;
+            background:
+                radial-gradient(circle at top right, rgba(79, 124, 255, 0.10), transparent 24%),
+                linear-gradient(180deg, #f9fbff 0%, #f3f6fb 100%);
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit !important;
+        }
+
+        #topnav.portal-navbar-wrap {
+            top: 0;
+            min-height: auto;
+            padding: 0;
+            margin: 0;
+            background: transparent !important;
+            box-shadow: none !important;
+            z-index: 1030;
+        }
+
+        #topnav.portal-navbar-wrap .container {
+            display: block;
+            width: 100%;
+        }
+
+        .portal-navbar-shell {
+            position: relative;
+            overflow: visible;
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 26px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--portal-nav-line);
+            box-shadow: 0 22px 54px rgba(17, 35, 86, 0.12);
+            backdrop-filter: blur(18px);
+            align-items: center;
+            gap: 14px;
+        }
+
+        .portal-navbar-shell::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            left: 18px;
+            width: 180px;
+            height: 180px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(79, 124, 255, 0.14) 0%, rgba(79, 124, 255, 0) 72%);
+            pointer-events: none;
+        }
+
+        .portal-navbar-shell > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        #topnav.portal-navbar-wrap.nav-sticky {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        #topnav.portal-navbar-wrap.nav-sticky .portal-navbar-shell {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 24px 56px rgba(17, 35, 86, 0.15);
+        }
+
+        .portal-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .portal-brand-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #4f7cff 0%, #6b8dff 100%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 18px 32px rgba(79, 124, 255, 0.22);
+        }
+
+        .portal-brand-badge img {
+            width: 26px;
+            height: 26px;
+        }
+
+        .portal-brand-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            line-height: 1;
+        }
+
+        .portal-brand-copy strong {
+            color: var(--portal-nav-ink);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .portal-brand-copy span {
+            color: #63708f;
+            font-size: 0.74rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .portal-navbar-toggler {
+            border: 0;
+            padding: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 15px;
+            background: #f7f9ff;
+            box-shadow: inset 0 0 0 1px var(--portal-nav-line);
+        }
+
+        .portal-navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(79, 124, 255, 0.18);
+        }
+
+        .portal-navbar-toggler span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--portal-nav-ink);
+            margin: 0 auto;
+        }
+
+        .portal-navbar-toggler span + span {
+            margin-top: 4px;
+        }
+
+        .portal-nav-collapse {
+            flex: 1 1 auto;
+            align-items: center;
+        }
+
+        .portal-nav-list {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 0 0 0 auto;
+            padding: 0;
+        }
+
+        .portal-nav-item,
+        .portal-nav-item-dropdown {
+            list-style: none;
+        }
+
+        .portal-nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 12px !important;
+            border-radius: 999px;
+            color: var(--portal-nav-ink) !important;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.1;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .portal-nav-link i {
+            color: var(--portal-nav-accent);
+        }
+
+        .portal-logout-link {
+            background: linear-gradient(135deg, #315efb 0%, #6d8eff 100%);
+            border: 1px solid transparent;
+            color: #fff !important;
+            box-shadow: 0 16px 28px rgba(49, 94, 251, 0.22);
+        }
+
+        .portal-logout-link i {
+            color: #fff;
+        }
+
+        .portal-logout-link:hover,
+        .portal-logout-link:focus {
+            background: linear-gradient(135deg, #2448d9 0%, #5c7dff 100%);
+            color: #fff !important;
+            box-shadow: 0 18px 30px rgba(49, 94, 251, 0.28);
+            transform: translateY(-1px);
+        }
+
+        .portal-profile-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .portal-profile-link {
+            width: 52px;
+            height: 52px;
+            border-radius: 999px;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .portal-profile-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 999px;
+            object-fit: cover;
+        }
+
+        .portal-profile-float {
+            position: fixed;
+            top: 26px;
+            right: 28px;
+            z-index: 1045;
+            display: flex;
+            align-items: center;
+        }
+
+        .portal-profile-card {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            padding: 0;
+            border-radius: 999px;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+        }
+
+        .portal-profile-meta {
+            position: absolute;
+            left: 50%;
+            top: calc(100% + 8px);
+            transform: translate(-50%, 6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .portal-profile-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            text-shadow: 0 8px 20px rgba(12, 20, 45, 0.35);
+        }
+
+        .portal-profile-card:hover .portal-profile-meta,
+        .portal-profile-card:focus .portal-profile-meta,
+        .portal-profile-card:focus-visible .portal-profile-meta,
+        .portal-profile-card:active .portal-profile-meta {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .portal-nav-link:hover,
+        .portal-nav-link:focus,
+        .portal-nav-link.is-current,
+        .show > .portal-nav-link {
+            color: var(--portal-nav-accent-dark) !important;
+            background: var(--portal-nav-soft);
+            box-shadow: inset 0 0 0 1px var(--portal-nav-line);
+            transform: translateY(-1px);
+        }
+
+        .portal-nav-item-dropdown > .dropdown-toggle::after {
+            margin-left: 0.45rem;
+        }
+
+        .portal-nav-dropdown-menu {
+            min-width: 250px;
+            margin-top: 12px !important;
+            padding: 10px;
+            border: 1px solid var(--portal-nav-line);
+            border-radius: 22px;
+            box-shadow: 0 22px 44px rgba(17, 35, 86, 0.14);
+            background: rgba(255, 255, 255, 0.99);
+        }
+
+        .portal-nav-dropdown-menu.show {
+            display: block;
+        }
+
+        .portal-nav-dropdown-label {
+            padding: 4px 6px 10px;
+            color: #6a7896;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .portal-nav-dropdown-grid {
+            display: grid;
+            gap: 6px;
+        }
+
+        .portal-dropdown-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 16px;
+            color: var(--portal-nav-ink);
+            text-decoration: none;
+            white-space: normal;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .portal-dropdown-link:hover,
+        .portal-dropdown-link:focus,
+        .portal-dropdown-link.is-current {
+            color: var(--portal-nav-accent-dark);
+            background: #f7f9ff;
+            transform: translateY(-1px);
+        }
+
+        .portal-dropdown-link-danger {
+            color: #c23d54;
+            background: #fff7f9;
+        }
+
+        .portal-dropdown-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #eef3ff 0%, #e6eeff 100%);
+            box-shadow: inset 0 0 0 1px rgba(79, 124, 255, 0.08);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 40px;
+            color: var(--portal-nav-accent);
+            font-size: 1rem;
+        }
+
+        .portal-dropdown-link-danger .portal-dropdown-icon {
+            background: linear-gradient(135deg, #fff0f4 0%, #ffe7ee 100%);
+            color: #d24b66;
+        }
+
+        .portal-dropdown-copy {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .portal-dropdown-copy strong {
+            color: inherit;
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-transform: none;
+            line-height: 1.25;
+        }
+
+        .section-kicker-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--home-accent-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-kicker-home::before {
+            content: "";
+            width: 34px;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--home-accent), #6dd5ed);
+        }
+
+        .hero-section .heading-title {
+            max-width: 760px;
+        }
+
+        .hero-frame {
+            position: relative;
+            padding: 1.25rem 1.25rem 0;
+        }
+
+        .hero-frame::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 24px 60px rgba(10, 32, 77, 0.18);
+        }
+
+        .hero-frame > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stats {
+            border-radius: 28px;
+            padding: 1.75rem;
+        }
+
+        .hero-status-chip,
+        .hero-quick-chip,
+        .info-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 999px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .hero-status-chip {
+            padding: 0.7rem 1rem;
+            color: #fff;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.18);
+            margin-bottom: 1rem;
+        }
+
+        .hero-quick-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .hero-quick-chip,
+        .info-chip {
+            padding: 0.8rem 1rem;
+            background: #fff;
+            color: var(--home-ink);
+            border: 1px solid var(--home-border);
+            box-shadow: 0 12px 28px rgba(79, 124, 255, 0.08);
+        }
+
+        .home-panel,
+        .cta-shell-modern,
+        .review-shell,
+        .logo-tile {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid var(--home-border);
+            box-shadow: 0 22px 50px rgba(28, 52, 103, 0.08);
+        }
+
+        .feature-card,
+        .service-card,
+        .blog.card,
+        .video-solution-cta,
+        .client-review-slider {
+            border: 1px solid rgba(79, 124, 255, 0.08);
+            box-shadow: 0 20px 45px rgba(18, 45, 101, 0.08) !important;
+        }
+
+        .feature-card .p-4,
+        .service-card .card-body,
+        .blog.card .card-body {
+            position: relative;
+        }
+
+        .feature-card .p-4::before,
+        .service-card .card-body::before {
+            content: "";
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(79, 124, 255, 0.18);
+        }
+
+        .about-image-shell {
+            position: relative;
+            padding: 18px;
+            border-radius: 32px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(243,247,255,0.88));
+            border: 1px solid rgba(79,124,255,0.12);
+            box-shadow: 0 24px 60px rgba(22, 43, 97, 0.08);
+        }
+
+        .about-floating-card {
+            position: absolute;
+            right: -16px;
+            bottom: 24px;
+            max-width: 230px;
+            padding: 1rem 1.1rem;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.98);
+            border: 1px solid rgba(79,124,255,0.14);
+            box-shadow: 0 20px 44px rgba(22, 43, 97, 0.12);
+        }
+
+        .about-floating-card strong {
+            display: block;
+            color: var(--home-ink);
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .about-floating-card span {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cta-shell-modern {
+            border-radius: 32px;
+            padding: 2rem 2.2rem;
+        }
+
+        .service-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            height: 42px;
+            padding: 0 0.85rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.85rem;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+        }
+
+        .metric-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.7rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.96);
+            border: 1px solid var(--home-border);
+            box-shadow: 0 12px 26px rgba(22, 43, 97, 0.08);
+            color: var(--home-ink);
+            font-weight: 700;
+            margin: 0.35rem;
+        }
+
+        .metric-inline i {
+            color: var(--home-accent);
+        }
+
+        .review-shell {
+            border-radius: 30px;
+            padding: 2rem;
+        }
+
+        .logo-tile {
+            min-height: 100%;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem;
+        }
+
+        .blog-label {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: var(--home-soft);
+            color: var(--home-accent-dark);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .footer-note-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.55rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 0.82rem;
+            margin: 0.25rem 0.25rem 0 0;
+        }
+
+        @media (min-width: 1200px) {
+            .portal-nav-collapse {
+                display: flex !important;
+                justify-content: flex-end;
+            }
+
+            .portal-nav-item-dropdown:hover > .portal-nav-dropdown-menu {
+                display: block;
+            }
+
+            .portal-nav-item-dropdown:hover > .portal-nav-link {
+                color: var(--portal-nav-accent-dark) !important;
+                background: var(--portal-nav-soft);
+                box-shadow: inset 0 0 0 1px var(--portal-nav-line);
+            }
+        }
+
+        @media (max-width: 1199.98px) {
+            .portal-navbar-shell {
+                padding: 14px;
+                border-radius: 24px;
+            }
+
+            .portal-navbar-toggler {
+                margin-left: auto;
+            }
+
+            .portal-nav-collapse {
+                margin-top: 14px;
+                padding-top: 14px;
+                border-top: 1px solid rgba(79, 124, 255, 0.10);
+            }
+
+            .portal-nav-list {
+                width: 100%;
+                flex-direction: column;
+                gap: 6px;
+                align-items: stretch;
+                margin: 0;
+            }
+
+            .portal-nav-item,
+            .portal-nav-item-dropdown {
+                width: 100%;
+            }
+
+            .portal-nav-link {
+                width: 100%;
+                justify-content: space-between;
+                padding: 13px 14px !important;
+            }
+
+            .portal-nav-dropdown-menu {
+                position: static !important;
+                inset: auto !important;
+                transform: none !important;
+                width: 100%;
+                min-width: 0;
+                margin-top: 8px !important;
+                box-shadow: none;
+                background: #f9fbff;
+            }
+
+            .portal-profile-float {
+                top: 16px;
+                right: 18px;
+            }
+
+            .portal-profile-name {
+                font-size: 0.88rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .portal-profile-meta {
+                top: calc(100% + 6px);
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .portal-navbar-shell {
+                padding: 12px;
+                border-radius: 20px;
+            }
+
+            .portal-brand-badge {
+                width: 46px;
+                height: 46px;
+                border-radius: 15px;
+            }
+
+            .portal-brand-copy strong {
+                font-size: 0.95rem;
+            }
+
+            .portal-brand-copy span {
+                font-size: 0.71rem;
+                letter-spacing: 0.12em;
+            }
+
+            .portal-nav-link {
+                font-size: 13px;
+            }
+
+            .portal-dropdown-link {
+                padding: 9px 11px;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .about-floating-card {
+                position: static;
+                margin-top: 1rem;
+                max-width: none;
+            }
+
+            .cta-shell-modern {
+                padding: 1.5rem;
+            }
+        }
+
+        html.js-enabled .portal-hero-chip,
+        html.js-enabled .portal-hero-panel,
+        html.js-enabled .portal-footer-panel,
+        html.js-enabled .portal-footer-bottom,
+        html.js-enabled .portal-surface-block,
+        html.js-enabled .portal-footer-grid,
+        html.js-enabled .animate-on-scroll,
+        html.js-enabled .animate-float,
+        html.js-enabled .card-animate,
+        html.js-enabled .section-animate,
+        html.js-enabled .text-animate {
+            opacity: 1 !important;
+            transform: none !important;
+            animation: none !important;
+        }
+
+        .animated {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    {% for m in messages %}
+    <script>
+        alert('{{m}}');
+    </script>
+    {% endfor %}
+
+    <header id="topnav" class="navigation sticky portal-navbar-wrap">
+        <div class="container">
+            <nav class="navbar navbar-expand-xl portal-navbar-shell portal-user-navbar" aria-label="User portal navigation">
+                <a class="navbar-brand portal-brand" href="/userHome">
+                    <span class="portal-brand-badge">
+                        <img src="{% static '/assets/images/logo-icon.png' %}" alt="">
+                    </span>
+                    <span class="portal-brand-copy">
+                            <strong>Medical Advisor</strong>
+                            <span>User Portal</span>
+                        </span>
+                    </a>
+
+                <button class="navbar-toggler portal-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portalUserNav" aria-controls="portalUserNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="collapse navbar-collapse portal-nav-collapse" id="portalUserNav">
+                    <ul class="navbar-nav portal-nav-list">
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/userHome" data-nav-match="/userHome">
+                                <i class="ri-home-5-line"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/UserProfile" data-nav-match="/UserProfile,/update_userProfile">
+                                <i class="ri-user-3-line"></i>Profile
+                            </a>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/view_prescription" data-nav-match="/view_prescription,/view_prescription_detail">
+                                <i class="ri-file-list-3-line"></i>Prescription
+                            </a>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/care-report/" data-nav-match="/chat,/care-report">
+                                <i class="ri-message-2-line"></i>Chat
+                            </a>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link" href="/add_feedback" data-nav-match="/add_feedback">
+                                <i class="ri-chat-smile-3-line"></i>Feedback
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown portal-nav-item-dropdown">
+                            <a class="nav-link portal-nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                                <i class="ri-calendar-check-line"></i>Appointments
+                            </a>
+                            <div class="dropdown-menu portal-nav-dropdown-menu">
+                                <div class="portal-nav-dropdown-label">Appointment services</div>
+                                <div class="portal-nav-dropdown-grid">
+                                    <a class="dropdown-item portal-dropdown-link" href="/book_appoinment" data-nav-match="/book_appoinment">
+                                        <span class="portal-dropdown-icon"><i class="ri-calendar-event-line"></i></span>
+                                        <span class="portal-dropdown-copy">
+                                            <strong>Book Appointment</strong>
+                                        </span>
+                                    </a>
+                                    <a class="dropdown-item portal-dropdown-link" href="/view_bookedappointment" data-nav-match="/view_bookedappointment">
+                                        <span class="portal-dropdown-icon"><i class="ri-calendar-todo-line"></i></span>
+                                        <span class="portal-dropdown-copy">
+                                            <strong>View Bookings</strong>
+                                        </span>
+                                    </a>
+                                    <a class="dropdown-item portal-dropdown-link" href="/invoice" data-nav-match="/invoice,/invoice_detail">
+                                        <span class="portal-dropdown-icon"><i class="ri-file-list-3-line"></i></span>
+                                        <span class="portal-dropdown-copy">
+                                            <strong>Invoices</strong>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown portal-nav-item-dropdown">
+                            <a class="nav-link portal-nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                                <i class="ri-capsule-line"></i>Medicines
+                            </a>
+                            <div class="dropdown-menu portal-nav-dropdown-menu">
+                                <div class="portal-nav-dropdown-label">Medicine services</div>
+                                <div class="portal-nav-dropdown-grid">
+                                    <a class="dropdown-item portal-dropdown-link" href="/user_viewMedicine" data-nav-match="/user_viewMedicine,/user_viewMedicineDetails,/place_order,/medicine_payment,/user_payment_page">
+                                        <span class="portal-dropdown-icon"><i class="ri-medicine-bottle-line"></i></span>
+                                        <span class="portal-dropdown-copy">
+                                            <strong>Browse Medicine</strong>
+                                        </span>
+                                    </a>
+                                    <a class="dropdown-item portal-dropdown-link" href="/ph_givenMedicine" data-nav-match="/ph_givenMedicine">
+                                        <span class="portal-dropdown-icon"><i class="ri-store-2-line"></i></span>
+                                        <span class="portal-dropdown-copy">
+                                            <strong>Pharmacy</strong>
+                                        </span>
+                                    </a>
+                                    <a class="dropdown-item portal-dropdown-link" href="/confirmorder" data-nav-match="/confirmorder">
+                                        <span class="portal-dropdown-icon"><i class="ri-truck-line"></i></span>
+                                        <span class="portal-dropdown-copy">
+                                            <strong>Orders</strong>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item portal-nav-item">
+                            <a class="nav-link portal-nav-link portal-logout-link" href="/logout/">
+                                <i class="ri-logout-box-r-line"></i>Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="portal-profile-float">
+        <a class="portal-profile-card" href="/UserProfile" aria-label="Profile">
+            <span class="portal-profile-link">
+                {% if portal_user and portal_user.image %}
+                    <img src="{{ portal_user.image.url }}" alt="Profile" class="portal-profile-avatar">
+                {% else %}
+                    <img src="{% static '/assets/images/client/01.jpg' %}" alt="Profile" class="portal-profile-avatar">
+                {% endif %}
+            </span>
+            <span class="portal-profile-meta">
+                <span class="portal-profile-name">
+                    {% if portal_user and portal_user.name %}
+                        {{ portal_user.name }}
+                    {% else %}
+                        User
+                    {% endif %}
+                </span>
+            </span>
+        </a>
+    </div>
+
+    <section class="d-table w-100 hero-section">
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-lg-8 col-12 text-animate">
+                    <div class="heading-title">
+                        <span class="section-kicker-home text-white-80">Patient Home</span>
+                        <span class="badge bg-light text-primary mb-3 px-3 py-2 shadow-sm">
+                            <i class="ri-shield-check-line me-1"></i>Welcome to Medical Advisor
+                        </span>
+                        <h1 class="display-3 fw-bold text-white title-dark mt-3 mb-4">Your Trusted <span class="hero-gradient-text">Healthcare Partner</span></h1>
+                        <p class="text-white-80 mb-4 description">Access quality healthcare services, consult with experienced doctors, and manage your prescriptions all in one platform.</p>
+                        <div class="mt-5 pt-2">
+                            <a href="/book_appoinment" class="btn btn-light btn-lg rounded-pill me-3 px-4 hero-cta-button">
+                                <i class="ri-calendar-event-line me-2"></i>Book Appointment
+                            </a>
+                            <a href="/user_viewMedicine" class="btn btn-outline-light btn-lg rounded-pill px-4 hero-cta-button outline">
+                                <i class="ri-medicine-bottle-line me-2"></i>Browse Medicine
+                            </a>
+                        </div>
+                        <p class="text-white-70 mb-0 mt-4">
+                            <i class="ri-checkbox-circle-line me-2 text-success"></i>24/7 Support Available
+                            <i class="ri-checkbox-circle-line ms-2 me-2 text-success"></i>Verified Doctors
+                            <i class="ri-checkbox-circle-line ms-2 me-2 text-success"></i>Secure Transactions
+                        </p>
+                        <div class="hero-quick-grid">
+                            <span class="hero-quick-chip"><i class="ri-heart-pulse-line text-primary"></i> Appointment reminders</span>
+                            <span class="hero-quick-chip"><i class="ri-capsule-line text-primary"></i> Easy medicine ordering</span>
+                            <span class="hero-quick-chip"><i class="ri-shield-keyhole-line text-primary"></i> Secure patient access</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 d-none d-lg-block">
+                    <div class="position-relative animate-float hero-frame">
+                        <div class="hero-stats">
+                            <div class="hero-status-chip">
+                                <i class="ri-pulse-line"></i> Live portal overview
+                            </div>
+                            <h5 class="text-white mb-4">Quick Stats</h5>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-white-80">Profile Completion</span>
+                                    <span class="text-white fw-bold">85%</span>
+                                </div>
+                                <div class="progress progress-custom">
+                                    <div class="progress-bar bg-success progress-bar-85"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-white-80">Appointments Booked</span>
+                                    <span class="text-white fw-bold">3</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-top border-white-20">
+                                <a href="/UserProfile" class="text-white text-decoration-none profile-link">
+                                    Complete Your Profile <i class="ri-arrow-right-line ms-2"></i>
+                                </a>
+                            </div>
+                            <div class="mt-4">
+                                <span class="metric-inline"><i class="ri-calendar-check-line"></i> 3 booked visits</span>
+                                <span class="metric-inline"><i class="ri-file-list-3-line"></i> Active prescriptions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section features-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="text-center section-animate">
+                        <span class="section-kicker-home justify-content-center w-100">Why Patients Choose Us</span>
+                        <span class="badge bg-primary-soft text-primary px-3 py-2 badge-custom">WHY CHOOSE US</span>
+                        <h2 class="display-5 fw-bold mb-4">Your Health, Our Priority</h2>
+                        <p class="text-muted section-title">Experience convenient and compassionate healthcare services at your fingertips</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-lg rounded-lg overflow-hidden h-100 feature-card card-animate float-delay-1">
+                        <div class="feature-icon-bg feature-icon-bg-purple">
+                            <i class="ri-shield-check-line text-white icon-48"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="fw-bold mb-3">Safe & Secure</h5>
+                            <p class="text-muted mb-3">Your medical data is encrypted and protected with the highest security standards.</p>
+                            <a href="javascript:void(0)" class="text-primary fw-bold small">Learn More <i class="ri-arrow-right-line ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-lg rounded-lg overflow-hidden h-100 feature-card card-animate float-delay-2">
+                        <div class="feature-icon-bg feature-icon-bg-pink">
+                            <i class="ri-24-hours-line text-white icon-48"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="fw-bold mb-3">24/7 Support</h5>
+                            <p class="text-muted mb-3">Get instant support from our healthcare professionals anytime, anywhere.</p>
+                            <a href="javascript:void(0)" class="text-primary fw-bold small">Learn More <i class="ri-arrow-right-line ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-lg rounded-lg overflow-hidden h-100 feature-card card-animate float-delay-3">
+                        <div class="feature-icon-bg feature-icon-bg-teal">
+                            <i class="ri-team-fill text-white icon-48"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="fw-bold mb-3">Expert Doctors</h5>
+                            <p class="text-muted mb-3">Consult with highly qualified and experienced healthcare professionals.</p>
+                            <a href="javascript:void(0)" class="text-primary fw-bold small">Learn More <i class="ri-arrow-right-line ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section video-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="position-relative animate-float float-delay-2">
+                        <div class="about-image-shell">
+                            <img src="{% static '/assets/images/about/about-2.png' %}" class="img-fluid rounded-lg shadow-lg" alt="Healthcare services">
+                            <div class="about-floating-card">
+                                <strong>Care made simpler</strong>
+                                <span>Doctors, pharmacy support, and prescriptions stay connected in one patient-friendly flow.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6 mt-4 mt-lg-0 ps-lg-4">
+                    <div class="info-text text-animate">
+                        <span class="section-kicker-home">About Medical Advisor</span>
+                        <h3 class="fw-bold mb-4">Comprehensive Healthcare at Your Fingertips</h3>
+                        <p class="text-muted mb-3">At Medical Advisor, we believe that quality healthcare should be accessible to everyone. Our platform connects you with verified doctors, licensed pharmacists, and comprehensive medical services all in one place.</p>
+                        <p class="text-muted mb-4">We provide safe prescriptions, secure consultations, and reliable medications from trusted partners to ensure your health and wellness journey is smooth and worry-free.</p>
+                        <div class="d-flex align-items-center mb-3 animate-on-scroll">
+                            <div class="accent-bar"></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Expert Medical Team</h6>
+                                <p class="text-muted small mb-0">Verified and experienced healthcare professionals</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3 animate-on-scroll">
+                            <div class="accent-bar"></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Secure Transactions</h6>
+                                <p class="text-muted small mb-0">Bank-level encryption for all your data</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center animate-on-scroll">
+                            <div class="accent-bar"></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Quick Response</h6>
+                                <p class="text-muted small mb-0">24/7 support available whenever you need</p>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-lg rounded-pill px-4 py-2">
+                                <i class="ri-information-line me-2"></i>Learn More About Us
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <span class="info-chip"><i class="ri-user-heart-line text-primary"></i> Verified medical professionals</span>
+                            <span class="info-chip"><i class="ri-bank-card-line text-primary"></i> Safer billing and records</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section services-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="text-center section-animate">
+                        <span class="section-kicker-home justify-content-center w-100">Specialized Care</span>
+                        <span class="badge bg-primary-soft text-primary px-3 py-2 mb-3 badge-custom">MEDICAL SERVICES</span>
+                        <h2 class="display-5 fw-bold mb-4">Our Specializations</h2>
+                        <p class="text-muted section-title">Comprehensive healthcare services across multiple specialties</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-xl-3 col-md-4 col-12"><div class="card features feature-primary border-0 shadow-lg rounded-lg overflow-hidden card-animate service-card"><div class="icon text-center rounded-md gradient-purple"><div class="service-card-top"><span class="service-badge">01</span></div><i class="ri-eye-fill h1 mb-0"></i></div><div class="card-body p-4 mt-2"><a href="javascript:void(0)" class="title text-dark h5 fw-bold">Eye Care</a><p class="text-muted mt-2 small">Professional eye examination and vision correction services to ensure optimal eye health and clear vision.</p><a href="javascript:void(0)" class="link text-primary fw-bold small">Read More <i class="ri-arrow-right-line align-middle ms-1"></i></a></div></div></div>
+                <div class="col-xl-3 col-md-4 col-12"><div class="card features feature-primary border-0 shadow-lg rounded-lg overflow-hidden card-animate service-card"><div class="icon text-center rounded-md gradient-pink"><div class="service-card-top"><span class="service-badge">02</span></div><i class="ri-psychotherapy-fill h1 mb-0"></i></div><div class="card-body p-4 mt-2"><a href="javascript:void(0)" class="title text-dark h5 fw-bold">Psychotherapy</a><p class="text-muted mt-2 small">Mental health support and counseling services to help manage stress, anxiety, and emotional well-being.</p><a href="javascript:void(0)" class="link text-primary fw-bold small">Read More <i class="ri-arrow-right-line align-middle ms-1"></i></a></div></div></div>
+                <div class="col-xl-3 col-md-4 col-12"><div class="card features feature-primary border-0 shadow-lg rounded-lg overflow-hidden card-animate service-card"><div class="icon text-center rounded-md gradient-cyan"><div class="service-card-top"><span class="service-badge">03</span></div><i class="ri-stethoscope-fill h1 mb-0"></i></div><div class="card-body p-4 mt-2"><a href="javascript:void(0)" class="title text-dark h5 fw-bold">Primary Care</a><p class="text-muted mt-2 small">Comprehensive healthcare services for routine check-ups, preventive care, and general medical consultations.</p><a href="javascript:void(0)" class="link text-primary fw-bold small">Read More <i class="ri-arrow-right-line align-middle ms-1"></i></a></div></div></div>
+                <div class="col-xl-3 col-md-4 col-12"><div class="card features feature-primary border-0 shadow-lg rounded-lg overflow-hidden card-animate service-card"><div class="icon text-center rounded-md gradient-warm"><div class="service-card-top"><span class="service-badge">04</span></div><i class="ri-capsule-fill h1 mb-0"></i></div><div class="card-body p-4 mt-2"><a href="javascript:void(0)" class="title text-dark h5 fw-bold">Dental Care</a><p class="text-muted mt-2 small">Professional dental services including cleanings, treatments, and procedures for healthy teeth and gums.</p><a href="javascript:void(0)" class="link text-primary fw-bold small">Read More <i class="ri-arrow-right-line align-middle ms-1"></i></a></div></div></div>
+                <div class="col-xl-3 col-md-4 col-12"><div class="card features feature-primary border-0 shadow-lg rounded-lg overflow-hidden card-animate service-card"><div class="icon text-center rounded-md gradient-dark"><div class="service-card-top"><span class="service-badge">05</span></div><i class="ri-microscope-fill h1 mb-0"></i></div><div class="card-body p-4 mt-2"><a href="javascript:void(0)" class="title text-dark h5 fw-bold">Orthopedic</a><p class="text-muted mt-2 small">Specialized care for bone, joint, and muscle disorders including diagnosis, treatment, and rehabilitation.</p><a href="javascript:void(0)" class="link text-primary fw-bold small">Read More <i class="ri-arrow-right-line align-middle ms-1"></i></a></div></div></div>
+                <div class="col-xl-3 col-md-4 col-12"><div class="card features feature-primary border-0 shadow-lg rounded-lg overflow-hidden card-animate service-card"><div class="icon text-center rounded-md gradient-danger"><div class="service-card-top"><span class="service-badge">06</span></div><i class="ri-pulse-fill h1 mb-0"></i></div><div class="card-body p-4 mt-2"><a href="javascript:void(0)" class="title text-dark h5 fw-bold">Cardiology</a><p class="text-muted mt-2 small">Expert cardiovascular health services for heart disease prevention, diagnosis, and management.</p><a href="javascript:void(0)" class="link text-primary fw-bold small">Read More <i class="ri-arrow-right-line align-middle ms-1"></i></a></div></div></div>
+                <div class="col-xl-3 col-md-4 col-12"><div class="card features feature-primary border-0 shadow-lg rounded-lg overflow-hidden card-animate service-card"><div class="icon text-center rounded-md gradient-purple-alt"><div class="service-card-top"><span class="service-badge">07</span></div><i class="ri-empathize-fill h1 mb-0"></i></div><div class="card-body p-4 mt-2"><a href="javascript:void(0)" class="title text-dark h5 fw-bold">Gynecology</a><p class="text-muted mt-2 small">Comprehensive women's health services including preventive care, wellness exams, and specialized treatments.</p><a href="javascript:void(0)" class="link text-primary fw-bold small">Read More <i class="ri-arrow-right-line align-middle ms-1"></i></a></div></div></div>
+                <div class="col-xl-3 col-md-4 col-12"><div class="card features feature-primary border-0 shadow-lg rounded-lg overflow-hidden card-animate service-card"><div class="icon text-center rounded-md gradient-blue"><div class="service-card-top"><span class="service-badge">08</span></div><i class="ri-mind-map h1 mb-0"></i></div><div class="card-body p-4 mt-2"><a href="javascript:void(0)" class="title text-dark h5 fw-bold">Neurology</a><p class="text-muted mt-2 small">Specialized neurological care for brain and nervous system disorders with advanced diagnostic and treatment options.</p><a href="javascript:void(0)" class="link text-primary fw-bold small">Read More <i class="ri-arrow-right-line align-middle ms-1"></i></a></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section pt-0">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="video-solution-cta position-relative card-animate" style="z-index: 1;">
+                        <div class="position-relative">
+                            <img src="{% static '/assets/images/bg/01.jpg' %}" class="img-fluid rounded-md shadow-lg" alt="Doctors standing together">
+                        </div>
+                        <div class="content">
+                            <div class="mb-4">
+                                <span class="metric-inline"><i class="ri-thumb-up-line"></i> Trusted by returning patients</span>
+                                <span class="metric-inline"><i class="ri-hospital-line"></i> Connected care services</span>
+                            </div>
+                            <div class="row" id="counter">
+                                <div class="col-md-4 mt-4 pt-2"><div class="counter-box text-center"><h1 class="mt-3 text-white title-dark"><span class="counter-value" data-target="99">10</span>%</h1><h5 class="counter-head text-white title-dark mb-1">Positive feedback</h5><p class="text-white-50 mb-0">From Doctors</p></div></div>
+                                <div class="col-md-4 mt-4 pt-2"><div class="counter-box text-center"><h1 class="mt-3 text-white title-dark"><span class="counter-value" data-target="25">2</span>+</h1><h5 class="counter-head text-white title-dark mb-1">Experienced Clinics</h5><p class="text-white-50 mb-0">High Qualified</p></div></div>
+                                <div class="col-md-4 mt-4 pt-2"><div class="counter-box text-center"><h1 class="mt-3 text-white title-dark"><span class="counter-value" data-target="1251">95</span>+</h1><h5 class="counter-head text-white title-dark mb-1">Questions & Answers</h5><p class="text-white-50 mb-0">Your Questions</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-posts-placeholder bg-primary"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2 section-animate">
+                        <span class="section-kicker-home justify-content-center w-100">Patient Stories</span>
+                        <h4 class="title mb-4">Patients Says</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 mt-4 pt-2 text-center">
+                    <div class="review-shell">
+                        <div class="client-review-slider">
+                        <div class="tiny-slide text-center"><p class="text-muted fw-normal fst-italic">" It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. "</p><img src="{% static '/assets/images/client/01.jpg' %}" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt=""><ul class="list-unstyled mb-0"><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li></ul><h6 class="text-primary">- Thomas Israel <small class="text-muted">C.E.O</small></h6></div>
+                        <div class="tiny-slide text-center"><p class="text-muted fw-normal fst-italic">" The advantage of its Latin origin and the relative meaninglessness of Lorum Ipsum is that the text does not attract attention to itself or distract the viewer's attention from the layout. "</p><img src="{% static '/assets/images/client/02.jpg' %}" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt=""><ul class="list-unstyled mb-0"><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li></ul><h6 class="text-primary">- Carl Oliver <small class="text-muted">P.A</small></h6></div>
+                        <div class="tiny-slide text-center"><p class="text-muted fw-normal fst-italic">" There is now an abundance of readable dummy texts. These are usually used when a text is required purely to fill a space. These alternatives to the classic Lorem Ipsum texts are often amusing and tell short, funny or nonsensical stories. "</p><img src="{% static '/assets/images/client/03.jpg' %}" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt=""><ul class="list-unstyled mb-0"><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li></ul><h6 class="text-primary">- Barbara McIntosh <small class="text-muted">M.D</small></h6></div>
+                        <div class="tiny-slide text-center"><p class="text-muted fw-normal fst-italic">" According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero in 45 BC. Allegedly, a Latin scholar established the origin of the text by compiling all the instances of the unusual word 'consectetur' he could find "</p><img src="{% static '/assets/images/client/04.jpg' %}" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt=""><ul class="list-unstyled mb-0"><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li></ul><h6 class="text-primary">- Christa Smith <small class="text-muted">Manager</small></h6></div>
+                        <div class="tiny-slide text-center"><p class="text-muted fw-normal fst-italic">" It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. "</p><img src="{% static '/assets/images/client/05.jpg' %}" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt=""><ul class="list-unstyled mb-0"><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li></ul><h6 class="text-primary">- Dean Tolle <small class="text-muted">Developer</small></h6></div>
+                        <div class="tiny-slide text-center"><p class="text-muted fw-normal fst-italic">" It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. One may speculate that over the course of time certain letters were added or deleted at various positions within the text. "</p><img src="{% static '/assets/images/client/06.jpg' %}" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt=""><ul class="list-unstyled mb-0"><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li><li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li></ul><h6 class="text-primary">- Jill Webb <small class="text-muted">Designer</small></h6></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-100 mt-60">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title text-center mb-4 pb-2 section-animate">
+                            <span class="section-kicker-home justify-content-center w-100">Updates</span>
+                            <span class="badge rounded-pill bg-soft-primary mb-3">Read News</span>
+                            <h4 class="title mb-4">Latest News & Blogs</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2"><div class="card blog blog-primary border-0 shadow rounded overflow-hidden card-animate"><img src="{% static '/assets/images/blog/01.jpg' %}" class="img-fluid" alt=""><div class="card-body p-4"><span class="blog-label">Health Tips</span><ul class="list-unstyled mb-2"><li class="list-inline-item text-muted small me-3"><i class="uil uil-calendar-alt text-dark h6 me-1"></i>20th November, 2020</li><li class="list-inline-item text-muted small"><i class="uil uil-clock text-dark h6 me-1"></i>5 min read</li></ul><a href="blog-detail.html" class="text-dark title h5">You can easily connect to doctor and make a treatment</a><div class="post-meta d-flex justify-content-between mt-3"><ul class="list-unstyled mb-0"><li class="list-inline-item me-2 mb-0"><a href="#" class="text-muted like"><i class="mdi mdi-heart-outline me-1"></i>33</a></li><li class="list-inline-item"><a href="#" class="text-muted comments"><i class="mdi mdi-comment-outline me-1"></i>08</a></li></ul><a href="blog-detail.html" class="link">Read More <i class="mdi mdi-chevron-right align-middle"></i></a></div></div></div></div>
+                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2"><div class="card blog blog-primary border-0 shadow rounded overflow-hidden card-animate"><img src="{% static '/assets/images/blog/02.jpg' %}" class="img-fluid" alt=""><div class="card-body p-4"><span class="blog-label">Patient Care</span><ul class="list-unstyled mb-2"><li class="list-inline-item text-muted small me-3"><i class="uil uil-calendar-alt text-dark h6 me-1"></i>20th November, 2020</li><li class="list-inline-item text-muted small"><i class="uil uil-clock text-dark h6 me-1"></i>5 min read</li></ul><a href="blog-detail.html" class="text-dark title h5">Lockdowns lead to fewer people seeking medical care</a><div class="post-meta d-flex justify-content-between mt-3"><ul class="list-unstyled mb-0"><li class="list-inline-item me-2 mb-0"><a href="#" class="text-muted like"><i class="mdi mdi-heart-outline me-1"></i>33</a></li><li class="list-inline-item"><a href="#" class="text-muted comments"><i class="mdi mdi-comment-outline me-1"></i>08</a></li></ul><a href="blog-detail.html" class="link">Read More <i class="mdi mdi-chevron-right align-middle"></i></a></div></div></div></div>
+                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2"><div class="card blog blog-primary border-0 shadow rounded overflow-hidden card-animate"><img src="{% static '/assets/images/blog/03.jpg' %}" class="img-fluid" alt=""><div class="card-body p-4"><span class="blog-label">Research</span><ul class="list-unstyled mb-2"><li class="list-inline-item text-muted small me-3"><i class="uil uil-calendar-alt text-dark h6 me-1"></i>20th November, 2020</li><li class="list-inline-item text-muted small"><i class="uil uil-clock text-dark h6 me-1"></i>5 min read</li></ul><a href="blog-detail.html" class="text-dark title h5">Emergency medicine research course for the doctors</a><div class="post-meta d-flex justify-content-between mt-3"><ul class="list-unstyled mb-0"><li class="list-inline-item me-2 mb-0"><a href="#" class="text-muted like"><i class="mdi mdi-heart-outline me-1"></i>33</a></li><li class="list-inline-item"><a href="#" class="text-muted comments"><i class="mdi mdi-comment-outline me-1"></i>08</a></li></ul><a href="blog-detail.html" class="link">Read More <i class="mdi mdi-chevron-right align-middle"></i></a></div></div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-2 col-6 text-center py-4"><div class="logo-tile"><img src="{% static '/assets/images/client/amazon.png' %}" class="avatar avatar-client" alt=""></div></div>
+                <div class="col-lg-2 col-md-2 col-6 text-center py-4"><div class="logo-tile"><img src="{% static '/assets/images/client/google.png' %}" class="avatar avatar-client" alt=""></div></div>
+                <div class="col-lg-2 col-md-2 col-6 text-center py-4"><div class="logo-tile"><img src="{% static '/assets/images/client/lenovo.png' %}" class="avatar avatar-client" alt=""></div></div>
+                <div class="col-lg-2 col-md-2 col-6 text-center py-4"><div class="logo-tile"><img src="{% static '/assets/images/client/paypal.png' %}" class="avatar avatar-client" alt=""></div></div>
+                <div class="col-lg-2 col-md-2 col-6 text-center py-4"><div class="logo-tile"><img src="{% static '/assets/images/client/shopify.png' %}" class="avatar avatar-client" alt=""></div></div>
+                <div class="col-lg-2 col-md-2 col-6 text-center py-4"><div class="logo-tile"><img src="{% static '/assets/images/client/spotify.png' %}" class="avatar avatar-client" alt=""></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="premium-footer py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-3 col-md-6"><div class="d-flex align-items-center mb-3"><div class="me-3 footer-brand-badge"><i class="ri-hospital-line text-white icon-brand"></i></div><div><h6 class="mb-0 fw-bold text-white">Medical Advisor</h6><small class="text-info">Patient Portal</small></div></div><p class="text-light small mb-3">Comprehensive healthcare management and medicine platform.</p><div class="mb-3"><span class="footer-note-chip"><i class="ri-calendar-check-line"></i>Appointments</span><span class="footer-note-chip"><i class="ri-capsule-line"></i>Medicine</span><span class="footer-note-chip"><i class="ri-file-list-3-line"></i>Prescriptions</span></div><div class="d-flex gap-2 flex-wrap"><a href="#" class="badge bg-info text-dark text-decoration-none"><i class="ri-facebook-fill"></i></a><a href="#" class="badge bg-info text-dark text-decoration-none"><i class="ri-twitter-fill"></i></a><a href="#" class="badge bg-info text-dark text-decoration-none"><i class="ri-linkedin-fill"></i></a><a href="#" class="badge bg-info text-dark text-decoration-none"><i class="ri-instagram-fill"></i></a></div></div>
+                <div class="col-lg-3 col-md-6"><h6 class="fw-bold text-white mb-3"><i class="ri-links-line me-2 text-info"></i>Company</h6><ul class="list-unstyled"><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ About us</a></li><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Services</a></li><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Team</a></li><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Project</a></li><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Blog</a></li></ul></div>
+                <div class="col-lg-3 col-md-6"><h6 class="fw-bold text-white mb-3"><i class="ri-hospital-line me-2 text-info"></i>Departments</h6><ul class="list-unstyled"><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Eye Care</a></li><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Cardiology</a></li><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Dental</a></li><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Orthopedic</a></li><li class="mb-2"><a href="javascript:void(0)" class="text-light text-decoration-none small">✓ Gynecology</a></li></ul></div>
+                <div class="col-lg-3 col-md-6"><div class="bg-dark rounded shadow-sm p-3 footer-contact"><h6 class="fw-bold text-white mb-3"><i class="ri-phone-line me-2 text-danger"></i>Contact</h6><div class="mb-2"><a href="mailto:contact@example.com" class="text-light text-decoration-none small d-flex align-items-center"><i class="ri-mail-line me-2 text-info icon-contact"></i><span>contact@example.com</span></a></div><div><a href="tel:+152534-468-854" class="text-light text-decoration-none small d-flex align-items-center"><i class="ri-phone-fill me-2 text-info icon-contact"></i><span>+152 534-468-854</span></a></div></div></div>
+            </div>
+            <hr class="my-4 opacity-50 footer-divider">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start"><p class="small mb-0 text-light"><script>document.write(new Date().getFullYear())</script> © Medical Advisor | <a href="terms.html" class="text-light text-decoration-none">Terms</a> | <a href="privacy.html" class="text-light text-decoration-none">Privacy</a> | <a href="contact.html" class="text-light text-decoration-none">Contact</a></p></div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0"><a href="/logout/" class="btn btn-sm btn-danger rounded-pill"><i class="ri-logout-box-line me-2"></i>Logout</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5 rounded-pill text-center bg-primary justify-content-center align-items-center"><i data-feather="arrow-up" class="fea icon-sm"></i></a>
+
+    <script src="{% static '/assets/libs/tiny-slider/min/tiny-slider.js' %}"></script>
+    <script src="{% static '/assets/libs/tobii/js/tobii.min.js' %}"></script>
+    <script src="{% static '/assets/libs/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static '/assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/assets/js/plugins.init.js' %}"></script>
+    <script src="{% static '/assets/js/app.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var navRoot = document.querySelector('.portal-user-navbar');
+            if (!navRoot) {
+                return;
+            }
+
+            function normalizePath(value) {
+                var normalized = (value || '/').split('?')[0].replace(/\/+$/, '');
+                return normalized || '/';
+            }
+
+            var currentPath = normalizePath(window.location.pathname);
+
+            navRoot.querySelectorAll('[data-nav-match]').forEach(function (link) {
+                var matches = (link.getAttribute('data-nav-match') || '')
+                    .split(',')
+                    .map(function (item) {
+                        return normalizePath(item.trim());
+                    })
+                    .filter(Boolean);
+
+                var isCurrent = matches.some(function (match) {
+                    return currentPath === match || currentPath.indexOf(match + '/') === 0;
+                });
+
+                if (!isCurrent) {
+                    return;
+                }
+
+                link.classList.add('is-current');
+                link.setAttribute('aria-current', 'page');
+
+                var dropdown = link.closest('.portal-nav-item-dropdown');
+                if (dropdown) {
+                    var dropdownToggle = dropdown.querySelector('.portal-nav-link.dropdown-toggle');
+                    if (dropdownToggle) {
+                        dropdownToggle.classList.add('is-current');
+                    }
+                }
+            });
+
+            function closeDropdowns(exceptItem) {
+                navRoot.querySelectorAll('.portal-nav-item-dropdown').forEach(function (item) {
+                    if (exceptItem && item === exceptItem) {
+                        return;
+                    }
+
+                    item.classList.remove('show');
+
+                    var menu = item.querySelector('.portal-nav-dropdown-menu');
+                    var toggle = item.querySelector('.portal-nav-link.dropdown-toggle');
+
+                    if (menu) {
+                        menu.classList.remove('show');
+                    }
+
+                    if (toggle) {
+                        toggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            navRoot.querySelectorAll('.portal-nav-item-dropdown > .dropdown-toggle').forEach(function (toggle) {
+                toggle.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    var item = toggle.closest('.portal-nav-item-dropdown');
+                    var menu = item ? item.querySelector('.portal-nav-dropdown-menu') : null;
+
+                    if (!item || !menu) {
+                        return;
+                    }
+
+                    var willOpen = !item.classList.contains('show');
+                    closeDropdowns(item);
+
+                    item.classList.toggle('show', willOpen);
+                    menu.classList.toggle('show', willOpen);
+                    toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+                });
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!navRoot.contains(event.target)) {
+                    closeDropdowns();
+                }
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 1200) {
+                    closeDropdowns();
+                }
+            });
+
+            var collapseElement = document.getElementById('portalUserNav');
+            if (collapseElement && window.bootstrap && window.bootstrap.Collapse) {
+                var collapseInstance = window.bootstrap.Collapse.getOrCreateInstance(collapseElement, {
+                    toggle: false
+                });
+
+                collapseElement.querySelectorAll('a[href]:not(.dropdown-toggle)').forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        if (window.innerWidth < 1200) {
+                            closeDropdowns();
+                            collapseInstance.hide();
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+    <script src="{% static '/js/smooth-transitions.js' %}"></script>
+</body>
+</html>

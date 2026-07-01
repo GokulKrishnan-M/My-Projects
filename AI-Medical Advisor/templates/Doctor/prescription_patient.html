@@ -1,0 +1,134 @@
+{% extends 'Doctor/common.html' %}
+{% load static %}
+{% block page_title %}Create Prescription{% endblock %}
+{% block page_subtitle %}Send medicines and instructions directly to the pharmacist.{% endblock %}
+{% block content %}
+<section class="rf-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="rf-card rf-profile-card">
+          <div class="rf-profile">
+            <div class="rf-avatar">
+              <img src="/static/assets/{{ appointment.uid.image }}" alt="{{ appointment.uid.name }}">
+            </div>
+            <div>
+              <h5 class="mb-1 text-white">{{ appointment.uid.name }}</h5>
+              <span class="text-muted">Patient Profile</span>
+            </div>
+          </div>
+          <div class="rf-info-list">
+            <div class="rf-info-item">
+              <span>Appointment Date</span>
+              <strong>{{ appointment.date }}</strong>
+            </div>
+            <div class="rf-info-item">
+              <span>Appointment Time</span>
+              <strong>{{ appointment.time }}</strong>
+            </div>
+            <div class="rf-info-item">
+              <span>Issue Summary</span>
+              <strong>{{ appointment.desc }}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="rf-card">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div>
+              <h5 class="text-white mb-1">Create Prescription</h5>
+              <p class="text-muted mb-0">Send medicines and instructions to the pharmacist.</p>
+            </div>
+          </div>
+          {% if ai_medicine_guidance %}
+          <div class="alert alert-info border-0 mb-4" style="background: rgba(61, 164, 255, 0.12); color: #d7ecff;">
+            <strong class="d-block mb-1">AI medicine support</strong>
+            <span>{{ ai_medicine_guidance }}</span>
+          </div>
+          {% endif %}
+          <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="patient" class="form-label"><strong>Patient Name</strong></label>
+              <input type="text" id="patient" class="form-control" value="{{ appointment.uid.name }}" readonly>
+            </div>
+
+            <div class="mb-3">
+              <label for="pharmacist" class="form-label"><strong>Select Pharmacist</strong></label>
+              <select id="pharmacist" name="pharmacist" class="form-select" required>
+                <option value="">Select Pharmacist</option>
+                {% for pharmacist in pharmacists %}
+                <option value="{{ pharmacist.id }}">{{ pharmacist.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="medicines" class="form-label">Medicines</label>
+              <textarea name="medicines" class="form-control" id="medicines" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="instructions" class="form-label">Additional Instructions</label>
+              <textarea name="instructions" class="form-control" id="instructions" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn rf-btn-primary">Create Prescription</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% comment %} {% extends 'Doctor/common.html' %}
+{% load static %}
+{% block header %}
+<br><br><br><br>
+
+<div class="container mt-4">
+    <h2 class="text-center">Create Prescription</h2>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Patient Details -->
+        <div class="mb-3">
+            <label for="patient" class="form-label"><strong>Patient Name</strong></label>
+            <input type="text" id="patient" class="form-control" value="{{ appointment.patient.name }}" readonly>
+        </div>
+
+        <!-- Pharmacist Selection -->
+        <div class="mb-3">
+            <label for="pharmacist" class="form-label"><strong>Select Pharmacist</strong></label>
+            <select id="pharmacist" name="pharmacist" class="form-select" required>
+                <option value="">Select Pharmacist</option>
+                {% for pharmacist in pharmacists %}
+                <option value="{{ pharmacist.id }}">{{ pharmacist.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Medicines -->
+        <div class="mb-3">
+            <label for="medicines" class="form-label"><strong>Medicines</strong></label>
+            <input type="text" id="medicines" name="medicines" class="form-control" placeholder="Enter medicines" required>
+        </div>
+
+        <!-- Instructions -->
+        <div class="mb-3">
+            <label for="instructions" class="form-label"><strong>Instructions</strong></label>
+            <textarea id="instructions" name="instructions" class="form-control" rows="4" placeholder="Enter instructions" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Create Prescription</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %} {% endcomment %}
+
+{% endblock %}

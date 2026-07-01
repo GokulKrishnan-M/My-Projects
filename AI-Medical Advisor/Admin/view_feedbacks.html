@@ -1,0 +1,54 @@
+
+
+{% extends 'Admin/common.html' %}
+{% block page_title %}Feedbacks{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">User Feedbacks</h4>
+                </div>
+
+                <div class="card-body">
+                    {% if feedbacks %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>User</th>
+                                    <th>Feedback</th>
+                                    <th>Rating</th>
+                                    <th>Date Submitted</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for feedback in feedbacks %}
+                                <tr>
+                                    <td>{{ feedback.user.name }}</td>
+                                    <td>{{ feedback.feedback_text }}</td>
+                                    <td>
+                                        {% if feedback.rating %}
+                                            {{ feedback.rating }}/5
+                                        {% else %}
+                                            No Rating
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ feedback.date_submitted|date:"d M Y, h:i A" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                        <p class="text-center text-muted">No feedbacks submitted yet.</p>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

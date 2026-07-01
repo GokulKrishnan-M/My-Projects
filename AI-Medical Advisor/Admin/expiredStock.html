@@ -1,0 +1,52 @@
+{% extends 'Admin/common.html' %}
+{% block page_title %}Expired Stock{% endblock %}
+{% load static %}
+{% block content %}
+
+<section class="section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="section-title center-divider text-center">
+                    <span>Check out our</span>
+                    <h2>Expired Products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for i in data %}
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-post blog-post-01">
+                    <div class="blog-post-image mb-4">
+                        <img class="img-fluid" src="{{ i.display_image_url }}" alt="{{ i.name }}">
+                    </div>
+                    <div class="blog-post-content py-0">
+                        <div class="blog-post-details">
+                            <center>
+                                <h6 class="blog-post-title"><a href="#">{{i.name}}</a></h6>
+                                <div class="blog-post-meta">
+                                    <h2>{{i.name}}</h2>
+                                </div>
+                                <div class="blog-post-description">
+                                    <p>Price : {{i.price}}</p>
+                                    <p>Date Added : {{i.date}}</p>
+                                    <p>Expiry Date : <span class="text-danger">{{i.expiry}}</span></p>
+                                    <p>Description : {{i.desc}}</p>
+                                    <a href="/adm_viewdetails?id={{i.id}}" class="btn btn-warning mb-2">View Details</a>
+                                    <span class="btn btn-danger mb-2 disabled">Expired</span>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-lg-12">
+                <p class="text-center text-muted">No expired products found.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

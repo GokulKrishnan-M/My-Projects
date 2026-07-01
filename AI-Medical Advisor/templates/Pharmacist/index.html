@@ -1,0 +1,103 @@
+{% extends "Pharmacist/common.html" %}
+{% load static %}
+{% block page_title %}Pharmacy Operations{% endblock %}
+{% block page_subtitle %}Coordinate prescriptions, inventory checks, and order handoffs with a workspace built for fast fulfillment.{% endblock %}
+{% block content %}
+<section class="pharma-section">
+    <div class="container">
+        <div class="pharma-showcase-grid">
+            <div class="pharma-showcase-card">
+                <div class="pharma-showcase-content">
+                    <span class="pharma-chip">Inventory Focus</span>
+                    <h3>Inventory clarity for every shift</h3>
+                    <p>Track medicine availability and expiry-sensitive stock with a clean, centralized view that keeps your pharmacy ready.</p>
+                </div>
+                <div class="pharma-showcase-image">
+                    <img src="{% static '/assets/images/bg/pharm01.jpg' %}" alt="Inventory overview">
+                </div>
+            </div>
+            <div class="pharma-showcase-stack">
+                <div class="pharma-showcase-card">
+                    <div class="pharma-showcase-content">
+                        <span class="pharma-chip">Prescription Queue</span>
+                        <h4>Prescriptions organized in real time</h4>
+                        <p>Stay ahead of incoming prescriptions with consistent verification and pharmacist reviews.</p>
+                    </div>
+                    <div class="pharma-mini-image">
+                        <img src="{% static '/assets/images/bg/pharm02.jpg' %}" alt="Prescription workflow">
+                    </div>
+                </div>
+                <div class="pharma-showcase-card">
+                    <div class="pharma-showcase-content">
+                        <span class="pharma-chip">Order Handoff</span>
+                        <h4>Order status you can trust</h4>
+                        <p>Keep paid and pending orders visible so every delivery is on schedule.</p>
+                    </div>
+                    <div class="pharma-mini-image">
+                        <img src="{% static '/assets/images/bg/pharm03.jpg' %}" alt="Order management">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pharma-highlight-grid">
+            <div class="pharma-highlight-card">
+                <i class="ri-file-list-3-line"></i>
+                <h5>Prescription Intake</h5>
+                <p class="mb-0 text-muted">Review doctor submissions, verify dosage notes, and coordinate pharmacist approvals.</p>
+            </div>
+            <div class="pharma-highlight-card">
+                <i class="ri-archive-stack-line"></i>
+                <h5>Stock Oversight</h5>
+                <p class="mb-0 text-muted">Monitor quantity levels, expiry windows, and supply readiness from one dashboard.</p>
+            </div>
+            <div class="pharma-highlight-card">
+                <i class="ri-shopping-bag-3-line"></i>
+                <h5>Order Fulfillment</h5>
+                <p class="mb-0 text-muted">Track paid and pending orders without jumping between multiple screens.</p>
+            </div>
+            <div class="pharma-highlight-card">
+                <i class="ri-line-chart-line"></i>
+                <h5>Profit Visibility</h5>
+                <p class="mb-0 text-muted">Keep profit insights ready for reporting and pharmacy performance reviews.</p>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h4 class="text-center mb-4">Inventory Focus Areas</h4>
+            <div class="pharma-category-grid">
+                <div class="pharma-category-card">
+                    <img src="{% static '/assets/images/bg/01.jpg' %}" alt="Daily essentials">
+                    <h6>Daily Essentials</h6>
+                    <p class="text-muted mb-0">Fast-moving inventory for recurring prescriptions.</p>
+                </div>
+                <div class="pharma-category-card">
+                    <img src="{% static '/assets/images/bg/02.jpg' %}" alt="Cold chain">
+                    <h6>Cold Chain Stock</h6>
+                    <p class="text-muted mb-0">Temperature-sensitive medicines and supplies.</p>
+                </div>
+                <div class="pharma-category-card">
+                    <img src="{% static '/assets/images/bg/03.jpg' %}" alt="Wellness kits">
+                    <h6>Wellness Kits</h6>
+                    <p class="text-muted mb-0">Bundled products prepared for patient guidance.</p>
+                </div>
+                <div class="pharma-category-card">
+                    <img src="{% static '/assets/images/bg/05.jpg' %}" alt="Emergency stock">
+                    <h6>Emergency Stock</h6>
+                    <p class="text-muted mb-0">Critical supplies kept ready for urgent needs.</p>
+                </div>
+                <div class="pharma-category-card">
+                    <img src="{% static '/assets/images/about/about-2.png' %}" alt="Specialty meds">
+                    <h6>Specialty Medicines</h6>
+                    <p class="text-muted mb-0">High value items with strict verification flows.</p>
+                </div>
+                <div class="pharma-category-card">
+                    <img src="{% static '/assets/images/bg/pharm03.jpg' %}" alt="Delivery queue">
+                    <h6>Delivery Queue</h6>
+                    <p class="text-muted mb-0">Packed orders staged for dispatch and pickup.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

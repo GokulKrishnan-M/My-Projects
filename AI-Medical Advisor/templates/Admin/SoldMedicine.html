@@ -1,0 +1,38 @@
+{% extends "admin/common.html" %}{% block page_title %}Sold Medicine{% endblock %}{% block content %}
+
+<div class="container mt-5">
+    <h2 class="text-center">Sold Medicine Report</h2>
+    <hr>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Pharmacist</th>
+                <th>User</th>
+                <th>Medicine Name</th>
+                <th>Quantity Sold</th>
+                <th>Total Price (₹)</th>
+                <th>Profit (₹)</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            {% comment %} {% if i.status == "Paid" %} {% endcomment %}
+            <tr>
+                <td>{{ item.Pharmacist.name }}</td>
+                <td>{{ item.uid.name }}</td>
+                <td>{{ item.mid.name }}</td>
+                <td>{{ item.qty }}</td>
+                <td>₹{{ item.total }}</td>
+                <td>₹{{ item.profit }}</td>
+                <td>{{ item.date }}</td>
+            </tr>
+           
+            {% comment %} {% endif %} {% endcomment %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
