@@ -67,6 +67,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# About this Project >>
+
 # 🏡 RentalHarmony
 
 A Laravel-based rental property management platform that simplifies property listing, browsing, and rental administration.
