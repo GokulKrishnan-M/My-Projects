@@ -58,6 +58,3 @@ The primary objective of AI Medical Advisor is to improve access to early health
 
 ---
 
-## 👨‍💻 Author
-
-**Gokul Krishnan M**
