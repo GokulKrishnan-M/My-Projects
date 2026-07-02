@@ -64,3 +64,62 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+# 🏡 RentalHarmony
+
+A Laravel-based rental property management platform that simplifies property listing, browsing, and rental administration.
+
+## 📌 Overview
+
+RentalHarmony is a web application developed to improve the rental experience for both property owners and customers. The platform enables users to browse rental properties while allowing administrators to efficiently manage listings, availability, and customer inquiries.
+
+The system provides an organized digital environment for property rental management.
+
+---
+
+## 🚀 Features
+
+- 🏠 Property listing
+- 🔍 Property browsing
+- 📅 Availability management
+- 📨 Customer inquiry support
+- 📂 Rental information management
+- 👨‍💼 Admin dashboard
+
+---
+
+## 🛠️ Technologies Used
+
+- PHP
+- Laravel
+
+---
+
+## 👥 Stakeholders
+
+- Admin
+- User / Customer
+
+---
+
+## 🎯 Project Objective
+
+RentalHarmony aims to simplify rental property management by providing an organized platform for property listings, customer interaction, and administrative control.
+
+---
+
+## 📖 Future Enhancements
+
+- Online payment gateway
+- Booking calendar
+- Property image gallery
+- User reviews and ratings
+- Location-based search
+- Email notifications
+
+---
+
+
+
